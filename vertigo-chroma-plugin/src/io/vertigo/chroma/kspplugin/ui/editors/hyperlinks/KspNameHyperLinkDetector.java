@@ -81,20 +81,20 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 		String kspKeyword = strategy.getKspKeyword(KspNature.DT_DEFINITION);
 		String javaName = strategy.getKspDeclarationJavaName(dtName, kspKeyword);
 
-		/* Cherche le fichier Java du DTO. */
-		DtoFile dtoFile = DtoManager.getInstance().findDtoFile(javaName);
-
-		/* Fichier Java trouvé : on ajoute un lien vers le fichier Java. */
-		if (dtoFile != null) {
-			hyperLinks.add(new JavaImplementationHyperLink(targetRegion, dtoFile));
-		}
-
 		/* Cherche la déclaration KSP de DtDefinition */
 		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclaration(javaName, KspNature.DT_DEFINITION);
 
 		/* Déclaration KSP trouvé : on ajoute un lien si on n'est pas déjà sur la déclaration. */
 		if (kspDeclaration != null && !fileRegion.equals(kspDeclaration.getFileRegion())) {
 			hyperLinks.add(new KspDeclarationHyperLink(targetRegion, kspDeclaration));
+		}
+
+		/* Cherche le fichier Java du DTO. */
+		DtoFile dtoFile = DtoManager.getInstance().findDtoFile(javaName);
+
+		/* Fichier Java trouvé : on ajoute un lien vers le fichier Java. */
+		if (dtoFile != null) {
+			hyperLinks.add(new JavaImplementationHyperLink(targetRegion, dtoFile));
 		}
 
 		if (hyperLinks.isEmpty()) {
