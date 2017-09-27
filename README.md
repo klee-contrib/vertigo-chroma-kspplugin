@@ -1,5 +1,9 @@
 # vertigo-chroma-kspPlugin
+
 Plugin Eclipse pour améliorer l'expérience de développement [Vertigo](https://github.com/KleeGroup/vertigo).
+
+Travis : [![master](https://travis-ci.org/sebez/vertigo-chroma-kspplugin.svg?branch=master)](https://travis-ci.org/sebez/vertigo-chroma-kspplugin)
+
 
 ## Fonctionnalités
 
