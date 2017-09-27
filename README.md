@@ -8,6 +8,7 @@ Le plugin KSP apporte principalement :
     * coloration syntaxique
     * outline
     * navigation aller-retour vers les fichiers Java
+	* autocomplétion sur les paramètres SQL et les domaines
   * des recherches globales
     * déclaration de KSP par le nom Java
     * route de webservice
