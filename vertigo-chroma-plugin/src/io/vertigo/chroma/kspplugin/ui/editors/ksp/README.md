@@ -1,0 +1,3 @@
+# Description
+
+Ce package contient l'éditeur de fichier KSP, configuré pour fournir les fonctionnalités de coloration syntaxique, outline, liens de navigation...

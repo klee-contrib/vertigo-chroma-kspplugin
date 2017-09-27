@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="io.vertigo.chroma.kspplugin.ui.editors.ksp.KspEditor"
+            default="false"
+            extensions="ksp"
+            icon="icons/ksp.gif"
+            id="io.vertigo.chroma.kspplugin.views.editors.kspEditor"
+            name="KSP Editor">
+      </editor>
+      <editor
+            class="io.vertigo.chroma.kspplugin.ui.editors.kpr.KprEditor"
+            default="false"
+            extensions="kpr"
+            icon="icons/ksp.gif"
+            id="io.vertigo.chroma.kspplugin.views.editors.kprEditor"
+            name="KPR Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="vertigoMenu"
+               label="&amp;Vertigo">
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.openKspDeclaration"
+                  icon="icons/ksp.gif"
+                  label="Open &amp;KSP Declaration..."
+                  style="push">
+            </command>
+            <separator
+                  name="Vertigo stack"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.openDto"
+                  label="Open &amp;DTO..."
+                  style="push">
+            </command>
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.openServiceImplementation"
+                  label="Open &amp;service..."
+                  style="push">
+            </command>
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.openDaoImplementation"
+                  label="Open DAO/&amp;PAO..."
+                  style="push">
+            </command>
+            <separator
+                  name="Vertigo web"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.openWsRoute"
+                  label="Open &amp;route..."
+                  style="push">
+            </command>
+            <separator
+                  name="Vertigo about"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="io.vertigo.chroma.kspPlugin.commands.about"
+                  label="&amp;About KSP Plugin"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:#CompilationUnitEditorContext?after=group.open">
+         <command
+               commandId="io.vertigo.chroma.kspPlugin.commands.goToKspDeclaration"
+               icon="icons/ksp.gif"
+               label="Go to KSP declaration"
+               style="push">
+         </command>
+         <separator
+               name="Vertigo"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:#KspEditorContext?after=group.open">
+         <command
+               commandId="io.vertigo.chroma.kspPlugin.commands.goToJavaFile"
+               icon="icons/ksp.gif"
+               label="Go to Java file"
+               style="push">
+         </command>
+         <separator
+               name="Vertigo"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.OpenKspDeclarationHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.openKspDeclaration"
+            name="Open KSP Declaration">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.OpenWsRouteHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.openWsRoute"
+            name="Open route">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.OpenServiceHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.openServiceImplementation"
+            name="Open service">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.OpenDtoHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.openDto"
+            name="Open DTO">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.GoToJavaFileHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.goToJavaFile"
+            name="Go to Java file">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.GoToKspDeclarationHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.goToKspDeclaration"
+            name="Go to KSP declaration">
+      </command>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.AboutHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.about"
+            name="About KSP Plugin">
+      </command>
+      <category
+            description="Vertigo-specific commands"
+            id="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            name="Vertigo">
+      </category>
+      <command
+            categoryId="io.vertigo.chroma.kspPlugin.vertigoCategory"
+            defaultHandler="io.vertigo.chroma.kspplugin.ui.commands.OpenDaoHandler"
+            id="io.vertigo.chroma.kspPlugin.commands.openDaoImplementation"
+            name="Open DAO/PAO">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="io.vertigo.chroma.kspPlugin.commands.openKspDeclaration"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+D">
+      </key>
+      <key
+            commandId="io.vertigo.chroma.kspPlugin.commands.openWsRoute"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+M3+R">
+      </key>
+      <key
+            commandId="io.vertigo.chroma.kspPlugin.commands.openServiceImplementation"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+M3+S">
+      </key>
+      <key
+            commandId="io.vertigo.chroma.kspPlugin.commands.openDaoImplementation"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+M3+P">
+      </key>
+      <key
+            commandId="io.vertigo.chroma.kspPlugin.commands.openDto"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+M3+D">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="io.vertigo.chroma.kspplugin.ui.editors.ksp.KspDocumentSetupParticipant"
+            extensions="ksp">
+      </participant>
+   </extension>
+   <extension
+         id="kspProblem"
+         name="KSP Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+      <hyperlinkDetector
+            activate="true"
+            class="io.vertigo.chroma.kspplugin.ui.editors.hyperlinks.KspNameHyperLinkDetector"
+            description="Direct link to Java implementation"
+            id="io.vertigo.chroma.kspPlugin.hyperlinks.kspNameDetector"
+            name="KSP name detector"
+            targetId="io.vertigo.chroma.kspPlugin.targets.kspFile">
+      </hyperlinkDetector>
+      <hyperlinkDetector
+            activate="true"
+            class="io.vertigo.chroma.kspplugin.ui.editors.hyperlinks.KspImplementationHyperLinkDetector"
+            id="io.vertigo.chroma.kspPlugin.hyperlinks.kspImplementationDetector"
+            name="KSP implementation detector"
+            targetId="org.eclipse.jdt.ui.javaCode">
+      </hyperlinkDetector>
+      <hyperlinkDetector
+            activate="true"
+            class="io.vertigo.chroma.kspplugin.ui.editors.hyperlinks.FilePathHyperLinkDetector"
+            description="Direct link to files"
+            id="io.vertigo.chroma.kspPlugin.hyperlinks.filePathDetector"
+            name="File path detector"
+            targetId="io.vertigo.chroma.kspPlugin.targets.kprFile">
+      </hyperlinkDetector>
+   </extension>
+   <extension
+         point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectorTargets">
+      <target
+            id="io.vertigo.chroma.kspPlugin.targets.kspFile"
+            name="KSP File">
+      </target>
+      <target
+            id="io.vertigo.chroma.kspPlugin.targets.kprFile"
+            name="KPR File">
+      </target>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="io.vertigo.chroma.kspplugin.boot.KspPluginStartup">
+      </startup>
+   </extension>
+</plugin>
