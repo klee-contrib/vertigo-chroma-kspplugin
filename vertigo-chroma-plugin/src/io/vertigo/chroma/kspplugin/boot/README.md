@@ -1,9 +1,12 @@
 # Description
 
-Ce package contient la logique exécutée par le plugin au démarrage d'Eclipse.
+Ce package contient la logique exÃ©cutÃ©e par le plugin au dÃ©marrage d'Eclipse.
 
-Le plugin parcourt le workspace et indexe les différentes ressources concernées :
+Le plugin parcourt la liste des projets Java ouvert et dÃ©termine leur version de Kasper/Vertigo.
+
+Le plugin parcourt le workspace et indexe les diffÃ©rentes ressources concernÃ©es :
   * Fichiers KSP
-  * Fichiers Java DTO
-  * Fichiers de services métier
+  * Fichiers DTO
+  * Fichiers DAO/PAO
+  * Fichiers de services mÃ©tier
   * Fichiers de webservices
