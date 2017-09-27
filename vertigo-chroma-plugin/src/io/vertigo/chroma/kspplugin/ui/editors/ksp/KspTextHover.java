@@ -17,6 +17,9 @@ import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.TextSelection;
 
+/**
+ * GÃ¨re le tooltip dans le fichier KSP.
+ */
 public class KspTextHover implements ITextHover {
 
 	@Override
@@ -24,7 +27,7 @@ public class KspTextHover implements ITextHover {
 
 		IDocument document = textViewer.getDocument();
 
-		/* Vérifie qu'on est dans une String de KSP */
+		/* VÃ©rifie qu'on est dans une String de KSP */
 		boolean isSqlString = DocumentUtils.isContentType(document, offset, KspRegionType.STRING);
 		if (!isSqlString) {
 			return null;
@@ -41,14 +44,14 @@ public class KspTextHover implements ITextHover {
 			return null;
 		}
 
-		/* Renvoie la région du mot. */
+		/* Renvoie la rÃ©gion du mot. */
 		return new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 	}
 
 	@Override
 	public String getHoverInfo(ITextViewer textViewer, IRegion hoverRegion) {
 
-		/* Extrait le mot de la région. */
+		/* Extrait le mot de la rÃ©gion. */
 		String currentWord = getSelectedWord(textViewer, hoverRegion);
 
 		/* Extrait un nom de DTO : Calcul le nom en PascalCase */
@@ -60,7 +63,7 @@ public class KspTextHover implements ITextHover {
 			return null;
 		}
 
-		/* Renvoie le nom Java. Le texte complet sera généré par KspInformationPresenter. */
+		/* Renvoie le nom Java. Le texte complet sera gÃ©nÃ©rÃ© par KspInformationPresenter. */
 		return javaName;
 	}
 
