@@ -1,5 +1,5 @@
 # vertigo-chroma-kspPlugin
-Plugin Eclipse pour améliorer l'expérience de développement Vertigo.
+Plugin Eclipse pour améliorer l'expérience de développement [Vertigo](https://github.com/KleeGroup/vertigo).
 
 ## Fonctionnalités
 
@@ -8,7 +8,7 @@ Le plugin KSP apporte principalement :
     * coloration syntaxique
     * outline
     * navigation aller-retour vers les fichiers Java
-	* autocomplétion sur les paramètres SQL et les domaines
+    * autocomplétion sur les paramètres SQL et les domaines
   * des recherches globales
     * déclaration de KSP par le nom Java
     * route de webservice
