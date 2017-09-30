@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
+﻿package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
 
 import java.util.ArrayList;
 

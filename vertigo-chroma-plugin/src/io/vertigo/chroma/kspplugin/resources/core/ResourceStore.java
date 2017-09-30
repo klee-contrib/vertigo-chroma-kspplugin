@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources.core;
+ï»¿package io.vertigo.chroma.kspplugin.resources.core;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.JavaProjectMap;
@@ -32,13 +32,13 @@ import org.eclipse.ui.editors.text.TextFileDocumentProvider;
  * <p>
  * <ul>
  * <li>parcourt tous les fichiers du workspace</li>
- * <li>extrait des éléments des fichiers</li>
- * <li>publie une API de recherche des éléments</li>
- * <li>se maintient automatiquement à jour des modifications du workspace</li>
+ * <li>extrait des Ã©lÃ©ments des fichiers</li>
+ * <li>publie une API de recherche des Ã©lÃ©ments</li>
+ * <li>se maintient automatiquement Ã  jour des modifications du workspace</li>
  * </ul>
  * </p>
  * 
- * @param <T> Type de l'élément du magasin.
+ * @param <T> Type de l'Ã©lÃ©ment du magasin.
  */
 public class ResourceStore<T extends Navigable> implements IResourceChangeListener {
 
@@ -47,16 +47,16 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	private static final TextFileDocumentProvider DOCUMENT_PROVIDER = new TextFileDocumentProvider();
 
 	/**
-	 * Créé une nouvelle instance de ResourceStore.
+	 * CrÃ©Ã© une nouvelle instance de ResourceStore.
 	 * 
-	 * @param implementor Implémenteur.
+	 * @param implementor ImplÃ©menteur.
 	 */
 	public ResourceStore(ResourceStoreImplementor<T> implementor) {
 		this.implementor = implementor;
 	}
 
 	/**
-	 * Démarrage du magasin.
+	 * DÃ©marrage du magasin.
 	 */
 	public void start() {
 		initStore();
@@ -66,7 +66,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
 		if (event.getDelta() == null) {
-			/* Evénement sans delta : on ne traite pas. */
+			/* EvÃ©nement sans delta : on ne traite pas. */
 			return;
 		}
 
@@ -79,23 +79,23 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	}
 
 	/**
-	 * Renvoie à plat la liste de tous les éléments de tous les fichiers.
+	 * Renvoie Ã  plat la liste de tous les Ã©lÃ©ments de tous les fichiers.
 	 * 
-	 * @return Liste des éléments.
+	 * @return Liste des Ã©lÃ©ments.
 	 */
 	public List<T> getAllItems() {
 		return map.getAll();
 	}
 
 	/**
-	 * Trouve le premier élément du magasin validant un prédicat.
+	 * Trouve le premier Ã©lÃ©ment du magasin validant un prÃ©dicat.
 	 * 
 	 * <p>
 	 * La recherche se fait dans le projet courant.
 	 * </p>
 	 * 
-	 * @param predicate Prédicat.
-	 * @return Premier élément, <code>null</code> sinon.
+	 * @param predicate PrÃ©dicat.
+	 * @return Premier Ã©lÃ©ment, <code>null</code> sinon.
 	 */
 	public T findFirstItem(Predicate<T> predicate) {
 
@@ -110,7 +110,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 				continue;
 			}
 
-			/* Filtre avec le prédicat. */
+			/* Filtre avec le prÃ©dicat. */
 			if (predicate.test(item)) {
 				return item;
 			}
@@ -120,10 +120,10 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	}
 
 	/**
-	 * Trouve tous les éléments du magasin validant un prédicat.
+	 * Trouve tous les Ã©lÃ©ments du magasin validant un prÃ©dicat.
 	 * 
-	 * @param predicate Prédicat.
-	 * @return Les éléments trouvés.
+	 * @param predicate PrÃ©dicat.
+	 * @return Les Ã©lÃ©ments trouvÃ©s.
 	 */
 	public List<T> findAllItems(Predicate<T> predicate) {
 
@@ -149,14 +149,14 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	}
 
 	/**
-	 * Trouve l'élément contenant la région de fichier donnée.
+	 * Trouve l'Ã©lÃ©ment contenant la rÃ©gion de fichier donnÃ©e.
 	 * 
-	 * @param fileRegion Région de fichier.
-	 * @return Premier élément, <code>null</code> sinon.
+	 * @param fileRegion RÃ©gion de fichier.
+	 * @return Premier Ã©lÃ©ment, <code>null</code> sinon.
 	 */
 	public T findItem(FileRegion fileRegion) {
 
-		/* Obtient les items du fichier recherché. */
+		/* Obtient les items du fichier recherchÃ©. */
 		List<T> items = this.map.get(fileRegion.getFile());
 		if (items == null) {
 			return null;
@@ -170,18 +170,18 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 
 			int itemOffset = item.getFileRegion().getOffset();
 
-			/* L'élément est avant l'offset recherché : on le note comme dernier trouvé. */
+			/* L'Ã©lÃ©ment est avant l'offset recherchÃ© : on le note comme dernier trouvÃ©. */
 			if (itemOffset < offset) {
 				lastMatchingItem = item;
 			}
 
-			/* L'élément est après l'offset recherché : on renvoie le dernier élément trouvé. */
+			/* L'Ã©lÃ©ment est aprÃ¨s l'offset recherchÃ© : on renvoie le dernier Ã©lÃ©ment trouvÃ©. */
 			if (itemOffset > offset) {
 				return lastMatchingItem;
 			}
 		}
 
-		/* Cas avec une seule déclaration. */
+		/* Cas avec une seule dÃ©claration. */
 		return lastMatchingItem;
 	}
 
@@ -212,7 +212,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	 * Initialise le listener de ressources du workspace.
 	 */
 	private void initListener() {
-		/* Comme la durée de vie du store est celle du plugin, il n'est pas nécessaire de prévoir de se désabonner. */
+		/* Comme la durÃ©e de vie du store est celle du plugin, il n'est pas nÃ©cessaire de prÃ©voir de se dÃ©sabonner. */
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 
@@ -229,7 +229,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 			map.remove(file);
 			return;
 		}
-		/* Le fichier contient des items : on l'index en remplaçant la version précédente. */
+		/* Le fichier contient des items : on l'index en remplaÃ§ant la version prÃ©cÃ©dente. */
 		map.put(file, items);
 	}
 
@@ -262,7 +262,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 			/* La ressource est un fichier. */
 			IFile file = (IFile) resource;
 
-			/* Vérification que le fichier est candidat. */
+			/* VÃ©rification que le fichier est candidat. */
 			if (!implementor.isCandidate(file)) {
 				return false;
 			}
@@ -300,7 +300,7 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 			/* La ressource est un fichier. */
 			IFile file = (IFile) resource;
 
-			/* Vérifie que le magasin est concerné par ce fichier. */
+			/* VÃ©rifie que le magasin est concernÃ© par ce fichier. */
 			boolean isCandidate = implementor.isCandidate(file);
 			if (!isCandidate) {
 				return false;
@@ -343,27 +343,27 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 		 * @param file Fichier.
 		 */
 		private void handleDeletion(IFile file) {
-			/* On désindexe le fichier et on sort. */
+			/* On dÃ©sindexe le fichier et on sort. */
 			map.remove(file);
 		}
 	}
 
 	/**
-	 * Map associant un fichier à ses éléments.
+	 * Map associant un fichier Ã  ses Ã©lÃ©ments.
 	 * <p>
-	 * On utilise une concurrent hash map pour gérer les accès concurrents (initialisation au démarrage d'Eclipse, recherche de DTO).
+	 * On utilise une concurrent hash map pour gÃ©rer les accÃ¨s concurrents (initialisation au dÃ©marrage d'Eclipse, recherche de DTO).
 	 * </p>
 	 */
 	private class ItemMap extends ConcurrentHashMap<IFile, List<T>> {
 		private static final long serialVersionUID = 1L;
 
 		/**
-		 * Renvoie tous les éléments de tous les fichiers.
+		 * Renvoie tous les Ã©lÃ©ments de tous les fichiers.
 		 * 
-		 * @return Liste des éléments.
+		 * @return Liste des Ã©lÃ©ments.
 		 */
 		public List<T> getAll() {
-			/* Renvoie l'union de tous les éléments de tous les fichiers. */
+			/* Renvoie l'union de tous les Ã©lÃ©ments de tous les fichiers. */
 			return this.values().stream().flatMap(List::stream).collect(Collectors.toList());
 		}
 	}

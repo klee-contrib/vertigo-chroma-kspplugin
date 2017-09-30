@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+ï»¿package io.vertigo.chroma.kspplugin.legacy;
 
 /**
  * Version du framework Kasper / Vertigo.
@@ -26,7 +26,7 @@ public enum LegacyVersion {
 	KASPER_4(new Kasper4Strategy()),
 
 	/**
-	 * Kasper 3 orienté objet.
+	 * Kasper 3 orientÃ© objet.
 	 */
 	KASPER_3_OO(new Kasper3OOStrategy()),
 
@@ -41,7 +41,7 @@ public enum LegacyVersion {
 	KASPER_2(new Kasper2Strategy()),
 
 	/**
-	 * Aucun framework détecté.
+	 * Aucun framework dÃ©tectÃ©.
 	 */
 	NO_FRAMEWORK(new NoFrameworkStrategy());
 

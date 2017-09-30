@@ -1,9 +1,9 @@
-package io.vertigo.chroma.kspplugin.model;
+﻿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 
 /**
- * Stocke l'ensemble des m�thodes de DAO de tout un workspace.
+ * Stocke l'ensemble des méthodes de DAO de tout un workspace.
  */
 public class DaoWorkspace {
 

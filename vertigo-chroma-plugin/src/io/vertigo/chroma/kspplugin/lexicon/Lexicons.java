@@ -1,37 +1,37 @@
-package io.vertigo.chroma.kspplugin.lexicon;
+ï»¿package io.vertigo.chroma.kspplugin.lexicon;
 
 /**
- * Enumération des lexiques.
+ * EnumÃ©ration des lexiques.
  */
 public enum Lexicons {
 
 	/**
-	 * Mots-clés SQL (select, from...).
+	 * Mots-clÃ©s SQL (select, from...).
 	 */
 	SQL_KEY_WORDS("resources/sql_keywords.txt"),
 
 	/**
-	 * Verbes (create, alter, ...) des déclarations KSP.
+	 * Verbes (create, alter, ...) des dÃ©clarations KSP.
 	 */
 	KSP_VERBS("resources/ksp_verbs.txt"),
 
 	/**
-	 * Prépositions des déclarations KSP.
+	 * PrÃ©positions des dÃ©clarations KSP.
 	 */
 	KSP_PREPOSITIONS("resources/ksp_prepositions.txt"),
 
 	/**
-	 * Natures (DtDefinition, Task, ...) des déclarations KSP.
+	 * Natures (DtDefinition, Task, ...) des dÃ©clarations KSP.
 	 */
 	KSP_NATURES("resources/ksp_natures.txt"),
 
 	/**
-	 * Attributs des déclarations KSP.
+	 * Attributs des dÃ©clarations KSP.
 	 */
 	KSP_ATTRIBUTES("resources/ksp_attributes.txt"),
 
 	/**
-	 * Propriétés des déclarations KSP.
+	 * PropriÃ©tÃ©s des dÃ©clarations KSP.
 	 */
 	KSP_PROPERTIES("resources/ksp_properties.txt");
 

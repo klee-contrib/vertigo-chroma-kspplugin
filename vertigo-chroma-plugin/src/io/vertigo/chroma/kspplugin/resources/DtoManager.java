@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources;
+ï»¿package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;
@@ -29,7 +29,7 @@ import org.eclipse.jdt.core.JavaModelException;
  * <p>
  * <ul>
  * <li>index les fichiers DTO.</li>
- * <li>maintient un cache à jour</li>
+ * <li>maintient un cache Ã  jour</li>
  * <li>publie une API de recherche</li>
  * </ul>
  * <p>
@@ -40,7 +40,7 @@ public final class DtoManager implements Manager {
 	private final ResourceStore<DtoFile> store;
 
 	/**
-	 * Créé une nouvelle instance de DtoManager.
+	 * CrÃ©Ã© une nouvelle instance de DtoManager.
 	 */
 	private DtoManager() {
 		store = new ResourceStore<>(new Implementor());
@@ -58,7 +58,7 @@ public final class DtoManager implements Manager {
 
 	@Override
 	public void init() {
-		/* Démarre le magasin qui index tous les fichiers concernés. */
+		/* DÃ©marre le magasin qui index tous les fichiers concernÃ©s. */
 		instance.store.start();
 	}
 
@@ -80,9 +80,9 @@ public final class DtoManager implements Manager {
 	}
 
 	/**
-	 * Recherche un DTO par son chemin de définition.
+	 * Recherche un DTO par son chemin de dÃ©finition.
 	 * 
-	 * @param path Chemin de définition.
+	 * @param path Chemin de dÃ©finition.
 	 * @return DTO.
 	 */
 	public DtoFile findDtoFile(DtoDefinitionPath path) {
@@ -102,14 +102,14 @@ public final class DtoManager implements Manager {
 				return null; // NOSONAR
 			}
 
-			/* Fichier trouvé. */
+			/* Fichier trouvÃ©. */
 			return Arrays.asList(dtoFile);
 		}
 
 		@Override
 		public boolean isCandidate(IFile file) {
 			/* Pas de convention de nommage sur les DTO. */
-			/* On vérifie que c'est un fichier Java. */
+			/* On vÃ©rifie que c'est un fichier Java. */
 			return LegacyManager.getInstance().getStrategy(file).isDtoCandidate(file);
 		}
 
@@ -132,7 +132,7 @@ public final class DtoManager implements Manager {
 				/* Parcourt les types du fichier Java. */
 				for (IType type : compilationUnit.getAllTypes()) {
 
-					/* Vérifie que c'est un Dto */
+					/* VÃ©rifie que c'est un Dto */
 					boolean isDtoType = strategy.isDtoType(type);
 
 					if (!isDtoType) {
@@ -142,7 +142,7 @@ public final class DtoManager implements Manager {
 					/* Parse les champs. */
 					List<DtoField> fields = strategy.parseDtoFields(type);
 
-					/* Créé le DtoFile. */
+					/* CrÃ©Ã© le DtoFile. */
 					String javaName = type.getElementName();
 					String packageName = type.getPackageFragment().getElementName();
 					ISourceRange nameRange = type.getNameRange();

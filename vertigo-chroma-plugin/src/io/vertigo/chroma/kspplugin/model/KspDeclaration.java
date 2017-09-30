@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.ImageUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
@@ -10,7 +10,7 @@ import java.util.List;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Représente une déclaration du fichier Ksp (DtDefinition, Task, ...).
+ * ReprÃ©sente une dÃ©claration du fichier Ksp (DtDefinition, Task, ...).
  */
 public class KspDeclaration extends JavaNavigable implements Openable {
 
@@ -72,7 +72,7 @@ public class KspDeclaration extends JavaNavigable implements Openable {
 	}
 
 	/**
-	 * Ajoute un attribut à la déclaration.
+	 * Ajoute un attribut Ã  la dÃ©claration.
 	 * 
 	 * @param attribute Attribute.
 	 */
@@ -81,7 +81,7 @@ public class KspDeclaration extends JavaNavigable implements Openable {
 	}
 
 	/**
-	 * Retourne la liste des attributs de la déclaration.
+	 * Retourne la liste des attributs de la dÃ©claration.
 	 * 
 	 * @return Liste des attributs.
 	 */
@@ -90,7 +90,7 @@ public class KspDeclaration extends JavaNavigable implements Openable {
 	}
 
 	/**
-	 * Attributs indexés par leur nom en constant case.
+	 * Attributs indexÃ©s par leur nom en constant case.
 	 */
 	private static class AttributeMap extends HashMap<String, KspAttribute> {
 

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.commands;
+﻿package io.vertigo.chroma.kspplugin.ui.commands;
 
 import io.vertigo.chroma.kspplugin.resources.ServiceManager;
 import io.vertigo.chroma.kspplugin.ui.dialogs.OpenDialogFactory;
@@ -9,7 +9,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 /**
- * Handler de la commande permettant de rechercher une impl�mentation de service.
+ * Handler de la commande permettant de rechercher une implémentation de service.
  */
 public class OpenServiceHandler extends AbstractHandler {
 

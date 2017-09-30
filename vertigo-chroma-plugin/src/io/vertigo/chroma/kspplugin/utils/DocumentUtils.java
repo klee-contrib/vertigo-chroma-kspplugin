@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.KspRegionType;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
@@ -14,7 +14,7 @@ import org.eclipse.jface.text.ITypedRegion;
 import org.eclipse.jface.text.TextSelection;
 
 /**
- * Méthodes utilitaires pour manipuler des documents.
+ * MÃ©thodes utilitaires pour manipuler des documents.
  */
 public final class DocumentUtils {
 
@@ -23,23 +23,23 @@ public final class DocumentUtils {
 	}
 
 	/**
-	 * Renvoie le mot courant à partir d'une sélection dans un document.
+	 * Renvoie le mot courant Ã  partir d'une sÃ©lection dans un document.
 	 * 
 	 * @param document Document.
-	 * @param selection Sélection. Peut être vide.
-	 * @param wordSelectionType Type de sélection.
-	 * @return Mot sélectionné, <code>null</code> si aucun mot trouvé.
+	 * @param selection SÃ©lection. Peut Ãªtre vide.
+	 * @param wordSelectionType Type de sÃ©lection.
+	 * @return Mot sÃ©lectionnÃ©, <code>null</code> si aucun mot trouvÃ©.
 	 */
 	public static ITextSelection findCurrentWord(IDocument document, ITextSelection selection, WordSelectionType wordSelectionType) {
 		return new CurrentWordFinder(document, selection, wordSelectionType).find();
 	}
 
 	/**
-	 * Indique si l'offset d'un document donné se trouve dans une région donnée.
+	 * Indique si l'offset d'un document donnÃ© se trouve dans une rÃ©gion donnÃ©e.
 	 * 
 	 * @param document Document.
 	 * @param offset Offset.
-	 * @param contentType Content type de la région.
+	 * @param contentType Content type de la rÃ©gion.
 	 * @return
 	 */
 	public static boolean isContentType(IDocument document, int offset, KspRegionType regionType) {
@@ -48,7 +48,7 @@ public final class DocumentUtils {
 			IDocumentExtension3 de3 = (IDocumentExtension3) document;
 			String regionContentType = de3.getContentType(KspRegionType.PARTITIONING, offset, true);
 
-			/* Vérifie que la région correspond. */
+			/* VÃ©rifie que la rÃ©gion correspond. */
 			return regionType.getContentType().equals(regionContentType);
 		} catch (BadLocationException | BadPartitioningException e) {
 			ErrorUtils.handle(e);
@@ -58,32 +58,32 @@ public final class DocumentUtils {
 	}
 
 	/**
-	 * Indique si une sélection d'un document représente exactement une région de string (aux double quote près).
+	 * Indique si une sÃ©lection d'un document reprÃ©sente exactement une rÃ©gion de string (aux double quote prÃ¨s).
 	 * 
 	 * @param document Document.
-	 * @param selection Sélection de texte.
-	 * @return <code>true</code> si c'est exactement une région de string.
+	 * @param selection SÃ©lection de texte.
+	 * @return <code>true</code> si c'est exactement une rÃ©gion de string.
 	 */
 	public static boolean isExactKspString(IDocument document, ITextSelection selection) {
 		IDocumentExtension3 extension = (IDocumentExtension3) document;
 		try {
-			/* Charge les régions du document couverte par la sélecion. */
+			/* Charge les rÃ©gions du document couverte par la sÃ©lecion. */
 			ITypedRegion[] regions = extension.computePartitioning(KspRegionType.PARTITIONING, selection.getOffset(), selection.getLength(), false);
 
-			/* Vérifie qu'on a une seule région. */
+			/* VÃ©rifie qu'on a une seule rÃ©gion. */
 			if (regions.length != 1) {
 				return false;
 			}
 
-			/* Charge la région entière */
+			/* Charge la rÃ©gion entiÃ¨re */
 			ITypedRegion region = extension.getPartition(KspRegionType.PARTITIONING, selection.getOffset(), false);
 
-			/* Vérifie que c'est une région de string KSP. */
+			/* VÃ©rifie que c'est une rÃ©gion de string KSP. */
 			if (!region.getType().equals(KspRegionType.STRING.getContentType())) {
 				return false;
 			}
 
-			/* Vérifie que la région couvre exactement la sélection */
+			/* VÃ©rifie que la rÃ©gion couvre exactement la sÃ©lection */
 			int selectionWithQuoteOffset = selection.getOffset() - 1; // Prend en compte la double quote ouvrante.
 			int selectionWithQuoteLength = selection.getLength() + 2; // Prend en compte les deux double quote.
 			if (region.getOffset() == selectionWithQuoteOffset && region.getLength() == selectionWithQuoteLength) {
@@ -109,11 +109,11 @@ public final class DocumentUtils {
 		private int currentLength;
 
 		/**
-		 * Créé une nouvelle instance de CurrentWordFinder.
+		 * CrÃ©Ã© une nouvelle instance de CurrentWordFinder.
 		 * 
 		 * @param document Document.
-		 * @param selection Sélection dans le document.
-		 * @param wordSelectionType Type de sélection.
+		 * @param selection SÃ©lection dans le document.
+		 * @param wordSelectionType Type de sÃ©lection.
 		 */
 		public CurrentWordFinder(IDocument document, ITextSelection selection, WordSelectionType wordSelectionType) {
 			this.document = document;
@@ -128,7 +128,7 @@ public final class DocumentUtils {
 		 */
 		public ITextSelection find() {
 
-			/* Initialise un buffer avec la sélection. */
+			/* Initialise un buffer avec la sÃ©lection. */
 			String initialSelection = selection.getText();
 			if (!initialSelection.isEmpty() && !wordTest.test(initialSelection)) {
 				return null;
@@ -139,38 +139,38 @@ public final class DocumentUtils {
 			currentOffset = selection.getOffset();
 			currentLength = selection.getLength();
 
-			/* Trouve le début du mot. */
+			/* Trouve le dÃ©but du mot. */
 			findWordStart();
 
 			/* Trouve la fin du mot. */
 			findWordEnd();
 
-			/* Aucun mot sélectionné : on renvoie null. */
+			/* Aucun mot sÃ©lectionnÃ© : on renvoie null. */
 			if (builder.length() == 0) {
 				return null;
 			}
 
-			/* Renvoie de la sélection. */
+			/* Renvoie de la sÃ©lection. */
 			return new TextSelection(document, currentOffset, currentLength);
 		}
 
 		private void findWordStart() {
-			/* On se place au début de la sélection initiale. */
+			/* On se place au dÃ©but de la sÃ©lection initiale. */
 			int offset = selection.getOffset();
-			/* On parcourt les caractères vers la gauche. */
+			/* On parcourt les caractÃ¨res vers la gauche. */
 			while (true) { // NOSONAR
 				offset--;
 				try {
-					/* Obtention du caractère. */
+					/* Obtention du caractÃ¨re. */
 					String currentChar = document.get(offset, 1);
 					if (wordTest.test(currentChar)) {
-						/* Test ok : on l'insert au début du mot courant. */
+						/* Test ok : on l'insert au dÃ©but du mot courant. */
 						builder.insert(0, currentChar);
-						/* On met à jour les coordonnées du mot courant. */
+						/* On met Ã  jour les coordonnÃ©es du mot courant. */
 						currentOffset--;
 						currentLength++;
 					} else {
-						/* Test ko : le début du mot est atteint. */
+						/* Test ko : le dÃ©but du mot est atteint. */
 						break;
 					}
 				} catch (BadLocationException e) { // NOSONAR
@@ -180,18 +180,18 @@ public final class DocumentUtils {
 		}
 
 		private void findWordEnd() {
-			/* On se place à la fin de la sélection initiale. */
+			/* On se place Ã  la fin de la sÃ©lection initiale. */
 			int offset = selection.getOffset() + selection.getLength() - 1;
-			/* On parcourt les caractères vers la droite. */
+			/* On parcourt les caractÃ¨res vers la droite. */
 			while (true) { // NOSONAR
 				offset++;
 				try {
-					/* Obtention du caractère. */
+					/* Obtention du caractÃ¨re. */
 					String currentChar = document.get(offset, 1);
 					if (wordTest.test(currentChar)) {
-						/* Test ok : on l'insert à la fin du mot courant. */
+						/* Test ok : on l'insert Ã  la fin du mot courant. */
 						builder.append(currentChar);
-						/* On met à jour les coordonnées du mot courant. */
+						/* On met Ã  jour les coordonnÃ©es du mot courant. */
 						currentLength++;
 					} else {
 						/* Test ko : la fin du mot est atteint. */

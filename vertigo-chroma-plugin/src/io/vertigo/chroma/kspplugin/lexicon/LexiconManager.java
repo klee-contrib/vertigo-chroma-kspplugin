@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.lexicon;
+﻿package io.vertigo.chroma.kspplugin.lexicon;
 
 import io.vertigo.chroma.kspplugin.Activator;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
@@ -36,7 +36,7 @@ public final class LexiconManager {
 	}
 
 	/**
-	 * Renvoie la liste de mots d'un lexique donn�.
+	 * Renvoie la liste de mots d'un lexique donné.
 	 * 
 	 * @param lexicon Lexique.
 	 * @return Liste des mots.

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.ImageUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
@@ -9,7 +9,7 @@ import java.text.MessageFormat;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Représente une implémentation de méthode de service métier.
+ * ReprÃ©sente une implÃ©mentation de mÃ©thode de service mÃ©tier.
  */
 public class ServiceImplementation extends JavaNavigable implements Openable {
 

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.dialogs;
+ï»¿package io.vertigo.chroma.kspplugin.ui.dialogs;
 
 import io.vertigo.chroma.kspplugin.model.Openable;
 import io.vertigo.chroma.kspplugin.utils.MessageUtils;
@@ -12,7 +12,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.dialogs.TwoPaneElementSelector;
 
 /**
- * Usine à dialogue de recherche.
+ * Usine Ã  dialogue de recherche.
  */
 public final class OpenDialogFactory {
 
@@ -24,7 +24,7 @@ public final class OpenDialogFactory {
 	}
 
 	/**
-	 * Ouvre un dialogue de recherche à partir d'un template.
+	 * Ouvre un dialogue de recherche Ã  partir d'un template.
 	 * 
 	 * @param template Template.
 	 */
@@ -32,10 +32,10 @@ public final class OpenDialogFactory {
 
 		String nature = template.getNature();
 
-		/* Charge les éléments à rechercher. */
+		/* Charge les Ã©lÃ©ments Ã  rechercher. */
 		Object[] items = template.getElements();
 
-		/* Cas sans élément à afficher. */
+		/* Cas sans Ã©lÃ©ment Ã  afficher. */
 		if (items.length == 0) {
 			/* On affiche un message et on sort. */
 			MessageUtils.showNoElementMessage(nature);
@@ -65,7 +65,7 @@ public final class OpenDialogFactory {
 		if (dialog.open() == Window.OK) {
 			Object[] result = dialog.getResult();
 			if (result != null && result.length == 1) {
-				/* Un objet est sélectionné : on navigue dessus. */
+				/* Un objet est sÃ©lectionnÃ© : on navigue dessus. */
 				Object object = result[0];
 				T item = (T) object;
 				UiUtils.navigateTo(item);

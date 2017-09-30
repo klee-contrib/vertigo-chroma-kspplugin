@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.dialogs;
+﻿package io.vertigo.chroma.kspplugin.ui.dialogs;
 
 import io.vertigo.chroma.kspplugin.Activator;
 
@@ -77,7 +77,7 @@ public class AboutDialog extends Dialog {
 		lblAuthor.setText("Author : @sebez");
 		lblAuthor.setBackground(white);
 
-		/* Libell� documentation */
+		/* Libellé documentation */
 		Label lblDoc = new Label(container, SWT.NONE);
 		lblDoc.setText("Documentation, sources, releases are published in the KSP plugin github repository : ");
 		lblDoc.setBackground(white);

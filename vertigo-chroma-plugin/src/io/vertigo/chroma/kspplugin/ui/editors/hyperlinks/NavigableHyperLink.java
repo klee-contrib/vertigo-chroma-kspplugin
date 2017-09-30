@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.Navigable;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
@@ -16,11 +16,11 @@ public class NavigableHyperLink implements IHyperlink {
 	private final String hyperlinkText;
 
 	/**
-	 * Créé une nouvelle instance de NavigableHyperLink.
+	 * CrÃ©Ã© une nouvelle instance de NavigableHyperLink.
 	 * 
-	 * @param urlRegion Région du lien dans le document.
-	 * @param navigable Navigable ciblé.
-	 * @param hyperlinkText Libellé du lien.
+	 * @param urlRegion RÃ©gion du lien dans le document.
+	 * @param navigable Navigable ciblÃ©.
+	 * @param hyperlinkText LibellÃ© du lien.
 	 */
 	public NavigableHyperLink(IRegion urlRegion, Navigable navigable, String hyperlinkText) {
 		this.urlRegion = urlRegion;

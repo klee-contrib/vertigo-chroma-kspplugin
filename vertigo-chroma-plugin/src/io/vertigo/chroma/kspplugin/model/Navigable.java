@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+﻿package io.vertigo.chroma.kspplugin.model;
 
 /**
  * Contrat des objets vers lequel on peut naviguer.
@@ -7,7 +7,7 @@ package io.vertigo.chroma.kspplugin.model;
 public interface Navigable {
 
 	/**
-	 * @return R�gion de fichier.
+	 * @return Région de fichier.
 	 */
 	FileRegion getFileRegion();
 }

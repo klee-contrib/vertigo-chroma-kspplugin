@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.commands;
+﻿package io.vertigo.chroma.kspplugin.ui.commands;
 
 import io.vertigo.chroma.kspplugin.resources.KspManager;
 import io.vertigo.chroma.kspplugin.ui.dialogs.OpenDialogFactory;
@@ -9,7 +9,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 /**
- * Handler de la commande permettant d'ouvrir une d�claration de KSP.
+ * Handler de la commande permettant d'ouvrir une déclaration de KSP.
  */
 public class OpenKspDeclarationHandler extends AbstractHandler {
 

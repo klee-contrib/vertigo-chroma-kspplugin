@@ -1,10 +1,10 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import java.text.MessageFormat;
 import java.util.function.BooleanSupplier;
 
 /**
- * Méthodes reprises du StringUtil de Vertigo pour être en conformité sur la gestion des transformations entre les différentes casses.
+ * MÃ©thodes reprises du StringUtil de Vertigo pour Ãªtre en conformitÃ© sur la gestion des transformations entre les diffÃ©rentes casses.
  * 
  * <p>
  * Voir <a href="https://github.com/KleeGroup/vertigo/blob/master/vertigo-core/src/main/java/io/vertigo/util/StringUtil.java">StringUtil.java</a>.
@@ -17,17 +17,17 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Implémentation du test de la chaine vide. ie null ou blank (espace, \t \n \r \p ...)
+	 * ImplÃ©mentation du test de la chaine vide. ie null ou blank (espace, \t \n \r \p ...)
 	 * 
 	 * @param strValue String
-	 * @return Si la chaine ne contient que des caractères blank
+	 * @return Si la chaine ne contient que des caractÃ¨res blank
 	 * @see java.lang.Character isWhitespace(char)
 	 */
 	public static boolean isEmpty(final String strValue) {
 		if (strValue == null) {
 			return true;
 		}
-		// On prefere cette implementation qui ne crée pas de nouvelle chaine (contrairement au trim())
+		// On prefere cette implementation qui ne crÃ©e pas de nouvelle chaine (contrairement au trim())
 		for (int i = 0; i < strValue.length(); i++) {
 			if (!Character.isWhitespace(strValue.charAt(i))) {
 				return false;
@@ -37,13 +37,13 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Remplacement au sein d'une chaine d'un motif par un autre. Le remplacement avance, il n'est pas récursif !!. Attention : pour des char le
+	 * Remplacement au sein d'une chaine d'un motif par un autre. Le remplacement avance, il n'est pas rÃ©cursif !!. Attention : pour des char le
 	 * String.replace(char old, char new) est plus performant.
 	 *
 	 * @param str String
-	 * @param oldStr Chaine à remplacer
+	 * @param oldStr Chaine Ã  remplacer
 	 * @param newStr Chaine de remplacement
-	 * @return Chaine remplacée
+	 * @return Chaine remplacÃ©e
 	 */
 	public static String replace(final String str, final String oldStr, final String newStr) {
 		Assertion.checkNotNull(str);
@@ -54,17 +54,17 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Remplacement au sein d'une chaine d'un motif par un autre. Le remplacement avance, il n'est pas récursif !!. Le StringBuilder est modifié !! c'est
+	 * Remplacement au sein d'une chaine d'un motif par un autre. Le remplacement avance, il n'est pas rÃ©cursif !!. Le StringBuilder est modifiÃ© !! c'est
 	 * pourquoi il n'y a pas de return.
 	 * 
 	 * @param str StringBuilder
-	 * @param oldStr Chaine à remplacer
+	 * @param oldStr Chaine Ã  remplacer
 	 * @param newStr Chaine de remplacement
 	 */
 	public static void replace(final StringBuilder str, final String oldStr, final String newStr) {
 		Assertion.checkNotNull(str);
 		Assertion.checkNotNull(oldStr);
-		Assertion.checkArgument(oldStr.length() > 0, "La chaine a remplacer ne doit pas être vide");
+		Assertion.checkArgument(oldStr.length() > 0, "La chaine a remplacer ne doit pas Ãªtre vide");
 		Assertion.checkNotNull(newStr);
 		// -----
 		int index = str.indexOf(oldStr);
@@ -82,11 +82,11 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Fusionne une chaine compatible avec les paramètres. Les caractères { } sont interdits ou doivent être echappés avec \\.
+	 * Fusionne une chaine compatible avec les paramÃ¨tres. Les caractÃ¨res { } sont interdits ou doivent Ãªtre echappÃ©s avec \\.
 	 * 
 	 * @param msg Chaine au format MessageFormat
-	 * @param params paramètres du message
-	 * @return Chaine fusionnée
+	 * @param params paramÃ¨tres du message
+	 * @return Chaine fusionnÃ©e
 	 */
 	public static String format(final String msg, final Object... params) {
 		Assertion.checkNotNull(msg);
@@ -95,8 +95,8 @@ public final class VertigoStringUtils {
 			return msg;
 		}
 		// Gestion des doubles quotes
-		// On simple quotes les doubles quotes déjà posées.
-		// Puis on double toutes les simples quotes ainsi il ne reste plus de simple quote non doublée.
+		// On simple quotes les doubles quotes dÃ©jÃ  posÃ©es.
+		// Puis on double toutes les simples quotes ainsi il ne reste plus de simple quote non doublÃ©e.
 		final StringBuilder newMsg = new StringBuilder(msg);
 		replace(newMsg, "''", "'");
 		replace(newMsg, "'", "''");
@@ -119,14 +119,14 @@ public final class VertigoStringUtils {
 		}
 
 		final char firstChar = strValue.charAt(0);
-		if (Character.isUpperCase(firstChar)) { // la méthode est appellé souvant et la concaténation de chaine est lourde : on test avant de faire l'opération
+		if (Character.isUpperCase(firstChar)) { // la mÃ©thode est appellÃ© souvant et la concatÃ©nation de chaine est lourde : on test avant de faire l'opÃ©ration
 			return Character.toLowerCase(firstChar) + strValue.substring(1);
 		}
 		return strValue;
 	}
 
 	/**
-	 * Capitalisation de la première lettre.
+	 * Capitalisation de la premiÃ¨re lettre.
 	 *
 	 * @param strValue String non null
 	 * @return Chaine avec la premiere lettre en majuscule
@@ -139,7 +139,7 @@ public final class VertigoStringUtils {
 		}
 
 		final char firstChar = strValue.charAt(0);
-		if (Character.isLowerCase(firstChar)) { // la méthode est appellé souvant et la concaténation de chaine est lourde : on test avant de faire l'opération
+		if (Character.isLowerCase(firstChar)) { // la mÃ©thode est appellÃ© souvant et la concatÃ©nation de chaine est lourde : on test avant de faire l'opÃ©ration
 			return Character.toUpperCase(firstChar) + strValue.substring(1);
 		}
 		return strValue;
@@ -148,7 +148,7 @@ public final class VertigoStringUtils {
 	/**
 	 * XXX_YYY_ZZZ -> xxxYyyZzz.
 	 * 
-	 * @param str la chaine de caratéres sur laquelle s'appliquent les transformation
+	 * @param str la chaine de caratÃ©res sur laquelle s'appliquent les transformation
 	 * @return camelCase
 	 */
 	public static String constToLowerCamelCase(final String str) {
@@ -158,7 +158,7 @@ public final class VertigoStringUtils {
 	/**
 	 * XXX_YYY_ZZZ -> XxxYyyZzz.
 	 * 
-	 * @param str la chaine de caratéres sur laquelle s'appliquent les transformation
+	 * @param str la chaine de caratÃ©res sur laquelle s'appliquent les transformation
 	 * @return CamelCase
 	 */
 	public static String constToUpperCamelCase(final String str) {
@@ -168,15 +168,15 @@ public final class VertigoStringUtils {
 	/**
 	 * XXX_YYY_ZZZ -> XxxYyyZzz ou xxxYyyZzz.
 	 * 
-	 * @param str la chaine de caratéres sur laquelle s'appliquent les transformation
-	 * @param first2UpperCase définit si la première lettre est en majuscules
-	 * @return Renvoie une chaine de caratére correspondant à str en minuscule et sans underscores, à l'exception des premières lettres aprés les underscores
+	 * @param str la chaine de caratÃ©res sur laquelle s'appliquent les transformation
+	 * @param first2UpperCase dÃ©finit si la premiÃ¨re lettre est en majuscules
+	 * @return Renvoie une chaine de caratÃ©re correspondant Ã  str en minuscule et sans underscores, Ã  l'exception des premiÃ¨res lettres aprÃ©s les underscores
 	 *         dans str
 	 */
 	private static String constToCamelCase(final String str, final boolean first2UpperCase) {
 		Assertion.checkNotNull(str);
-		Assertion.checkArgument(str.length() > 0, "Chaine à modifier invalide (ne doit pas être vide)");
-		Assertion.checkArgument(str.indexOf("__") == -1, "Chaine à modifier invalide : {0} (__ interdit)", str);
+		Assertion.checkArgument(str.length() > 0, "Chaine Ã  modifier invalide (ne doit pas Ãªtre vide)");
+		Assertion.checkArgument(str.indexOf("__") == -1, "Chaine Ã  modifier invalide : {0} (__ interdit)", str);
 		// -----
 		final StringBuilder result = new StringBuilder();
 		boolean upper = first2UpperCase;
@@ -194,7 +194,7 @@ public final class VertigoStringUtils {
 			} else {
 				if (digit != null) {
 					Assertion.checkArgument(digit.equals(Character.isDigit(c)),
-							"Chaine à modifier invalide : {0} (lettres et chiffres doivent toujours être séparés par _)", str);
+							"Chaine Ã  modifier invalide : {0} (lettres et chiffres doivent toujours Ãªtre sÃ©parÃ©s par _)", str);
 				}
 				digit = Character.isDigit(c);
 
@@ -210,11 +210,11 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Les chiffres sont assimilés à des lettres en majuscules XxxYyyZzz ou xxxYyyZzz -> XXX_YYY_ZZZ XxxYZzz ou xxxYZzz -> XXX_Y_ZZZ Xxx123 -->XXX_123 XxxYzw123
+	 * Les chiffres sont assimilÃ©s Ã  des lettres en majuscules XxxYyyZzz ou xxxYyyZzz -> XXX_YYY_ZZZ XxxYZzz ou xxxYZzz -> XXX_Y_ZZZ Xxx123 -->XXX_123 XxxYzw123
 	 * --> (interdit) Xxx123Y --> XXX_123_Y. Xxx123y --> XXX_123Y.
 	 * 
-	 * @param str la chaine de caratéres sur laquelle s'appliquent les transformation
-	 * @return Passage en constante d'une chaîne de caractères (Fonction inverse de caseTransform)
+	 * @param str la chaine de caratÃ©res sur laquelle s'appliquent les transformation
+	 * @return Passage en constante d'une chaÃ®ne de caractÃ¨res (Fonction inverse de caseTransform)
 	 */
 	public static String camelToConstCase(final String str) {
 		final StringBuilder result = new StringBuilder();
@@ -242,9 +242,9 @@ public final class VertigoStringUtils {
 	}
 
 	/**
-	 * Teste si un caractère est une simple lettre (minuscule ou majuscule, sans accent) ou un chiffre.
+	 * Teste si un caractÃ¨re est une simple lettre (minuscule ou majuscule, sans accent) ou un chiffre.
 	 * 
-	 * @param c caractère
+	 * @param c caractÃ¨re
 	 * @return boolean
 	 */
 	public static boolean isSimpleLetterOrDigit(final char c) {
@@ -275,7 +275,7 @@ public final class VertigoStringUtils {
 		 * @param params params of the message
 		 */
 		public static void checkNotNull(final Object o, final String msg, final Object... params) {
-			// Attention si o est un Boolean : il peut s'agir du resultat d'un test (boolean) qui a Ã©tÃ© autoboxÃ© en Boolean
+			// Attention si o est un Boolean : il peut s'agir du resultat d'un test (boolean) qui a ÃƒÂ©tÃƒÂ© autoboxÃƒÂ© en Boolean
 			if (o == null) {
 				throw new NullPointerException(VertigoStringUtils.format(msg, params));
 			}

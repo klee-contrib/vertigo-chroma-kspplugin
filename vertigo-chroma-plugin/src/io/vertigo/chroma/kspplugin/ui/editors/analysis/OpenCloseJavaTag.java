@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+﻿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 /**
  * Couple de tags Java.

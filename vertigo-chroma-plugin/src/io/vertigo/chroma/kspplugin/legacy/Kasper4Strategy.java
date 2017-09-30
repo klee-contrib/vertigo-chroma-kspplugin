@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+ï»¿package io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoReferencePattern;
@@ -19,7 +19,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jdt.core.IType;
 
 /**
- * Stratégie pour les projets en Kasper 4.
+ * StratÃ©gie pour les projets en Kasper 4.
  */
 public final class Kasper4Strategy implements LegacyStrategy {
 
@@ -38,7 +38,7 @@ public final class Kasper4Strategy implements LegacyStrategy {
 			return null;
 		}
 
-		/* Extrait le préfixe et le nom simple de la déclaration */
+		/* Extrait le prÃ©fixe et le nom simple de la dÃ©claration */
 		KspDeclarationNameParts nameParts = KspStringUtils.getKspDeclarationNameParts(mainParts.getConstantCaseName());
 		if (nameParts == null) {
 			return null;
@@ -69,8 +69,8 @@ public final class Kasper4Strategy implements LegacyStrategy {
 	@Override
 	public boolean isDtoCandidate(IFile file) {
 		/* Pas de convention de nommage sur les DTO. */
-		/* On vérifie que c'est un fichier Java. */
-		/* En Kasper 4, les DTO ne sont pas générés dans un dossier spécifique. */
+		/* On vÃ©rifie que c'est un fichier Java. */
+		/* En Kasper 4, les DTO ne sont pas gÃ©nÃ©rÃ©s dans un dossier spÃ©cifique. */
 		return ResourceUtils.isJavaFile(file);
 	}
 
@@ -81,7 +81,7 @@ public final class Kasper4Strategy implements LegacyStrategy {
 
 	@Override
 	public boolean isServiceCandidate(IFile file) {
-		/* Vérifie la convention de nommage. */
+		/* VÃ©rifie la convention de nommage. */
 		return KspStringUtils.getKasper4ServiceFileName(file.getName()) != null;
 	}
 

@@ -1,25 +1,25 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import org.eclipse.jface.text.IDocument;
 
 /**
- * Décrit les régions de partitionnement du document.
+ * DÃ©crit les rÃ©gions de partitionnement du document.
  *
  */
 public enum KspRegionType {
 
 	/**
-	 * Région standard (hors string et commentaire).
+	 * RÃ©gion standard (hors string et commentaire).
 	 */
 	DEFAULT(IDocument.DEFAULT_CONTENT_TYPE),
 
 	/**
-	 * Région de string (contenant du SQL).
+	 * RÃ©gion de string (contenant du SQL).
 	 */
 	STRING("org.eclipse.editor.kspString"),
 
 	/**
-	 * Région de commentaire du KSP.
+	 * RÃ©gion de commentaire du KSP.
 	 */
 	COMMENT("org.eclipse.editor.kspComment");
 

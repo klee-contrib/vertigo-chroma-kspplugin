@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
+﻿package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
 
 import org.eclipse.core.runtime.IAdaptable;
 
@@ -23,7 +23,7 @@ public class TreeObject implements IAdaptable {
 	}
 
 	/**
-	 * Appel� par le LabelProvider.
+	 * Appelé par le LabelProvider.
 	 */
 	@Override
 	public String toString() {

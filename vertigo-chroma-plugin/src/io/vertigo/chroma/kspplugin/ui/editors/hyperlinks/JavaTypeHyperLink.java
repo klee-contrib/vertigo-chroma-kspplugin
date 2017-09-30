@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 
@@ -10,7 +10,7 @@ import org.eclipse.jface.text.hyperlink.IHyperlink;
 import org.eclipse.ui.PartInitException;
 
 /**
- * Lien vers un fichier Java à partir de son type JDT.
+ * Lien vers un fichier Java Ã  partir de son type JDT.
  */
 public class JavaTypeHyperLink implements IHyperlink {
 
@@ -18,9 +18,9 @@ public class JavaTypeHyperLink implements IHyperlink {
 	private final IType type;
 
 	/**
-	 * Créé une nouvelle instance de JavaTypeHyperLink.
+	 * CrÃ©Ã© une nouvelle instance de JavaTypeHyperLink.
 	 * 
-	 * @param urlRegion Région du lien dans le document.
+	 * @param urlRegion RÃ©gion du lien dans le document.
 	 * @param type Type Java.
 	 */
 	public JavaTypeHyperLink(IRegion urlRegion, IType type) {

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+﻿package io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoReferencePattern;
@@ -13,7 +13,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jdt.core.IType;
 
 /**
- * Strat�gie pour les projets n'utilisant pas le framework Kasper/Vertigo.
+ * Stratégie pour les projets n'utilisant pas le framework Kasper/Vertigo.
  */
 public final class NoFrameworkStrategy implements LegacyStrategy {
 

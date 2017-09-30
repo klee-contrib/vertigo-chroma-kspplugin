@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.DtoFile;
 import io.vertigo.chroma.kspplugin.model.KspRegionType;
@@ -17,7 +17,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * Détecteur de lien à partir de nom de table SQL dans un fichier KSP.
+ * DÃ©tecteur de lien Ã  partir de nom de table SQL dans un fichier KSP.
  */
 public class SqlTableHyperLinkDetector extends AbstractHyperlinkDetector {
 
@@ -25,7 +25,7 @@ public class SqlTableHyperLinkDetector extends AbstractHyperlinkDetector {
 	public IHyperlink[] detectHyperlinks(ITextViewer textViewer, IRegion region, boolean canShowMultipleHyperlinks) {
 		IDocument document = textViewer.getDocument();
 
-		/* Vérifie qu'on est dans une String de KSP */
+		/* VÃ©rifie qu'on est dans une String de KSP */
 		boolean isSqlString = DocumentUtils.isContentType(document, region.getOffset(), KspRegionType.STRING);
 		if (!isSqlString) {
 			return null; // NOSONAR
@@ -48,7 +48,7 @@ public class SqlTableHyperLinkDetector extends AbstractHyperlinkDetector {
 		/* Cherche le fichier Java du DTO. */
 		DtoFile dtoFile = DtoManager.getInstance().findDtoFile(javaName);
 
-		/* Fichier Java trouvé : on ajoute un lien vers le fichier Java. */
+		/* Fichier Java trouvÃ© : on ajoute un lien vers le fichier Java. */
 		if (dtoFile != null) {
 			IRegion targetRegion = new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 			return new IHyperlink[] { new JavaImplementationHyperLink(targetRegion, dtoFile) };

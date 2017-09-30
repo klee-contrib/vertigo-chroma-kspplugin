@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.commands;
+﻿package io.vertigo.chroma.kspplugin.ui.commands;
 
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
 import io.vertigo.chroma.kspplugin.ui.commands.core.Navigator;
@@ -10,7 +10,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 /**
- * Handler de la commande permettant de naviguer du nom Java vers la d�claration KSP.
+ * Handler de la commande permettant de naviguer du nom Java vers la déclaration KSP.
  */
 public class GoToKspDeclarationHandler extends AbstractHandler {
 

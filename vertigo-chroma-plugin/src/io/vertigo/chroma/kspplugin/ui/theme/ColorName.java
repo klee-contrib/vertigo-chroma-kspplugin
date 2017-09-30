@@ -1,34 +1,34 @@
-package io.vertigo.chroma.kspplugin.ui.theme;
+ï»¿package io.vertigo.chroma.kspplugin.ui.theme;
 
 import org.eclipse.swt.graphics.RGB;
 
 /**
- * Enumération des couleurs associées à une fonction grammaticale dans le KSP.
+ * EnumÃ©ration des couleurs associÃ©es Ã  une fonction grammaticale dans le KSP.
  */
 public enum ColorName {
 
 	/**
-	 * Verbe de déclaration KSP.
+	 * Verbe de dÃ©claration KSP.
 	 */
 	KSP_VERB(new RGB(140, 10, 210)),
 
 	/**
-	 * Objet de déclaration KSP.
+	 * Objet de dÃ©claration KSP.
 	 */
 	KSP_OBJECT(new RGB(0, 0, 192)),
 
 	/**
-	 * Propriété de déclaration KSP.
+	 * PropriÃ©tÃ© de dÃ©claration KSP.
 	 */
 	KSP_PROPERTY(new RGB(0, 100, 0)),
 
 	/**
-	 * Attribut de déclaration KSP.
+	 * Attribut de dÃ©claration KSP.
 	 */
 	KSP_ATTRIBUTE(new RGB(0, 100, 50)),
 
 	/**
-	 * Préposition (Kasper <= 3).
+	 * PrÃ©position (Kasper <= 3).
 	 */
 	KSP_PREPOSITION(new RGB(140, 10, 210)),
 
@@ -38,7 +38,7 @@ public enum ColorName {
 	KSP_TAG(new RGB(140, 10, 210)),
 
 	/**
-	 * Couleur par défaut du KSP.
+	 * Couleur par dÃ©faut du KSP.
 	 */
 	KSP_DEFAULT(new RGB(0, 0, 0)),
 
@@ -53,7 +53,7 @@ public enum ColorName {
 	STRING_INLINE_JAVA(new RGB(128, 128, 128)),
 
 	/**
-	 * Paramètre d'une tâche SQL.
+	 * ParamÃ¨tre d'une tÃ¢che SQL.
 	 */
 	STRING_PARAMETER(new RGB(84, 11, 206)),
 
@@ -63,7 +63,7 @@ public enum ColorName {
 	STRING_DOUBLE_QUOTE(new RGB(0, 0, 200)),
 
 	/**
-	 * Color par défaut d'une string de KSP.
+	 * Color par dÃ©faut d'une string de KSP.
 	 */
 	STRING_DEFAULT(new RGB(0, 80, 80)),
 
@@ -75,9 +75,9 @@ public enum ColorName {
 	private final RGB rgb;
 
 	/**
-	 * Créé une nouvelle instance de ColorName.
+	 * CrÃ©Ã© une nouvelle instance de ColorName.
 	 * 
-	 * @param rgb Couleur par défaut.
+	 * @param rgb Couleur par dÃ©faut.
 	 */
 	ColorName(RGB rgb) {
 		this.rgb = rgb;

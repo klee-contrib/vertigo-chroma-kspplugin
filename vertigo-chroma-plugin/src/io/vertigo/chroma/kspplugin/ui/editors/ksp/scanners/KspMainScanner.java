@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
 
 import io.vertigo.chroma.kspplugin.lexicon.LexiconManager;
 import io.vertigo.chroma.kspplugin.lexicon.Lexicons;
@@ -38,7 +38,7 @@ public class KspMainScanner extends RuleBasedScanner {
 	private RGB defaultColor;
 
 	/**
-	 * Créé une nouvelle instance de KspMainScanner.
+	 * CrÃ©Ã© une nouvelle instance de KspMainScanner.
 	 */
 	public KspMainScanner() {
 		super();
@@ -68,7 +68,7 @@ public class KspMainScanner extends RuleBasedScanner {
 		IToken tag = new Token(new TextAttribute(new Color(Display.getCurrent(), tagColor), null, SWT.BOLD));
 		IToken defaut = new Token(new TextAttribute(new Color(Display.getCurrent(), defaultColor)));
 
-		/* Règle de détection de mots avec un style par défaut. */
+		/* RÃ¨gle de dÃ©tection de mots avec un style par dÃ©faut. */
 		WordRule wordRule = new WordRule(new IWordDetector() {
 			@Override
 			public boolean isWordPart(char c) {
@@ -81,7 +81,7 @@ public class KspMainScanner extends RuleBasedScanner {
 			}
 		}, defaut);
 
-		/* Ajoute les mots clés avec un style par type de mots-clés. */
+		/* Ajoute les mots clÃ©s avec un style par type de mots-clÃ©s. */
 		for (String k : KSP_VERBS) {
 			wordRule.addWord(k, verb);
 		}
@@ -99,7 +99,7 @@ public class KspMainScanner extends RuleBasedScanner {
 		}
 
 		return new IRule[] {
-		/* Mots-clés */
+		/* Mots-clÃ©s */
 		wordRule,
 		/* Tag Model pour Kasper 2 */
 		new PatternRule("<Model", ">", tag, NO_ESCAPE_CHAR, false),

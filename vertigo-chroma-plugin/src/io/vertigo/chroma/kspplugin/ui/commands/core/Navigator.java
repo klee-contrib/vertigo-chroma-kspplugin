@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.commands.core;
+ï»¿package io.vertigo.chroma.kspplugin.ui.commands.core;
 
 import io.vertigo.chroma.kspplugin.model.DaoImplementation;
 import io.vertigo.chroma.kspplugin.model.DtoFile;
@@ -10,7 +10,7 @@ import io.vertigo.chroma.kspplugin.utils.MessageUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
 
 /**
- * Navigateur entre les différents objets (déclaration KSP, implémentation Java).
+ * Navigateur entre les diffÃ©rents objets (dÃ©claration KSP, implÃ©mentation Java).
  */
 public final class Navigator {
 
@@ -19,9 +19,9 @@ public final class Navigator {
 	}
 
 	/**
-	 * Trouve une implémentation de DAO à partir de son nom Java et navigue dessus.
+	 * Trouve une implÃ©mentation de DAO Ã  partir de son nom Java et navigue dessus.
 	 * 
-	 * @param javaName Nom Java de la méthode de DAO. Exemple : getUtilisateur.
+	 * @param javaName Nom Java de la mÃ©thode de DAO. Exemple : getUtilisateur.
 	 */
 	public static void goToDaoImplementation(String javaName) {
 		DaoImplementation daoImplementation = DaoManager.getInstance().findDaoImplementation(javaName);
@@ -33,9 +33,9 @@ public final class Navigator {
 	}
 
 	/**
-	 * Trouve une déclaration KSP à partir du nom Java et navigue dessus.
+	 * Trouve une dÃ©claration KSP Ã  partir du nom Java et navigue dessus.
 	 * 
-	 * @param javaName Nom Java de l'objet déclaré. Exemple : getUtilisateur, UtilisateurCritere, Commentaire.
+	 * @param javaName Nom Java de l'objet dÃ©clarÃ©. Exemple : getUtilisateur, UtilisateurCritere, Commentaire.
 	 */
 	public static void goToKspDeclaration(String javaName) {
 		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclaration(javaName);
@@ -48,7 +48,7 @@ public final class Navigator {
 	}
 
 	/**
-	 * Trouve un fichier de DTO à partir de son nom Java et navigue dessus.
+	 * Trouve un fichier de DTO Ã  partir de son nom Java et navigue dessus.
 	 * 
 	 * @param javaName Nom Java du DTO. Exemple : UtilisateurCritere.
 	 */

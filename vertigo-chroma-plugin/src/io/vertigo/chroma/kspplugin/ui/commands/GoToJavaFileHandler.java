@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.commands;
+Ôªøpackage io.vertigo.chroma.kspplugin.ui.commands;
 
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
 import io.vertigo.chroma.kspplugin.ui.commands.core.Navigator;
@@ -12,7 +12,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 /**
- * Handler de la commande permettant de naviguer du nom KSP vers l'implÈmentation Java.
+ * Handler de la commande permettant de naviguer du nom KSP vers l'impl√©mentation Java.
  */
 public class GoToJavaFileHandler extends AbstractHandler {
 
@@ -42,7 +42,7 @@ public class GoToJavaFileHandler extends AbstractHandler {
 			return;
 		}
 
-		/* Extrait un nom de t‚che DAO / PAO. */
+		/* Extrait un nom de t√¢che DAO / PAO. */
 		String taskName = KspStringUtils.getTaskName(currentWord);
 		if (taskName != null) {
 			/* Calcul le nom en PascalCase */
@@ -53,7 +53,7 @@ public class GoToJavaFileHandler extends AbstractHandler {
 			return;
 		}
 
-		/* Aucun KSP trouvÈ. */
+		/* Aucun KSP trouv√©. */
 		MessageUtils.showNoKspFoundMessage(currentWord);
 
 	}

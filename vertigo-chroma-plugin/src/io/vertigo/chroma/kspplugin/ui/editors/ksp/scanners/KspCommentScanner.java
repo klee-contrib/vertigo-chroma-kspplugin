@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
 
 import io.vertigo.chroma.kspplugin.ui.theme.ColorName;
 import io.vertigo.chroma.kspplugin.ui.theme.ColorTheme;
@@ -24,7 +24,7 @@ public class KspCommentScanner extends RuleBasedScanner {
 	private RGB commentColor;
 
 	/**
-	 * Créé une nouvelle instance de KspCommentScanner.
+	 * CrÃ©Ã© une nouvelle instance de KspCommentScanner.
 	 */
 	public KspCommentScanner() {
 		super();
@@ -42,7 +42,7 @@ public class KspCommentScanner extends RuleBasedScanner {
 		return new IRule[] {
 		/* Commentaire multi-ligne */
 		new PatternRule("/*", "*/", comment, NO_ESCAPE_CHAR, false),
-		/* Commentaire à la fin d'une ligne */
+		/* Commentaire Ã  la fin d'une ligne */
 		new EndOfLineRule("//", comment) };
 	}
 }

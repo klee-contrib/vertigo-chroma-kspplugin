@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.Objects;
 
@@ -6,10 +6,10 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 
 /**
- * Région de fichier.
+ * RÃ©gion de fichier.
  * 
  * <p>
- * Représente un fichier et une localisation dans le document du fichier.
+ * ReprÃ©sente un fichier et une localisation dans le document du fichier.
  * </p>
  */
 public class FileRegion {

@@ -1,35 +1,35 @@
-package io.vertigo.chroma.kspplugin.ui.theme;
+ï»¿package io.vertigo.chroma.kspplugin.ui.theme;
 
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
 
 import org.eclipse.swt.graphics.RGB;
 
 /**
- * Thème de couleur d'Eclipse.
+ * ThÃ¨me de couleur d'Eclipse.
  */
 public enum ColorTheme {
 
 	/**
-	 * Thème par défaut (fond blanc).
+	 * ThÃ¨me par dÃ©faut (fond blanc).
 	 */
 	DEFAULT_THEME,
 
 	/**
-	 * Thème Dark (fond noir).
+	 * ThÃ¨me Dark (fond noir).
 	 */
 	DARK_THEME;
 
 	/**
-	 * Retourne le thème courant.
+	 * Retourne le thÃ¨me courant.
 	 * 
-	 * @return Thème courant.
+	 * @return ThÃ¨me courant.
 	 */
 	public static ColorTheme getCurrent() {
 		return UiUtils.isDarkBackground() ? ColorTheme.DARK_THEME : ColorTheme.DEFAULT_THEME;
 	}
 
 	/**
-	 * Obtient la couleur RGB pour un nom de couleur donné, pour ce thème.
+	 * Obtient la couleur RGB pour un nom de couleur donnÃ©, pour ce thÃ¨me.
 	 * 
 	 * @param colorName Nom de la couleur.
 	 * @return Couleur RGB.
@@ -42,7 +42,7 @@ public enum ColorTheme {
 	}
 
 	private RGB toDarkColor(RGB rgb) {
-		/* On utilise la couleur complémentaire au blanc. */
+		/* On utilise la couleur complÃ©mentaire au blanc. */
 		return new RGB(255 - rgb.red, 255 - rgb.green, 255 - rgb.blue);
 	}
 }

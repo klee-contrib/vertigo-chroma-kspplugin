@@ -1,10 +1,10 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Méthodes utilitaires pour gérer les erreurs.
+ * MÃ©thodes utilitaires pour gÃ©rer les erreurs.
  */
 public final class ErrorUtils {
 
@@ -15,7 +15,7 @@ public final class ErrorUtils {
 	}
 
 	/**
-	 * Gère les exceptions attrapées par le plugin.
+	 * GÃ¨re les exceptions attrapÃ©es par le plugin.
 	 * 
 	 * @param e Exception.
 	 */

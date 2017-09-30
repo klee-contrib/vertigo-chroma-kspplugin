@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.ImageUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Représente un fichier de DTO.
+ * ReprÃ©sente un fichier de DTO.
  */
 public class DtoFile extends JavaNavigable implements Openable {
 
@@ -20,9 +20,9 @@ public class DtoFile extends JavaNavigable implements Openable {
 	private final List<DtoField> fields;
 
 	/**
-	 * Créé une nouvelle instance de DtoFile.
+	 * CrÃ©Ã© une nouvelle instance de DtoFile.
 	 * 
-	 * @param fileRegion Région du nom de la classe.
+	 * @param fileRegion RÃ©gion du nom de la classe.
 	 * @param javaName Nom Java.
 	 * @param fields Listes des champs.
 	 */

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+﻿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 

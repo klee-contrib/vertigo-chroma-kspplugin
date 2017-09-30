@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
 import io.vertigo.chroma.kspplugin.utils.DocumentUtils;
@@ -17,7 +17,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * Détecteur de liens à partir de chemins de fichers.
+ * DÃ©tecteur de liens Ã  partir de chemins de fichers.
  */
 public class FilePathHyperLinkDetector extends AbstractHyperlinkDetector {
 
@@ -37,19 +37,19 @@ public class FilePathHyperLinkDetector extends AbstractHyperlinkDetector {
 			return null; // NOSONAR
 		}
 
-		/* Vérifie que c'est un chemin relatif valide. */
+		/* VÃ©rifie que c'est un chemin relatif valide. */
 		String absolutePath = getAbsolutePath(currentWord);
 		if (absolutePath == null) {
 			return null; // NOSONAR
 		}
 
-		/* Vérifie que le fichier existe. */
+		/* VÃ©rifie que le fichier existe. */
 		IFile file = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(absolutePath);
 		if (file == null) {
 			return null; // NOSONAR
 		}
 
-		/* Renvoin un lien vers le fichier dont on a trouvé le chemin. */
+		/* Renvoin un lien vers le fichier dont on a trouvÃ© le chemin. */
 		IRegion targetRegion = new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 		return new IHyperlink[] { new FileHyperLink(targetRegion, file) };
 	}

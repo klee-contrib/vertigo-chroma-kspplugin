@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.KspDeclarationMainParts;
@@ -22,9 +22,9 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 
 /**
- * Inspecteur de déclaration KSP.
+ * Inspecteur de dÃ©claration KSP.
  * <p>
- * Vérifie les règles de grammaire et génères des marqueurs de problèmes.
+ * VÃ©rifie les rÃ¨gles de grammaire et gÃ©nÃ¨res des marqueurs de problÃ¨mes.
  * </p>
  */
 public class KspDeclarationChecker {
@@ -37,7 +37,7 @@ public class KspDeclarationChecker {
 	private final SortedMap<Integer, OpenCloseCharacterOccurence> occurences = new TreeMap<>();
 
 	/**
-	 * Créé une nouvelle instance de KspDeclarationChecker.
+	 * CrÃ©Ã© une nouvelle instance de KspDeclarationChecker.
 	 * 
 	 * @param document Document du KSP.
 	 * @param file Fichier du KSP.
@@ -48,12 +48,12 @@ public class KspDeclarationChecker {
 	}
 
 	/**
-	 * Tente de créer un inspecteur de déclaration KSP si la ligne en contient une.
+	 * Tente de crÃ©er un inspecteur de dÃ©claration KSP si la ligne en contient une.
 	 * 
 	 * @param file Fichier KSP.
 	 * @param document Document du fichier.
-	 * @param lineIdx Index en base zéro de la ligne du document.
-	 * @return Inspecteur si présence de déclaration KSP, <code>null</code> sinon.
+	 * @param lineIdx Index en base zÃ©ro de la ligne du document.
+	 * @return Inspecteur si prÃ©sence de dÃ©claration KSP, <code>null</code> sinon.
 	 */
 	public static KspDeclarationChecker extractChecker(IFile file, IDocument document, int lineIdx) {
 		try {
@@ -61,15 +61,15 @@ public class KspDeclarationChecker {
 			IRegion lineInformation = document.getLineInformation(lineIdx);
 			String lineContent = document.get(lineInformation.getOffset(), lineInformation.getLength());
 
-			/* Extrait une déclaration KSP. */
+			/* Extrait une dÃ©claration KSP. */
 			KspDeclarationMainParts declarationParts = KspStringUtils.getVertigoKspDeclarationParts(lineContent);
 			if (declarationParts != null) {
-				/* Calcule la région du nom de la déclaration KSP */
+				/* Calcule la rÃ©gion du nom de la dÃ©claration KSP */
 				String name = declarationParts.getConstantCaseName();
 				int fullNameLineOffSet = lineContent.indexOf(name);
 				int taskNameOffSet = lineInformation.getOffset() + fullNameLineOffSet;
 
-				/* Vérifie qu'on est dans une région standard */
+				/* VÃ©rifie qu'on est dans une rÃ©gion standard */
 				/* Permet d'ignorer le contenu des string et des commentaires KSP. */
 				if (!DocumentUtils.isContentType(document, taskNameOffSet, KspRegionType.DEFAULT)) {
 					return null;
@@ -82,21 +82,21 @@ public class KspDeclarationChecker {
 			ErrorUtils.handle(e);
 		}
 
-		/* Pas de déclaration KSP : on retourne null */
+		/* Pas de dÃ©claration KSP : on retourne null */
 		return null;
 	}
 
 	/**
 	 * Inspecte la ligne du document.
 	 * 
-	 * @param lineIdx Index en base zéro de la ligne.
+	 * @param lineIdx Index en base zÃ©ro de la ligne.
 	 */
 	public void inspectLine(int lineIdx) {
 		new LineInspector(lineIdx).inspectLine();
 	}
 
 	/**
-	 * Génère les marqueurs pour la déclaration courante.
+	 * GÃ©nÃ¨re les marqueurs pour la dÃ©claration courante.
 	 */
 	public void generateMarkers() {
 		generateMarkers(CURLY_BRACE_COUPLE);
@@ -105,32 +105,32 @@ public class KspDeclarationChecker {
 	}
 
 	/**
-	 * Génère les marqueurs pour les problèmes liés à un couple de caractères ouvrants fermants donné.
+	 * GÃ©nÃ¨re les marqueurs pour les problÃ¨mes liÃ©s Ã  un couple de caractÃ¨res ouvrants fermants donnÃ©.
 	 * 
-	 * @param couple Couple de caractères.
+	 * @param couple Couple de caractÃ¨res.
 	 */
 	private void generateMarkers(OpenCloseCouple couple) {
-		/* Pile des caractères ouvrants */
+		/* Pile des caractÃ¨res ouvrants */
 		Deque<OpenCloseCharacterOccurence> openStack = new ArrayDeque<>();
 
-		/* Parcourt les occurences des caractères. */
+		/* Parcourt les occurences des caractÃ¨res. */
 		for (OpenCloseCharacterOccurence occurence : occurences.values()) {
 			if (occurence.getOpenCloseCharacter() == couple.getOpenCharacter()) {
-				/* Ajoute à la stack des caractères ouvrants. */
+				/* Ajoute Ã  la stack des caractÃ¨res ouvrants. */
 				openStack.add(occurence);
 			} else if (occurence.getOpenCloseCharacter() == couple.getCloseCharacter()) {
 				if (openStack.isEmpty()) {
-					/* Aucun caractère ouvrant à fermer : erreur */
+					/* Aucun caractÃ¨re ouvrant Ã  fermer : erreur */
 					addMarker(occurence, couple.getMissingOpeningMessage());
 				} else {
-					/* Enlève le dernier caractère ouvrant. */
+					/* EnlÃ¨ve le dernier caractÃ¨re ouvrant. */
 					openStack.pop();
 				}
 			}
 		}
 
 		if (!openStack.isEmpty()) {
-			/* Il reste des caractères ouvrants non fermés : erreur */
+			/* Il reste des caractÃ¨res ouvrants non fermÃ©s : erreur */
 			for (OpenCloseCharacterOccurence occurence : openStack) {
 				addMarker(occurence, couple.getMissingClosingMessage());
 			}
@@ -138,9 +138,9 @@ public class KspDeclarationChecker {
 	}
 
 	/**
-	 * Ajoute un marqueur sur une occurence de aractère avec un message donné.
+	 * Ajoute un marqueur sur une occurence de aractÃ¨re avec un message donnÃ©.
 	 * 
-	 * @param occurence Occurence de caractère.
+	 * @param occurence Occurence de caractÃ¨re.
 	 * @param message Message.
 	 */
 	private void addMarker(OpenCloseCharacterOccurence occurence, String message) {
@@ -148,7 +148,7 @@ public class KspDeclarationChecker {
 	}
 
 	/**
-	 * Inspecteur d'une ligne de déclaration.
+	 * Inspecteur d'une ligne de dÃ©claration.
 	 */
 	private class LineInspector {
 
@@ -157,9 +157,9 @@ public class KspDeclarationChecker {
 		private String lineContent;
 
 		/**
-		 * Créé une nouvelle instance de LineInspector.
+		 * CrÃ©Ã© une nouvelle instance de LineInspector.
 		 * 
-		 * @param lineIdx Index en base zéro de la ligne dans le document.
+		 * @param lineIdx Index en base zÃ©ro de la ligne dans le document.
 		 */
 		public LineInspector(int lineIdx) {
 			this.lineIdx = lineIdx;
@@ -168,7 +168,7 @@ public class KspDeclarationChecker {
 		/**
 		 * Inspecte la ligne.
 		 * <p>
-		 * Note la présence des caractères ouvrants et fermants.
+		 * Note la prÃ©sence des caractÃ¨res ouvrants et fermants.
 		 * </p>
 		 */
 		public void inspectLine() {
@@ -176,10 +176,10 @@ public class KspDeclarationChecker {
 				/* Obtient la ligne. */
 				lineInformation = document.getLineInformation(lineIdx);
 				lineContent = document.get(lineInformation.getOffset(), lineInformation.getLength());
-				/* Région standard : accolades et parenthèses. */
+				/* RÃ©gion standard : accolades et parenthÃ¨ses. */
 				checkCharacterCouple(CURLY_BRACE_COUPLE, KspRegionType.DEFAULT);
 				checkCharacterCouple(PARENTHESIS_COUPLE, KspRegionType.DEFAULT);
-				/* Région string SQL : tags Java. */
+				/* RÃ©gion string SQL : tags Java. */
 				checkCharacterCouple(JAVA_TAG_COUPLE, KspRegionType.STRING);
 			} catch (BadLocationException e) {
 				ErrorUtils.handle(e);
@@ -187,10 +187,10 @@ public class KspDeclarationChecker {
 		}
 
 		/**
-		 * Vérifie la présence d'un couple de caractère dans un type de région donné.
+		 * VÃ©rifie la prÃ©sence d'un couple de caractÃ¨re dans un type de rÃ©gion donnÃ©.
 		 * 
-		 * @param couple Couple de caractères.
-		 * @param regionType Type de la région.
+		 * @param couple Couple de caractÃ¨res.
+		 * @param regionType Type de la rÃ©gion.
 		 */
 		private void checkCharacterCouple(OpenCloseCouple couple, KspRegionType regionType) {
 			checkCharacter(couple.getOpenCharacter(), regionType);
@@ -198,30 +198,30 @@ public class KspDeclarationChecker {
 		}
 
 		/**
-		 * Vérifie la présence des caractères dans un type de région donné.
+		 * VÃ©rifie la prÃ©sence des caractÃ¨res dans un type de rÃ©gion donnÃ©.
 		 * 
-		 * @param openCloseCharacter Caractère à chercher.
-		 * @param regionType Type de région ciblé.
+		 * @param openCloseCharacter CaractÃ¨re Ã  chercher.
+		 * @param regionType Type de rÃ©gion ciblÃ©.
 		 */
 		private void checkCharacter(OpenCloseCharacter openCloseCharacter, KspRegionType regionType) {
-			/* Recherche le caractère à partir de son pattern. */
+			/* Recherche le caractÃ¨re Ã  partir de son pattern. */
 			Pattern pattern = openCloseCharacter.getPattern();
 			Matcher matcher = pattern.matcher(lineContent);
 
-			/* Parcourt les résultats. */
+			/* Parcourt les rÃ©sultats. */
 			while (matcher.find()) {
 				for (int group = 1; group <= matcher.groupCount(); group++) {
-					/* Construit la région de fichier du caractère trouvé */
+					/* Construit la rÃ©gion de fichier du caractÃ¨re trouvÃ© */
 					String characterValue = matcher.group(group);
 					int characterLineOffSet = matcher.start(group);
 					int characterDocumentOffSet = lineInformation.getOffset() + characterLineOffSet;
 
-					/* Vérifie la région du caractère trouvé. */
+					/* VÃ©rifie la rÃ©gion du caractÃ¨re trouvÃ©. */
 					if (!DocumentUtils.isContentType(document, characterDocumentOffSet, regionType)) {
 						return;
 					}
 
-					/* Note le caractère. */
+					/* Note le caractÃ¨re. */
 					FileRegion characterRegion = new FileRegion(file, characterDocumentOffSet, characterValue.length(), lineIdx);
 					OpenCloseCharacterOccurence occurence = new OpenCloseCharacterOccurence(openCloseCharacter, characterRegion);
 					occurences.put(characterDocumentOffSet, occurence);
@@ -231,7 +231,7 @@ public class KspDeclarationChecker {
 	}
 
 	/**
-	 * Occurence d'un caractère à une région de fichier donné.
+	 * Occurence d'un caractÃ¨re Ã  une rÃ©gion de fichier donnÃ©.
 	 */
 	private static class OpenCloseCharacterOccurence {
 
@@ -239,10 +239,10 @@ public class KspDeclarationChecker {
 		private final FileRegion fileRegion;
 
 		/**
-		 * Créé une nouvelle instance de OpenCloseCharacterOccurence.
+		 * CrÃ©Ã© une nouvelle instance de OpenCloseCharacterOccurence.
 		 * 
-		 * @param openCloseCharacter Caractère.
-		 * @param fileRegion Région de fichier du caractère.
+		 * @param openCloseCharacter CaractÃ¨re.
+		 * @param fileRegion RÃ©gion de fichier du caractÃ¨re.
 		 */
 		public OpenCloseCharacterOccurence(OpenCloseCharacter openCloseCharacter, FileRegion fileRegion) {
 			this.openCloseCharacter = openCloseCharacter;
@@ -250,14 +250,14 @@ public class KspDeclarationChecker {
 		}
 
 		/**
-		 * @return Le caractère.
+		 * @return Le caractÃ¨re.
 		 */
 		public OpenCloseCharacter getOpenCloseCharacter() {
 			return openCloseCharacter;
 		}
 
 		/**
-		 * @return La région de fichier.
+		 * @return La rÃ©gion de fichier.
 		 */
 		public FileRegion getFileRegion() {
 			return fileRegion;

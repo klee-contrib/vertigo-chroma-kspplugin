@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.DtoDefinitionPath;
 import io.vertigo.chroma.kspplugin.model.DtoFile;
@@ -17,7 +17,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * Détecteur de chemin de définition de DTO ("package.NomDto") dans un fichier KSP.
+ * DÃ©tecteur de chemin de dÃ©finition de DTO ("package.NomDto") dans un fichier KSP.
  * <p>
  * Sert uniquement pour Kasper 3.
  * </p>
@@ -39,12 +39,12 @@ public class DtoDefinitionPathHyperLinkDetector extends AbstractHyperlinkDetecto
 			return null; // NOSONAR
 		}
 
-		/* Vérifie qu'on est dans une région entière KspString */
+		/* VÃ©rifie qu'on est dans une rÃ©gion entiÃ¨re KspString */
 		if (!DocumentUtils.isExactKspString(document, currentWordSelection)) {
 			return null; // NOSONAR
 		}
 
-		/* Extrait un chemin de définition de DTO. */
+		/* Extrait un chemin de dÃ©finition de DTO. */
 		DtoDefinitionPath definitionPath = KspStringUtils.getKasper3DefinitionPath(currentWord);
 		if (definitionPath == null) {
 			return null; // NOSONAR
@@ -56,7 +56,7 @@ public class DtoDefinitionPathHyperLinkDetector extends AbstractHyperlinkDetecto
 			return null; // NOSONAR
 		}
 
-		/* Fichier Java trouvé : on ajoute un lien vers le fichier Java. */
+		/* Fichier Java trouvÃ© : on ajoute un lien vers le fichier Java. */
 		IRegion targetRegion = new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 		return new IHyperlink[] { new JavaImplementationHyperLink(targetRegion, dtoFile) };
 	}

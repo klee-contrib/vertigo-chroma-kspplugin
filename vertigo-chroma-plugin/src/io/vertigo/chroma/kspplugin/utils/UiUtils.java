@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.Navigable;
@@ -35,7 +35,7 @@ public final class UiUtils {
 	}
 
 	/**
-	 * Définit l'éditeur courant.
+	 * DÃ©finit l'Ã©diteur courant.
 	 * 
 	 * @param part Editeur.
 	 */
@@ -46,14 +46,14 @@ public final class UiUtils {
 	/**
 	 * Affiche un message d'information dans une popup.
 	 * 
-	 * @param message Message à afficher.
+	 * @param message Message Ã  afficher.
 	 */
 	public static void showMessage(String message) {
 		MessageDialog.openInformation(getShell(), "Vertigo Plugin Information", message);
 	}
 
 	/**
-	 * Navigue vers un fichier (ouvre un éditeur).
+	 * Navigue vers un fichier (ouvre un Ã©diteur).
 	 * 
 	 * @param file Fichier.
 	 */
@@ -69,7 +69,7 @@ public final class UiUtils {
 	}
 
 	/**
-	 * Navigue vers l'objet (ouvre un éditeur et met le focus sur la région).
+	 * Navigue vers l'objet (ouvre un Ã©diteur et met le focus sur la rÃ©gion).
 	 * 
 	 * @param navigable Objet navigable.
 	 */
@@ -86,7 +86,7 @@ public final class UiUtils {
 	}
 
 	/**
-	 * Navigue vers l'objet (met le focus sur la région).
+	 * Navigue vers l'objet (met le focus sur la rÃ©gion).
 	 * 
 	 * @param navigable Objet navigable.
 	 * @param editor Editeur courant.
@@ -105,7 +105,7 @@ public final class UiUtils {
 
 		/* Cas d'un thread non UI sans workbench actif. */
 		if (activeWorkbenchWindow == null) {
-			/* On renvoie l'éditeur courant déclaré par le dernier éditeur ouvert. */
+			/* On renvoie l'Ã©diteur courant dÃ©clarÃ© par le dernier Ã©diteur ouvert. */
 			return currentEditor;
 		}
 		return activeWorkbenchWindow.getActivePage().getActiveEditor();
@@ -163,13 +163,13 @@ public final class UiUtils {
 	public static String getCurrentEditorCurrentWord(WordSelectionType wordSelectionType) {
 		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 
-		/* Extrait l'éditeur courant. */
+		/* Extrait l'Ã©diteur courant. */
 		ITextEditor editor = (ITextEditor) activePage.getActiveEditor();
 		if (editor == null) {
 			return null;
 		}
 
-		/* Extrait la sélection courante. */
+		/* Extrait la sÃ©lection courante. */
 		ITextSelection selection = (ITextSelection) activePage.getSelection();
 		if (selection == null) {
 			return null;
@@ -178,7 +178,7 @@ public final class UiUtils {
 		/* Extrait le document courant. */
 		IDocument document = editor.getDocumentProvider().getDocument(editor.getEditorInput());
 
-		/* Extrait le mot sélectionné. */
+		/* Extrait le mot sÃ©lectionnÃ©. */
 		ITextSelection currentWordSelection = DocumentUtils.findCurrentWord(document, selection, wordSelectionType);
 		if (currentWordSelection == null) {
 			return null;

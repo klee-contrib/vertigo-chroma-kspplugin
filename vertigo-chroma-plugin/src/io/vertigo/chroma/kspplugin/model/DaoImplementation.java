@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+Ôªøpackage io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.ImageUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
@@ -9,17 +9,17 @@ import java.text.MessageFormat;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * ReprÈsente une implÈmentation de Task DAO.
+ * Repr√©sente une impl√©mentation de Task DAO.
  */
 public class DaoImplementation extends JavaNavigable implements Openable {
 
 	private DaoFile file;
 
 	/**
-	 * CrÈÈ une nouvelle instance de DaoImplementation.
+	 * Cr√©√© une nouvelle instance de DaoImplementation.
 	 * 
-	 * @param fileRegion RÈgion de la t‚che.
-	 * @param javaName Nom de la mÈthode.
+	 * @param fileRegion R√©gion de la t√¢che.
+	 * @param javaName Nom de la m√©thode.
 	 */
 	public DaoImplementation(FileRegion fileRegion, String javaName) {
 		super(fileRegion, javaName);

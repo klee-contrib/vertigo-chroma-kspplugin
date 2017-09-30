@@ -1,7 +1,7 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
- * Représente un chemin de définition de DTO (en Kasper 3).
+ * ReprÃ©sente un chemin de dÃ©finition de DTO (en Kasper 3).
  */
 public class DtoDefinitionPath {
 

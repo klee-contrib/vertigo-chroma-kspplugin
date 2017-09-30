@@ -1,13 +1,13 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.StringUtils;
 
 import java.util.function.Predicate;
 
 /**
- * Enumération des types de sélection de mot.
+ * EnumÃ©ration des types de sÃ©lection de mot.
  * <p>
- * Utilisé pour la détection de mot courant dans un éditeur, pour les détecteurs de lien et l'autocomplétion.
+ * UtilisÃ© pour la dÃ©tection de mot courant dans un Ã©diteur, pour les dÃ©tecteurs de lien et l'autocomplÃ©tion.
  * </p>
  */
 public enum WordSelectionType {
@@ -33,7 +33,7 @@ public enum WordSelectionType {
 	SQL_PARAMETER_NAME(StringUtils::isSqlParameterName),
 
 	/**
-	 * Mot représentant un nom canonique Java.
+	 * Mot reprÃ©sentant un nom canonique Java.
 	 */
 	CANONICAL_JAVA_NAME(StringUtils::isCanonicalJavaName),
 

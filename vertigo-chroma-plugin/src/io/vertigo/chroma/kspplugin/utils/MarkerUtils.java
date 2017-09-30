@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 
@@ -8,7 +8,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 
 /**
- * Méthodes utilitaires pour gérer les marqueurs.
+ * MÃ©thodes utilitaires pour gÃ©rer les marqueurs.
  */
 public final class MarkerUtils {
 

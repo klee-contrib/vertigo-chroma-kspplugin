@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+Ôªøpackage io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.Manager;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
@@ -21,7 +21,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 
 /**
- * GËre les diffÈrentes versions du framework Vertigo/Kasper.
+ * G√®re les diff√©rentes versions du framework Vertigo/Kasper.
  */
 public final class LegacyManager implements Manager, IResourceChangeListener {
 
@@ -45,29 +45,29 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	}
 
 	/**
-	 * Retourne la stratÈgie pour un projet donnÈ.
+	 * Retourne la strat√©gie pour un projet donn√©.
 	 * 
 	 * @param project Projet.
-	 * @return StratÈgie.
+	 * @return Strat√©gie.
 	 */
 	public LegacyStrategy getStrategy(IProject project) {
 		return map.getOrDefault(project, new NoFrameworkStrategy());
 	}
 
 	/**
-	 * Retourne la stratÈgie pour le projet d'un fichier donnÈ.
+	 * Retourne la strat√©gie pour le projet d'un fichier donn√©.
 	 * 
 	 * @param file Fichier.
-	 * @return StratÈgie.
+	 * @return Strat√©gie.
 	 */
 	public LegacyStrategy getStrategy(IFile file) {
 		return getStrategy(file.getProject());
 	}
 
 	/**
-	 * Retourne la stratÈgie pour le projet de l'Èditeur courant.
+	 * Retourne la strat√©gie pour le projet de l'√©diteur courant.
 	 * 
-	 * @return StratÈgie.
+	 * @return Strat√©gie.
 	 */
 	public LegacyStrategy getCurrentStrategy() {
 		return getStrategy(UiUtils.getCurrentEditorProject());
@@ -118,27 +118,27 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 * Initialise le listener de ressources du workspace.
 	 */
 	private void initListener() {
-		/* Comme la durÈe de vie du store est celle du plugin, il n'est pas nÈcessaire de prÈvoir de se dÈsabonner. */
+		/* Comme la dur√©e de vie du store est celle du plugin, il n'est pas n√©cessaire de pr√©voir de se d√©sabonner. */
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 
 	private void handleProject(IProject project) {
-		/* VÈrifie si le projet n'est pas dÈj‡ connu. */
+		/* V√©rifie si le projet n'est pas d√©j√† connu. */
 		if (this.map.containsKey(project)) {
 			return;
 		}
 
-		/* Choisit une stratÈgie pour chaque projet. */
+		/* Choisit une strat√©gie pour chaque projet. */
 		LegacyVersion version = getProjectLegacyVersion(project);
 		LogUtils.info("Projet " + project.getName() + " en version " + version.name());
 
-		/* RÈcupËre la stratÈgie pour la version */
+		/* R√©cup√®re la strat√©gie pour la version */
 		this.map.put(project, version.getStrategy());
 	}
 
 	private static LegacyVersion getProjectLegacyVersion(IProject project) {
 
-		/* VÈrifie que le projet est un projet Java. */
+		/* V√©rifie que le projet est un projet Java. */
 		if (!JdtUtils.isJavaProject(project)) {
 			return LegacyVersion.NO_FRAMEWORK;
 		}
@@ -187,7 +187,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	}
 
 	/**
-	 * Map projet vers stratÈgie.
+	 * Map projet vers strat√©gie.
 	 */
 	private static class ProjectStrategyMap extends HashMap<IProject, LegacyStrategy> {
 		private static final long serialVersionUID = 1L;

@@ -1,7 +1,7 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
- * Classe de base pour un navigable vers un élément ayant un nom Java.
+ * Classe de base pour un navigable vers un Ã©lÃ©ment ayant un nom Java.
  */
 public class JavaNavigable implements Navigable {
 
@@ -9,9 +9,9 @@ public class JavaNavigable implements Navigable {
 	private final FileRegion fileRegion;
 
 	/**
-	 * Créé une nouvelle instance de JavaNavigable.
+	 * CrÃ©Ã© une nouvelle instance de JavaNavigable.
 	 * 
-	 * @param fileRegion Région pour la navigation.
+	 * @param fileRegion RÃ©gion pour la navigation.
 	 * @param javaName Nom Java.
 	 */
 	public JavaNavigable(FileRegion fileRegion, String javaName) {

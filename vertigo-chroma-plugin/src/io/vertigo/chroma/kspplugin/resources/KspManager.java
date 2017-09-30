@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources;
+ï»¿package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;
@@ -31,8 +31,8 @@ import org.eclipse.jface.text.IRegion;
  * Manager des fichiers KSP.
  * <p>
  * <ul>
- * <li>index les fichiers KSP et leurs déclarations.</li>
- * <li>maintient un cache à jour</li>
+ * <li>index les fichiers KSP et leurs dÃ©clarations.</li>
+ * <li>maintient un cache Ã  jour</li>
  * <li>publie une API de recherche</li>
  * </ul>
  * <p>
@@ -43,7 +43,7 @@ public final class KspManager implements Manager {
 	private static KspManager instance;
 
 	/**
-	 * Créé une nouvelle instance de KspManager.
+	 * CrÃ©Ã© une nouvelle instance de KspManager.
 	 */
 	private KspManager() {
 		store = new ResourceStore<>(new Implementor());
@@ -61,7 +61,7 @@ public final class KspManager implements Manager {
 
 	@Override
 	public void init() {
-		/* Démarre le magasin qui index tous les fichiers concernés. */
+		/* DÃ©marre le magasin qui index tous les fichiers concernÃ©s. */
 		instance.store.start();
 	}
 
@@ -73,21 +73,21 @@ public final class KspManager implements Manager {
 	}
 
 	/**
-	 * Renvoie la première déclaration correspondant au nom en constant case (avec le préfixe).
+	 * Renvoie la premiÃ¨re dÃ©claration correspondant au nom en constant case (avec le prÃ©fixe).
 	 * 
-	 * @param constantCaseName Nom en constant case avec le préfixe.
-	 * @return Déclaration KSP, <code>null</code> sinon.
+	 * @param constantCaseName Nom en constant case avec le prÃ©fixe.
+	 * @return DÃ©claration KSP, <code>null</code> sinon.
 	 */
 	public KspDeclaration findKspDeclarationByConstantCaseName(String constantCaseName) {
 		return store.findFirstItem(kspDeclaration -> constantCaseName.equals(kspDeclaration.getConstantCaseName()));
 	}
 
 	/**
-	 * Renvoie la première déclaration correspondant au nom Java et à l'objet (Task, DtDefinition, ...).
+	 * Renvoie la premiÃ¨re dÃ©claration correspondant au nom Java et Ã  l'objet (Task, DtDefinition, ...).
 	 * 
 	 * @param javaName Nom en java.
 	 * @param kspNature Nature (Task, DtDefinition, ...).
-	 * @return Déclaration KSP, <code>null</code> sinon.
+	 * @return DÃ©claration KSP, <code>null</code> sinon.
 	 */
 	public KspDeclaration findKspDeclaration(String javaName, KspNature kspNature) {
 		String kspKeyword = LegacyManager.getInstance().getCurrentStrategy().getKspKeyword(kspNature);
@@ -95,27 +95,27 @@ public final class KspManager implements Manager {
 	}
 
 	/**
-	 * Renvoie la première déclaration correspondant au nom Java.
+	 * Renvoie la premiÃ¨re dÃ©claration correspondant au nom Java.
 	 * 
 	 * @param javaName Nom en java.
-	 * @return Déclaration KSP, <code>null</code> sinon.
+	 * @return DÃ©claration KSP, <code>null</code> sinon.
 	 */
 	public KspDeclaration findKspDeclaration(String javaName) {
 		return store.findFirstItem(kspDeclaration -> javaName.equals(kspDeclaration.getJavaName()));
 	}
 
 	/**
-	 * @return Les déclarations de domaines.
+	 * @return Les dÃ©clarations de domaines.
 	 */
 	public List<KspDeclaration> findDomains() {
 		return store.findAllItems(kspDeclaration -> "Domain".equals(kspDeclaration.getNature()));
 	}
 
 	/**
-	 * Trouve la déclaration contenant la région de fichier.
+	 * Trouve la dÃ©claration contenant la rÃ©gion de fichier.
 	 * 
-	 * @param fileRegion Région de fichier.
-	 * @return La déclaration, <code>null</code> sinon.
+	 * @param fileRegion RÃ©gion de fichier.
+	 * @return La dÃ©claration, <code>null</code> sinon.
 	 */
 	public KspDeclaration findDeclarationAt(FileRegion fileRegion) {
 		return store.findItem(fileRegion);
@@ -148,7 +148,7 @@ public final class KspManager implements Manager {
 		private String lineContent;
 
 		/**
-		 * Créé une nouvelle instance de KspParser.
+		 * CrÃ©Ã© une nouvelle instance de KspParser.
 		 * 
 		 * @param document Document.
 		 * @param file Fichier.
@@ -174,22 +174,22 @@ public final class KspManager implements Manager {
 					/* Extrait le package. */
 					parsePackage();
 
-					/* Extrait une déclaration KSP */
+					/* Extrait une dÃ©claration KSP */
 					parseKspDeclaration();
 
-					/* Extrait un attribut de déclaration KSP. */
+					/* Extrait un attribut de dÃ©claration KSP. */
 					parseKspDeclarationAttribute();
 				} catch (BadLocationException e) {
 					ErrorUtils.handle(e);
 				}
 			}
 
-			/* Créé le fichier KSP. */
+			/* CrÃ©Ã© le fichier KSP. */
 			return new KspFile(file, packageName, kspDeclarations);
 		}
 
 		private void readLine(int lineIdx) throws BadLocationException {
-			/* Charge la région de la ligne. */
+			/* Charge la rÃ©gion de la ligne. */
 			lineInformation = document.getLineInformation(lineIdx);
 			lineContent = document.get(lineInformation.getOffset(), lineInformation.getLength());
 		}
@@ -204,23 +204,23 @@ public final class KspManager implements Manager {
 		private void parseKspDeclaration() {
 			LegacyStrategy strategy = LegacyManager.getInstance().getStrategy(file);
 
-			/* Extrait une déclaration KSP */
+			/* Extrait une dÃ©claration KSP */
 			KspDeclarationParts parts = strategy.getKspDeclarationParts(lineContent);
 			if (parts == null) {
 				return;
 			}
 
-			/* Calcule la région du nom de la déclaration KSP */
+			/* Calcule la rÃ©gion du nom de la dÃ©claration KSP */
 			int fullNameLineOffSet = lineContent.indexOf(parts.getConstantCaseName());
 			int taskNameOffSet = lineInformation.getOffset() + fullNameLineOffSet;
 
-			/* Vérifie qu'on est dans une région standard */
+			/* VÃ©rifie qu'on est dans une rÃ©gion standard */
 			/* Permet d'ignorer le contenu des string et des commentaires KSP. */
 			if (!DocumentUtils.isContentType(document, taskNameOffSet, KspRegionType.DEFAULT)) {
 				return;
 			}
 
-			/* Créé la déclaration. */
+			/* CrÃ©Ã© la dÃ©claration. */
 			FileRegion taskRegion = new FileRegion(file, taskNameOffSet, parts.getConstantCaseName().length());
 			String javaName = strategy.getKspDeclarationJavaName(parts.getConstantCaseNameOnly(), parts.getNature());
 			kspDeclaration = new KspDeclaration(taskRegion, packageName, parts.getVerb(), parts.getNature(), parts.getConstantCaseName(), parts.getPrefix(),
@@ -230,18 +230,18 @@ public final class KspManager implements Manager {
 		}
 
 		private void parseKspDeclarationAttribute() {
-			/* Vérification qu'une déclaration courante existe. */
+			/* VÃ©rification qu'une dÃ©claration courante existe. */
 			if (kspDeclaration == null) {
 				return;
 			}
 
-			/* Extrait un attribut de la déclaration courante. */
+			/* Extrait un attribut de la dÃ©claration courante. */
 			KspAttribute attribute = LegacyManager.getInstance().getStrategy(file).getKspAttribute(lineContent);
 			if (attribute == null) {
 				return;
 			}
 
-			/* Ajoute l'attribut à la déclaration courante. */
+			/* Ajoute l'attribut Ã  la dÃ©claration courante. */
 			kspDeclaration.addAttribute(attribute);
 		}
 	}
@@ -256,13 +256,13 @@ public final class KspManager implements Manager {
 			/* Parse le document KSP. */
 			KspFile kspFile = createKspFile(document, file);
 
-			/* Récupère toutes les déclarations KSP. */
+			/* RÃ©cupÃ¨re toutes les dÃ©clarations KSP. */
 			return kspFile.getKspDeclarations();
 		}
 
 		@Override
 		public boolean isCandidate(IFile file) {
-			/* Vérifie que le fichier a l'extension KSP. */
+			/* VÃ©rifie que le fichier a l'extension KSP. */
 			return ResourceUtils.isKspFile(file);
 		}
 	}

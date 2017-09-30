@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp;
 
 import io.vertigo.chroma.kspplugin.ui.editors.analysis.KspCheckerJob;
 import io.vertigo.chroma.kspplugin.ui.editors.ksp.outline.KspOutlinePage;
@@ -28,20 +28,20 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 public class KspEditor extends TextEditor implements IResourceChangeListener {
 
 	/*
-	 * La vérification des KSP ramène des faux positifs. Désactivé pour le lot 1.
+	 * La vÃ©rification des KSP ramÃ¨ne des faux positifs. DÃ©sactivÃ© pour le lot 1.
 	 */
 	private static final boolean ENABLE_CHECKER = false;
 
 	/**
-	 * Créé une nouvelle instance de KspTextEditor.
+	 * CrÃ©Ã© une nouvelle instance de KspTextEditor.
 	 */
 	public KspEditor() {
 		super();
 
-		/* Définit un ID de contexte utilisé pour ajouter des items via plugin.xml */
+		/* DÃ©finit un ID de contexte utilisÃ© pour ajouter des items via plugin.xml */
 		setEditorContextMenuId("#KspEditorContext");
 
-		/* Définit une configuration de SourceViewer pour définir des scanner. */
+		/* DÃ©finit une configuration de SourceViewer pour dÃ©finir des scanner. */
 		KspSourceViewerConfiguration configuration = new KspSourceViewerConfiguration(this);
 		setSourceViewerConfiguration(configuration);
 	}
@@ -53,7 +53,7 @@ public class KspEditor extends TextEditor implements IResourceChangeListener {
 		/* Abonnement au changement du fichier. */
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 
-		/* Abonnement au changement de part pour mémoriser l'éditeur courant. */
+		/* Abonnement au changement de part pour mÃ©moriser l'Ã©diteur courant. */
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		window.getPartService().addPartListener(new PartListener());
 	}
@@ -62,7 +62,7 @@ public class KspEditor extends TextEditor implements IResourceChangeListener {
 	protected void createActions() {
 		super.createActions();
 
-		/* Configure l'autocomplétion. */
+		/* Configure l'autocomplÃ©tion. */
 		ContentAssistAction action = new ContentAssistAction(new ContentAssistBundle(), "ContentAssistProposal.", this);
 		action.setActionDefinitionId(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
 		setAction("ContentAssist", action);
@@ -141,7 +141,7 @@ public class KspEditor extends TextEditor implements IResourceChangeListener {
 
 		private void setCurrent(IWorkbenchPart part) {
 			if (KspEditor.this.equals(part)) {
-				/* Si la part affichée est celle de l'instance de l'éditeur, on le note comme étant l'éditeur courant. */
+				/* Si la part affichÃ©e est celle de l'instance de l'Ã©diteur, on le note comme Ã©tant l'Ã©diteur courant. */
 				UiUtils.setCurrentEditor(KspEditor.this);
 			}
 		}

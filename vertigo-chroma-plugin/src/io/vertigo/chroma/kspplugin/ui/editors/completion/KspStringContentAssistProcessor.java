@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.completion;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.completion;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;
@@ -22,9 +22,9 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.text.ITextSelection;
 
 /**
- * Processeur gérant l'autocomplétion pour la région des strings d'un KSP.
+ * Processeur gÃ©rant l'autocomplÃ©tion pour la rÃ©gion des strings d'un KSP.
  * <p>
- * Gère l'autocomplétion sur les noms de paramètre (#OBJET_ID#, #CRITERE.OBJET_ID#).
+ * GÃ¨re l'autocomplÃ©tion sur les noms de paramÃ¨tre (#OBJET_ID#, #CRITERE.OBJET_ID#).
  * </p>
  */
 public class KspStringContentAssistProcessor extends BaseContentAssistProcessor {
@@ -43,7 +43,7 @@ public class KspStringContentAssistProcessor extends BaseContentAssistProcessor 
 	protected List<CompletionCandidate> getCandidates(ITextSelection currentWordSelection) {
 		List<CompletionCandidate> list = new ArrayList<>();
 
-		/* Trouve la déclaration contenant le nom de paramètre. */
+		/* Trouve la dÃ©claration contenant le nom de paramÃ¨tre. */
 		IFile file = UiUtils.getCurrentEditorFile();
 		FileRegion fileRegion = new FileRegion(file, currentWordSelection.getOffset(), currentWordSelection.getLength());
 		KspDeclaration declaration = KspManager.getInstance().findDeclarationAt(fileRegion);
@@ -56,7 +56,7 @@ public class KspStringContentAssistProcessor extends BaseContentAssistProcessor 
 			handleAttribute(attribute, list);
 		}
 
-		/* Tri par libellé. */
+		/* Tri par libellÃ©. */
 		list.sort((o1, o2) -> o1.getDisplayString().compareTo(o2.getDisplayString()));
 
 		return list;
@@ -68,7 +68,7 @@ public class KspStringContentAssistProcessor extends BaseContentAssistProcessor 
 	}
 
 	private void handleAttribute(KspAttribute attribute, List<CompletionCandidate> candidates) {
-		/* Les paramètres out ne sont pas traités. */
+		/* Les paramÃ¨tres out ne sont pas traitÃ©s. */
 		if (attribute.isOut()) {
 			return;
 		}

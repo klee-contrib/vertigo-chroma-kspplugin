@@ -1,28 +1,28 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 /**
- * Contrat d'un couple de caractères ouvrants et fermants.
+ * Contrat d'un couple de caractÃ¨res ouvrants et fermants.
  *
  */
 public interface OpenCloseCouple {
 
 	/**
-	 * @return Caractère ouvrant.
+	 * @return CaractÃ¨re ouvrant.
 	 */
 	OpenCloseCharacter getOpenCharacter();
 
 	/**
-	 * @return Caractère fermant.
+	 * @return CaractÃ¨re fermant.
 	 */
 	OpenCloseCharacter getCloseCharacter();
 
 	/**
-	 * @return Message pour un caractère ouvrant manquant.
+	 * @return Message pour un caractÃ¨re ouvrant manquant.
 	 */
 	String getMissingOpeningMessage();
 
 	/**
-	 * @return Message pour un caractère fermant manquant.
+	 * @return Message pour un caractÃ¨re fermant manquant.
 	 */
 	String getMissingClosingMessage();
 }

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.model.KspDeclaration;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 
 /**
- * Représente un fichier KSP et l'ensemble de ses déclarations.
+ * ReprÃ©sente un fichier KSP et l'ensemble de ses dÃ©clarations.
  */
 public class KspFile {
 
@@ -16,11 +16,11 @@ public class KspFile {
 	private List<KspDeclaration> kspDeclarations;
 
 	/**
-	 * Créé une nouvelle instance de KspFile.
+	 * CrÃ©Ã© une nouvelle instance de KspFile.
 	 * 
 	 * @param file Ressource fichier du KSP dans le workspace.
 	 * @param packageName Nom du package du KSP.
-	 * @param kspDeclarations Liste des déclarations.
+	 * @param kspDeclarations Liste des dÃ©clarations.
 	 */
 	public KspFile(IFile file, String packageName, List<KspDeclaration> kspDeclarations) {
 		super();
@@ -47,7 +47,7 @@ public class KspFile {
 	}
 
 	/**
-	 * @return Renvoie la liste des déclarations KSP.
+	 * @return Renvoie la liste des dÃ©clarations KSP.
 	 */
 	public List<KspDeclaration> getKspDeclarations() {
 		return kspDeclarations;

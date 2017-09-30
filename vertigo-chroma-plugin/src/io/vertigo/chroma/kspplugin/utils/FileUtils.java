@@ -1,10 +1,10 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 /**
- * Méthodes utilitaires pour gérer des fichiers.
+ * MÃ©thodes utilitaires pour gÃ©rer des fichiers.
  */
 public final class FileUtils {
 
@@ -13,9 +13,9 @@ public final class FileUtils {
 	}
 
 	/**
-	 * Calcul le chemin absolu d'un chemin relatif à un chemin absolu.
+	 * Calcul le chemin absolu d'un chemin relatif Ã  un chemin absolu.
 	 * 
-	 * @param absoluteFilePath Chemin absolu de référence.
+	 * @param absoluteFilePath Chemin absolu de rÃ©fÃ©rence.
 	 * @param relativeFilePath Chemin relatif.
 	 * @return Chemin absolu du chemin relatif.
 	 */
@@ -26,7 +26,7 @@ public final class FileUtils {
 			Path absolutePath = resolvedPath.normalize();
 			return absolutePath.toString();
 		} catch (IllegalArgumentException e) { // NOSONAR
-			/* Erreur à la construction du fichier : on sort. */
+			/* Erreur Ã  la construction du fichier : on sort. */
 			return null;
 		}
 	}

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
 import io.vertigo.chroma.kspplugin.utils.DocumentUtils;
@@ -16,7 +16,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * Détecteur de lien à partir de nom canonique entre double quote dans un fichier KSP.
+ * DÃ©tecteur de lien Ã  partir de nom canonique entre double quote dans un fichier KSP.
  */
 public class CanonicalJavaNameHyperLinkDetector extends AbstractHyperlinkDetector {
 
@@ -35,7 +35,7 @@ public class CanonicalJavaNameHyperLinkDetector extends AbstractHyperlinkDetecto
 			return null; // NOSONAR
 		}
 
-		/* Vérifie qu'on est dans une région entière KspString */
+		/* VÃ©rifie qu'on est dans une rÃ©gion entiÃ¨re KspString */
 		if (!DocumentUtils.isExactKspString(document, currentWordSelection)) {
 			return null; // NOSONAR
 		}

@@ -1,11 +1,11 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.KspStringUtils;
 
 import java.util.HashMap;
 
 /**
- * Représente un attribute d'une déclaration KSP.
+ * ReprÃ©sente un attribute d'une dÃ©claration KSP.
  */
 public class KspAttribute {
 
@@ -22,7 +22,7 @@ public class KspAttribute {
 	private String dtName;
 
 	/**
-	 * Créé une nouvelle instance de KspAttribute.
+	 * CrÃ©Ã© une nouvelle instance de KspAttribute.
 	 * 
 	 * @param constantCaseName Nom en constant case de l'attribute.
 	 */
@@ -68,10 +68,10 @@ public class KspAttribute {
 	}
 
 	/**
-	 * Ajoute une propriété.
+	 * Ajoute une propriÃ©tÃ©.
 	 * 
-	 * @param name Nom de la propriété.
-	 * @param value Valeur de la propriété.
+	 * @param name Nom de la propriÃ©tÃ©.
+	 * @param value Valeur de la propriÃ©tÃ©.
 	 */
 	public void addProperty(String name, String value) {
 		this.map.put(name, value);
@@ -104,7 +104,7 @@ public class KspAttribute {
 	}
 
 	/**
-	 * Map nom/valeur des propriétés.
+	 * Map nom/valeur des propriÃ©tÃ©s.
 	 */
 	private static class PropertyMap extends HashMap<String, String> {
 

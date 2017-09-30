@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.KspDeclaration;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
@@ -15,7 +15,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * Détecteur de lien à partir d'implémentation de KSP dans un fichier Java.
+ * DÃ©tecteur de lien Ã  partir d'implÃ©mentation de KSP dans un fichier Java.
  */
 public class KspImplementationHyperLinkDetector extends AbstractHyperlinkDetector {
 
@@ -41,13 +41,13 @@ public class KspImplementationHyperLinkDetector extends AbstractHyperlinkDetecto
 			return null; // NOSONAR
 		}
 
-		/* Cherche une déclaration KSP correspondant au nom Java. */
+		/* Cherche une dÃ©claration KSP correspondant au nom Java. */
 		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclaration(currentWord);
 		if (kspDeclaration == null) {
 			return null; // NOSONAR
 		}
 
-		/* Construit le lien vers la déclaration KSP. */
+		/* Construit le lien vers la dÃ©claration KSP. */
 		IRegion targetRegion = new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 		return new IHyperlink[] { new KspDeclarationHyperLink(targetRegion, kspDeclaration) };
 	}

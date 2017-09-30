@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
+Ôªøpackage io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
 
 import io.vertigo.chroma.kspplugin.lexicon.LexiconManager;
 import io.vertigo.chroma.kspplugin.lexicon.Lexicons;
@@ -23,12 +23,12 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Scanner de la partition des string (chaÓne entre guillemets doubles).
+ * Scanner de la partition des string (cha√Æne entre guillemets doubles).
  * <p>
- * Le scanner vise les string de la propriÈtÈ "request" des t‚ches SQL.
+ * Le scanner vise les string de la propri√©t√© "request" des t√¢ches SQL.
  * </p>
  * <p>
- * Il s'applique ‡ tous les string de KSP avec des risques de faux positifs dans la coloration syntaxique.
+ * Il s'applique √† tous les string de KSP avec des risques de faux positifs dans la coloration syntaxique.
  * </p>
  */
 public class KspStringScanner extends RuleBasedScanner {
@@ -44,7 +44,7 @@ public class KspStringScanner extends RuleBasedScanner {
 	private RGB defaultColor;
 
 	/**
-	 * CrÈÈ une nouvelle instance de KspStringScanner.
+	 * Cr√©√© une nouvelle instance de KspStringScanner.
 	 */
 	public KspStringScanner() {
 		super();
@@ -70,7 +70,7 @@ public class KspStringScanner extends RuleBasedScanner {
 		IToken doubleQuote = new Token(new TextAttribute(new Color(Display.getCurrent(), doubleQuoteColor), null, SWT.NORMAL));
 		IToken defaut = new Token(new TextAttribute(new Color(Display.getCurrent(), defaultColor), null, SWT.BOLD));
 
-		/* RËgle de dÈtection de mots avec un style par dÈfaut. */
+		/* R√®gle de d√©tection de mots avec un style par d√©faut. */
 		WordRule wordRule = new WordRule(new IWordDetector() {
 			@Override
 			public boolean isWordPart(char c) {
@@ -83,12 +83,12 @@ public class KspStringScanner extends RuleBasedScanner {
 			}
 		}, defaut, true /* ignoreCase */);
 
-		/* Note les mots-clÈs SQL. */
+		/* Note les mots-cl√©s SQL. */
 		for (String k : SQL_KEY_WORDS) {
 			wordRule.addWord(k, verb);
 		}
 
-		/* RËgle de dÈtection de signes de ponctuation avec un style par dÈfaut. */
+		/* R√®gle de d√©tection de signes de ponctuation avec un style par d√©faut. */
 		List<String> puncutationList = Arrays.asList(SQL_PUNCTUATION);
 		WordRule punctuationRule = new WordRule(new IWordDetector() {
 			@Override
@@ -103,7 +103,7 @@ public class KspStringScanner extends RuleBasedScanner {
 		}, comment, true /* ignoreCase */);
 
 		/*
-		 * RËgle pour les guillemets doubles ouvrantes et fermantes de la chaÓne.
+		 * R√®gle pour les guillemets doubles ouvrantes et fermantes de la cha√Æne.
 		 */
 		WordRule doubleQuoteRule = new WordRule(new IWordDetector() {
 
@@ -125,23 +125,23 @@ public class KspStringScanner extends RuleBasedScanner {
 		doubleQuoteRule.addWord("\"", doubleQuote);
 
 		return new IRule[] {
-		/* RËgle sur les guillemets doubles */
+		/* R√®gle sur les guillemets doubles */
 		doubleQuoteRule,
-		/* RËgle pour les commentaires SQL multi-lignes. */
+		/* R√®gle pour les commentaires SQL multi-lignes. */
 		new PatternRule("/*", "*/", comment, NO_ESCAPE_CHAR, false),
-		/* RËgle pour les commentaires SQL sur une ligne. */
+		/* R√®gle pour les commentaires SQL sur une ligne. */
 		new EndOfLineRule("--", comment, NO_ESCAPE_CHAR, false),
-		/* RËgle pour les tags Java dans le SQL (Kasper >=4 ). */
+		/* R√®gle pour les tags Java dans le SQL (Kasper >=4 ). */
 		new PatternRule("<%", "%>", javaTag, NO_ESCAPE_CHAR, false),
-		/* RËgle pour les tags Java dans le SQL (Kasper 3 ). */
+		/* R√®gle pour les tags Java dans le SQL (Kasper 3 ). */
 		new PatternRule("<if", ">", javaTag, NO_ESCAPE_CHAR, false),
-		/* RËgle pour les tags Java dans le SQL (Kasper 3 ). */
+		/* R√®gle pour les tags Java dans le SQL (Kasper 3 ). */
 		new PatternRule("</if", ">", javaTag, NO_ESCAPE_CHAR, false),
-		/* RËgle pour les paramËtres SQL */
+		/* R√®gle pour les param√®tres SQL */
 		new PatternRule("#", "#", parameter, NO_ESCAPE_CHAR, false),
-		/* RËgle sur les mots-clÈs */
+		/* R√®gle sur les mots-cl√©s */
 		wordRule,
-		/* RËgle pour la ponctuation */
+		/* R√®gle pour la ponctuation */
 		punctuationRule };
 	}
 }

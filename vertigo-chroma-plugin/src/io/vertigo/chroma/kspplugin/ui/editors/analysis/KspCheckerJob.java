@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 
 /**
- * Job de vérification d'un fichier Ksp. L'encapsulation dans un WorkspaceJob permet d'exécuter la vérification de manière asynchrone et sans accès concurrent
+ * Job de vÃ©rification d'un fichier Ksp. L'encapsulation dans un WorkspaceJob permet d'exÃ©cuter la vÃ©rification de maniÃ¨re asynchrone et sans accÃ¨s concurrent
  * aux ressources du projet.
  */
 public final class KspCheckerJob extends WorkspaceJob {
@@ -16,7 +16,7 @@ public final class KspCheckerJob extends WorkspaceJob {
 	private final IFile file;
 
 	/**
-	 * Créé une nouvelle instance de KspCheckerJob.
+	 * CrÃ©Ã© une nouvelle instance de KspCheckerJob.
 	 * 
 	 * @param file Fichier KSP.
 	 */
@@ -32,7 +32,7 @@ public final class KspCheckerJob extends WorkspaceJob {
 	}
 
 	/**
-	 * Démarre une nouvelle instance du job pour un fichier donné.
+	 * DÃ©marre une nouvelle instance du job pour un fichier donnÃ©.
 	 * 
 	 * @param file Fichier KSP.
 	 */

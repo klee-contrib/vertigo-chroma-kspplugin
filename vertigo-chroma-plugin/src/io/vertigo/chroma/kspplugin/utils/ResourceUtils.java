@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.JavaProjectMap;
 import io.vertigo.chroma.kspplugin.model.Navigable;
@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
 /**
- * Méthodes utilitaires pour gérer les resources du workspace.
+ * MÃ©thodes utilitaires pour gÃ©rer les resources du workspace.
  *
  */
 public final class ResourceUtils {
@@ -57,12 +57,12 @@ public final class ResourceUtils {
 		/* Parcourt les projets de la racine. */
 		for (IProject project : wsRoot.getProjects()) {
 
-			/* Vérication que le projet est accessible. */
+			/* VÃ©rication que le projet est accessible. */
 			if (!project.isAccessible()) {
 				continue;
 			}
 
-			/* Vérifie que le projet est un projet Java. */
+			/* VÃ©rifie que le projet est un projet Java. */
 			if (!JdtUtils.isJavaProject(project)) {
 				continue;
 			}

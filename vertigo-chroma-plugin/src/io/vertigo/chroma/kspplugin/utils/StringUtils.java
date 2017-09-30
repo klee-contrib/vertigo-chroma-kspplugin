@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import java.util.regex.Pattern;
 
@@ -20,11 +20,11 @@ public final class StringUtils {
 	}
 
 	public static String toPascalCase(String constantCase) {
-		/* Délègue à l'implémentation de vertigo-core */
+		/* DÃ©lÃ¨gue Ã  l'implÃ©mentation de vertigo-core */
 		try {
 			return VertigoStringUtils.constToUpperCamelCase(constantCase);
 		} catch (Exception e) { // NOSONAR
-			/* En cas d'échec, implémentation dégradée. */
+			/* En cas d'Ã©chec, implÃ©mentation dÃ©gradÃ©e. */
 			String[] parts = constantCase.split("_");
 			StringBuilder sb = new StringBuilder();
 			for (String part : parts) {
@@ -35,11 +35,11 @@ public final class StringUtils {
 	}
 
 	public static String toCamelCase(String constantCase) {
-		/* Délègue à l'implémentation de vertigo-core */
+		/* DÃ©lÃ¨gue Ã  l'implÃ©mentation de vertigo-core */
 		try {
 			return VertigoStringUtils.constToLowerCamelCase(constantCase);
 		} catch (Exception e) { // NOSONAR
-			/* En cas d'échec, implémentation dégradée. */
+			/* En cas d'Ã©chec, implÃ©mentation dÃ©gradÃ©e. */
 			String[] parts = constantCase.split("_");
 			StringBuilder sb = new StringBuilder();
 			boolean isFirst = true;
@@ -57,11 +57,11 @@ public final class StringUtils {
 	}
 
 	public static String toConstantCase(String camelCase) {
-		/* Délègue à l'implémentation de vertigo-core */
+		/* DÃ©lÃ¨gue Ã  l'implÃ©mentation de vertigo-core */
 		try {
 			return VertigoStringUtils.camelToConstCase(camelCase);
 		} catch (Exception e) { // NOSONAR
-			/* En cas d'échec, implémentation dégradée. */
+			/* En cas d'Ã©chec, implÃ©mentation dÃ©gradÃ©e. */
 			StringBuilder sb = new StringBuilder();
 			for (char c : camelCase.toCharArray()) {
 				if (Character.isUpperCase(c) && sb.length() > 0) {

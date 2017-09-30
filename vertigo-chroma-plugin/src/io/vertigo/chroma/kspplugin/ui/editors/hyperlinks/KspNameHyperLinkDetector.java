@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+Ôªøpackage io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;
@@ -29,7 +29,7 @@ import org.eclipse.jface.text.hyperlink.AbstractHyperlinkDetector;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 
 /**
- * DÈtecteur de lien ‡ partir de nom KSP dans un fichier KSP.
+ * D√©tecteur de lien √† partir de nom KSP dans un fichier KSP.
  */
 public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 
@@ -63,7 +63,7 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 			return hyperlinks;
 		}
 
-		/* Cherche une dÈclaration KSP autre. */
+		/* Cherche une d√©claration KSP autre. */
 		return detectKspName(currentWord, targetRegion, fileRegion);
 	}
 
@@ -81,10 +81,10 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 		String kspKeyword = strategy.getKspKeyword(KspNature.DT_DEFINITION);
 		String javaName = strategy.getKspDeclarationJavaName(dtName, kspKeyword);
 
-		/* Cherche la dÈclaration KSP de DtDefinition */
+		/* Cherche la d√©claration KSP de DtDefinition */
 		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclaration(javaName, KspNature.DT_DEFINITION);
 
-		/* DÈclaration KSP trouvÈ : on ajoute un lien si on n'est pas dÈj‡ sur la dÈclaration. */
+		/* D√©claration KSP trouv√© : on ajoute un lien si on n'est pas d√©j√† sur la d√©claration. */
 		if (kspDeclaration != null && !fileRegion.equals(kspDeclaration.getFileRegion())) {
 			hyperLinks.add(new KspDeclarationHyperLink(targetRegion, kspDeclaration));
 		}
@@ -92,7 +92,7 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 		/* Cherche le fichier Java du DTO. */
 		DtoFile dtoFile = DtoManager.getInstance().findDtoFile(javaName);
 
-		/* Fichier Java trouvÈ : on ajoute un lien vers le fichier Java. */
+		/* Fichier Java trouv√© : on ajoute un lien vers le fichier Java. */
 		if (dtoFile != null) {
 			hyperLinks.add(new JavaImplementationHyperLink(targetRegion, dtoFile));
 		}
@@ -106,7 +106,7 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 	}
 
 	private IHyperlink[] detectTaskName(String currentWord, IRegion targetRegion) {
-		/* Extrait un nom de t‚che DAO / PAO. */
+		/* Extrait un nom de t√¢che DAO / PAO. */
 		String taskName = KspStringUtils.getTaskName(currentWord);
 		if (taskName == null) {
 			return null; // NOSONAR
@@ -114,30 +114,30 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 		/* Calcul le nom en PascalCase */
 		String javaName = StringUtils.toCamelCase(taskName);
 
-		/* Cherche la t‚che. */
+		/* Cherche la t√¢che. */
 		DaoImplementation daoImplementation = DaoManager.getInstance().findDaoImplementation(javaName);
 		if (daoImplementation == null) {
 			return null; // NOSONAR
 		}
 
-		/* On retourne le lien vers la t‚che. */
+		/* On retourne le lien vers la t√¢che. */
 		return new IHyperlink[] { new JavaImplementationHyperLink(targetRegion, daoImplementation) };
 	}
 
 	private IHyperlink[] detectKspName(String currentWord, IRegion targetRegion, FileRegion fileRegion) {
 
-		/* Cherche la dÈclaration. */
+		/* Cherche la d√©claration. */
 		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclarationByConstantCaseName(currentWord);
 		if (kspDeclaration == null) {
 			return null; // NOSONAR
 		}
 
-		/* VÈrifie que le focus n'est pas dÈj‡ sur la dÈclaration. */
+		/* V√©rifie que le focus n'est pas d√©j√† sur la d√©claration. */
 		if (fileRegion.equals(kspDeclaration.getFileRegion())) {
 			return null; // NOSONAR
 		}
 
-		/* Renvoie un lien vers la dÈclaration. */
+		/* Renvoie un lien vers la d√©claration. */
 		return new IHyperlink[] { new KspDeclarationHyperLink(targetRegion, kspDeclaration) };
 	}
 }

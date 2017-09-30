@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.kpr;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.kpr;
 
 import org.eclipse.ui.editors.text.TextEditor;
 
@@ -8,12 +8,12 @@ import org.eclipse.ui.editors.text.TextEditor;
 public class KprEditor extends TextEditor {
 
 	/**
-	 * Créé une nouvelle instance de KspTextEditor.
+	 * CrÃ©Ã© une nouvelle instance de KspTextEditor.
 	 */
 	public KprEditor() {
 		super();
 
-		/* Définit une configuration de SourceViewer pour définir des scanner. */
+		/* DÃ©finit une configuration de SourceViewer pour dÃ©finir des scanner. */
 		KprSourceViewerConfiguration configuration = new KprSourceViewerConfiguration(this);
 		setSourceViewerConfiguration(configuration);
 	}

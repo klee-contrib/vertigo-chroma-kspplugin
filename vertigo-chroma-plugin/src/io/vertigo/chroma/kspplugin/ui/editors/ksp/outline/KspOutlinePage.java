@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp.outline;
 
 import io.vertigo.chroma.kspplugin.model.KspDeclaration;
 import io.vertigo.chroma.kspplugin.model.KspFile;
@@ -47,7 +47,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 	private boolean isAlphabeticOrder = false;
 
 	/**
-	 * Créé une nouvelle instance de KspOutlinePage.
+	 * CrÃ©Ã© une nouvelle instance de KspOutlinePage.
 	 * 
 	 * @param editor Editeur KSP.
 	 */
@@ -72,7 +72,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 	public void selectionChanged(SelectionChangedEvent event) {
 		super.selectionChanged(event);
 
-		/* Récupère l'objet de déclaration KSP */
+		/* RÃ©cupÃ¨re l'objet de dÃ©claration KSP */
 		TreeKspDeclaration treeKspDeclaration = getTreeKspDeclaration(event);
 		if (treeKspDeclaration == null) {
 			return;
@@ -83,10 +83,10 @@ public class KspOutlinePage extends ContentOutlinePage {
 	}
 
 	/**
-	 * Créé les actions de la page.
+	 * CrÃ©Ã© les actions de la page.
 	 */
 	private void createActions() {
-		/* Créé l'action de tri de l'arborescence */
+		/* CrÃ©Ã© l'action de tri de l'arborescence */
 		sortAction = new Action("Sort", IAction.AS_CHECK_BOX) {
 			@Override
 			public void run() {
@@ -97,7 +97,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 	}
 
 	/**
-	 * Créé la barre d'outils de la page.
+	 * CrÃ©Ã© la barre d'outils de la page.
 	 */
 	private void createToolbar() {
 		/* Ajoute le bouton de tri. */
@@ -106,10 +106,10 @@ public class KspOutlinePage extends ContentOutlinePage {
 	}
 
 	/**
-	 * Extrait l'objet de déclaration KSP d'un événement de sélection de l'arboresence.
+	 * Extrait l'objet de dÃ©claration KSP d'un Ã©vÃ©nement de sÃ©lection de l'arboresence.
 	 * 
-	 * @param event Evénement de sélection.
-	 * @return Déclaration KSP.
+	 * @param event EvÃ©nement de sÃ©lection.
+	 * @return DÃ©claration KSP.
 	 */
 	private TreeKspDeclaration getTreeKspDeclaration(SelectionChangedEvent event) {
 		ISelection selection = event.getSelection();
@@ -128,17 +128,17 @@ public class KspOutlinePage extends ContentOutlinePage {
 	}
 
 	/**
-	 * Tri les déclarations.
+	 * Tri les dÃ©clarations.
 	 */
 	private void sortDeclarations() {
 		isAlphabeticOrder = sortAction.isChecked();
 
-		/* Rafraîchit le viewer. */
+		/* RafraÃ®chit le viewer. */
 		refreshViewer();
 	}
 
 	/**
-	 * Rafraîchit la vue.
+	 * RafraÃ®chit la vue.
 	 */
 	private void refreshViewer() {
 		TreeViewer viewer = getTreeViewer();
@@ -216,7 +216,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 		 */
 		private void initialize() {
 
-			/* Obtient le document à partir de l'éditeur. */
+			/* Obtient le document Ã  partir de l'Ã©diteur. */
 			IDocument document = UiUtils.getEditorDocument(editor);
 			IFile file = UiUtils.getEditorFile(editor);
 
@@ -233,7 +233,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 				invisibleRoot.addChild(kspPackage);
 			}
 
-			/* Noeuds des déclarations. */
+			/* Noeuds des dÃ©clarations. */
 			KspDeclaration[] kspDeclarations = getSortedDeclarations(kspFile);
 			for (KspDeclaration kspDeclaration : kspDeclarations) {
 				TreeObject to = new TreeKspDeclaration(kspDeclaration);
@@ -242,15 +242,15 @@ public class KspOutlinePage extends ContentOutlinePage {
 		}
 
 		/**
-		 * Obtient les déclarations triés du KSP.
+		 * Obtient les dÃ©clarations triÃ©s du KSP.
 		 * 
 		 * @param kspFile Fichier KSP.
-		 * @return Déclarations triées.
+		 * @return DÃ©clarations triÃ©es.
 		 */
 		private KspDeclaration[] getSortedDeclarations(KspFile kspFile) {
 			KspDeclaration[] kspDeclarations = kspFile.getKspDeclarations().toArray(new KspDeclaration[] {});
 
-			/* Gestion du tri par ordre alphabétique. */
+			/* Gestion du tri par ordre alphabÃ©tique. */
 			if (isAlphabeticOrder) {
 				Arrays.sort(kspDeclarations, (arg0, arg1) -> arg0.toString().compareTo(arg1.toString()));
 			}
@@ -259,7 +259,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 
 		@Override
 		public void resourceChanged(IResourceChangeEvent event) {
-			/* Rafraîchissement de toute la vue. */
+			/* RafraÃ®chissement de toute la vue. */
 			UiUtils.refreshViewer(viewer);
 		}
 	}

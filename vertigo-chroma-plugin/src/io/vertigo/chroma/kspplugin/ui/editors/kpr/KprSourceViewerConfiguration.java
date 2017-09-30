@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.kpr;
+﻿package io.vertigo.chroma.kspplugin.ui.editors.kpr;
 
 import io.vertigo.chroma.kspplugin.ui.editors.hyperlinks.FilePathHyperLinkDetector;
 
@@ -12,7 +12,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
 
 /**
- * Coniguration du SourceViewer de l'�diteur de KPR.
+ * Coniguration du SourceViewer de l'éditeur de KPR.
  */
 public class KprSourceViewerConfiguration extends TextSourceViewerConfiguration {
 

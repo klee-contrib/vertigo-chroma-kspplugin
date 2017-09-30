@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoFile;
@@ -23,7 +23,7 @@ public class KspInformationPresenter implements DefaultInformationControl.IInfor
 			return infoText;
 		}
 
-		/* Construit le text hover et le style en parallèle. */
+		/* Construit le text hover et le style en parallÃ¨le. */
 		StyledStringBuiler sb = new StyledStringBuiler(presentation);
 		String tableSnakeCase = StringUtils.toSnakeCase(dtoFile.getJavaName());
 		sb.append(String.format("Table %s", tableSnakeCase), StyleType.BOLD);
@@ -57,7 +57,7 @@ public class KspInformationPresenter implements DefaultInformationControl.IInfor
 	}
 
 	/**
-	 * StringBuilder permettant de gérer en parallèle du style.
+	 * StringBuilder permettant de gÃ©rer en parallÃ¨le du style.
 	 */
 	private class StyledStringBuiler {
 
@@ -77,9 +77,9 @@ public class KspInformationPresenter implements DefaultInformationControl.IInfor
 			int length = s.length();
 			/* Ajoute le string. */
 			sb.append(s);
-			/* Créé le style range. */
+			/* CrÃ©Ã© le style range. */
 			addStyleRange(styleType, length);
-			/* Met à jour l'offset courant. */
+			/* Met Ã  jour l'offset courant. */
 			offset += length;
 			return this;
 		}
@@ -89,9 +89,9 @@ public class KspInformationPresenter implements DefaultInformationControl.IInfor
 			int length = paddedString.length();
 			/* Ajoute le string. */
 			sb.append(paddedString);
-			/* Créé le style range. */
+			/* CrÃ©Ã© le style range. */
 			addStyleRange(styleType, length);
-			/* Met à jour l'offset courant. */
+			/* Met Ã  jour l'offset courant. */
 			offset += length;
 			return this;
 		}
@@ -114,7 +114,7 @@ public class KspInformationPresenter implements DefaultInformationControl.IInfor
 	private enum StyleType {
 
 		/**
-		 * Style par défaut.
+		 * Style par dÃ©faut.
 		 */
 		DEFAULT,
 

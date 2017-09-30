@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources;
+ï»¿package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.Manager;
@@ -30,7 +30,7 @@ import org.eclipse.jdt.core.JavaModelException;
  * <p>
  * <ul>
  * <li>index les fichiers de webservice et leurs routes.</li>
- * <li>maintient un cache à jour</li>
+ * <li>maintient un cache Ã  jour</li>
  * <li>publie une API de recherche</li>
  * </ul>
  * <p>
@@ -42,7 +42,7 @@ public final class WsRouteManager implements Manager {
 	private final ResourceStore<WsRoute> store;
 
 	/**
-	 * Créé une nouvelle instance de WsRouteManager.
+	 * CrÃ©Ã© une nouvelle instance de WsRouteManager.
 	 */
 	private WsRouteManager() {
 		store = new ResourceStore<>(new Implementor());
@@ -60,7 +60,7 @@ public final class WsRouteManager implements Manager {
 
 	@Override
 	public void init() {
-		/* Démarre le magasin qui index tous les fichiers concernés. */
+		/* DÃ©marre le magasin qui index tous les fichiers concernÃ©s. */
 		instance.store.start();
 	}
 
@@ -84,7 +84,7 @@ public final class WsRouteManager implements Manager {
 				return null; // NOSONAR
 			}
 
-			/* Récupère toutes les implémentations. */
+			/* RÃ©cupÃ¨re toutes les implÃ©mentations. */
 			return wsFile.getWsRoutes();
 		}
 
@@ -117,7 +117,7 @@ public final class WsRouteManager implements Manager {
 				ErrorUtils.handle(e);
 			}
 
-			/* Créé le fichier de webservice. */
+			/* CrÃ©Ã© le fichier de webservice. */
 			return new WsFile(file, wsRoutes);
 		}
 
@@ -125,7 +125,7 @@ public final class WsRouteManager implements Manager {
 			try {
 				String pathPrefix = getPathPrefix(type);
 
-				/* Parcourt les méthodes du contrôleur de web services. */
+				/* Parcourt les mÃ©thodes du contrÃ´leur de web services. */
 				for (IMethod method : type.getMethods()) {
 					handleMethod(method, pathPrefix, file, wsRoutes);
 				}
@@ -135,7 +135,7 @@ public final class WsRouteManager implements Manager {
 		}
 
 		private void handleMethod(IMethod method, String pathPrefix, IFile file, List<WsRoute> wsRoutes) throws JavaModelException {
-			/* Filtre pour ne garder que les méthodes publiques d'instance */
+			/* Filtre pour ne garder que les mÃ©thodes publiques d'instance */
 			if (method.isConstructor() || Flags.isStatic(method.getFlags()) || Flags.isPrivate(method.getFlags())) {
 				return;
 			}
@@ -152,10 +152,10 @@ public final class WsRouteManager implements Manager {
 				/* Extrait la route partielle. */
 				String routePatternSuffix = JdtUtils.getMemberValue(verbAnnotation);
 
-				/* Calcule la route complète. */
+				/* Calcule la route complÃ¨te. */
 				String routePattern = pathPrefix + routePatternSuffix;
 
-				/* Créé la WsRoute. */
+				/* CrÃ©Ã© la WsRoute. */
 				String javaName = method.getElementName();
 				ISourceRange nameRange = method.getNameRange();
 				FileRegion fileRegion = new FileRegion(file, nameRange.getOffset(), nameRange.getLength());
@@ -165,7 +165,7 @@ public final class WsRouteManager implements Manager {
 		}
 
 		private String getPathPrefix(IType type) throws JavaModelException {
-			/* Extrait un éventuel PathPrefix de la classe. */
+			/* Extrait un Ã©ventuel PathPrefix de la classe. */
 			IAnnotation pathPrefixAnnotation = JdtUtils.getAnnotation(type, "PathPrefix");
 			if (pathPrefixAnnotation == null) {
 				return "";

@@ -1,11 +1,11 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 
 /**
- * Représente un fichier Java de webservices et l'ensemble de ses routes.
+ * ReprÃ©sente un fichier Java de webservices et l'ensemble de ses routes.
  */
 public class WsFile {
 
@@ -13,7 +13,7 @@ public class WsFile {
 	private List<WsRoute> wsRoutes;
 
 	/**
-	 * Créé une nouvelle instance de WsFile.
+	 * CrÃ©Ã© une nouvelle instance de WsFile.
 	 * 
 	 * @param file Ressource fichier du webservice Java dans le workspace.
 	 * @param wsRoutes Liste des routes.

@@ -1,26 +1,26 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 
 /**
- * Représente un fichier d'implémentation de service métier et l'ensemble de ses méthodes.
+ * ReprÃ©sente un fichier d'implÃ©mentation de service mÃ©tier et l'ensemble de ses mÃ©thodes.
  */
 public class ServiceFile {
 
 	private List<ServiceImplementation> serviceImplementations;
 
 	/**
-	 * Créé une nouvelle instance de ServiceFile.
+	 * CrÃ©Ã© une nouvelle instance de ServiceFile.
 	 * 
 	 * @param file Ressource fichier dans le workspace.
-	 * @param serviceImplementations Liste des méthodes.
+	 * @param serviceImplementations Liste des mÃ©thodes.
 	 */
 	public ServiceFile(List<ServiceImplementation> serviceImplementations) {
 		this.serviceImplementations = serviceImplementations;
 	}
 
 	/**
-	 * @return Renvoie la liste des déclarations KSP.
+	 * @return Renvoie la liste des dÃ©clarations KSP.
 	 */
 	public List<ServiceImplementation> getServiceImplementations() {
 		return serviceImplementations;

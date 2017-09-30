@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp;
 
 import io.vertigo.chroma.kspplugin.model.KspRegionType;
 import io.vertigo.chroma.kspplugin.ui.editors.completion.KspDefaultContentAssistProcessor;
@@ -30,7 +30,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
 
 /**
- * Configuration du SourceViewer de l'éditeur de KSP.
+ * Configuration du SourceViewer de l'Ã©diteur de KSP.
  */
 public class KspSourceViewerConfiguration extends TextSourceViewerConfiguration {
 
@@ -46,13 +46,13 @@ public class KspSourceViewerConfiguration extends TextSourceViewerConfiguration 
 	@Override
 	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
 
-		/* Créé un Reconsilier chargé de gérer les changements du document. */
+		/* CrÃ©Ã© un Reconsilier chargÃ© de gÃ©rer les changements du document. */
 		PresentationReconciler reconciler = new PresentationReconciler();
 
-		/* Définition du nom du partitionnement effectué par KspDocumentSetupParticipant. */
+		/* DÃ©finition du nom du partitionnement effectuÃ© par KspDocumentSetupParticipant. */
 		reconciler.setDocumentPartitioning(KspRegionType.PARTITIONING);
 
-		/* Définition des scanners pour chacune des trois partitions. */
+		/* DÃ©finition des scanners pour chacune des trois partitions. */
 		setRepairer(reconciler, commentScanner, KspRegionType.COMMENT.getContentType());
 		setRepairer(reconciler, stringScanner, KspRegionType.STRING.getContentType());
 		setRepairer(reconciler, defaultScanner, KspRegionType.DEFAULT.getContentType());

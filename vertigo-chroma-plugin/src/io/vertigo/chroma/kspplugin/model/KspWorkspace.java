@@ -1,9 +1,9 @@
-package io.vertigo.chroma.kspplugin.model;
+﻿package io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 
 /**
- * Stocke l'ensemble des d�clarations KSP de tout un workspace.
+ * Stocke l'ensemble des déclarations KSP de tout un workspace.
  */
 public class KspWorkspace {
 

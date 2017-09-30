@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import io.vertigo.chroma.kspplugin.utils.ImageUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
@@ -8,7 +8,7 @@ import java.text.MessageFormat;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Représente une route de webservice.
+ * ReprÃ©sente une route de webservice.
  */
 public class WsRoute extends JavaNavigable implements Openable {
 
@@ -16,10 +16,10 @@ public class WsRoute extends JavaNavigable implements Openable {
 	private String verb;
 
 	/**
-	 * Créé une nouvelle instance de WsRoute.
+	 * CrÃ©Ã© une nouvelle instance de WsRoute.
 	 * 
-	 * @param fileRegion Région de fichier de la méthode du webservice.
-	 * @param javaName Nom de la méthode du webservice.
+	 * @param fileRegion RÃ©gion de fichier de la mÃ©thode du webservice.
+	 * @param javaName Nom de la mÃ©thode du webservice.
 	 * @param routePattern Pattern de la route.
 	 * @param verb Verbe HTTP de la route.
 	 */

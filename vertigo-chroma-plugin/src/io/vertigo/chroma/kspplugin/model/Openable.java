@@ -1,28 +1,28 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Contrat des objets utilisable dans une fenêtre de recherche.
+ * Contrat des objets utilisable dans une fenÃªtre de recherche.
  */
 public interface Openable extends Navigable {
 
 	/**
-	 * Renvoie le texte principal à afficher.
+	 * Renvoie le texte principal Ã  afficher.
 	 * 
 	 * @return Texte.
 	 */
 	String getText();
 
 	/**
-	 * Renvoie le texte qualifiant complètement l'élément.
+	 * Renvoie le texte qualifiant complÃ¨tement l'Ã©lÃ©ment.
 	 * 
 	 * @return Texte.
 	 */
 	String getQualifier();
 
 	/**
-	 * Renvoie l'icône illustrant l'élément.
+	 * Renvoie l'icÃ´ne illustrant l'Ã©lÃ©ment.
 	 * 
 	 * @return Image.
 	 */

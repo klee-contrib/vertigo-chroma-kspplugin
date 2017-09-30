@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.boot;
+ï»¿package io.vertigo.chroma.kspplugin.boot;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.Manager;
@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.IStartup;
 
 /**
- * Classe publiant une méthode exécutée au démarrage d'Eclipse.
+ * Classe publiant une mÃ©thode exÃ©cutÃ©e au dÃ©marrage d'Eclipse.
  */
 public class KspPluginStartup implements IStartup {
 
@@ -29,7 +29,7 @@ public class KspPluginStartup implements IStartup {
 		Manager[] managers = new Manager[] { KspManager.getInstance(), DaoManager.getInstance(), DtoManager.getInstance(), ServiceManager.getInstance(),
 				WsRouteManager.getInstance() };
 
-		/* Créé et programme un job pour démarrer chacun des managers de ressources. */
+		/* CrÃ©Ã© et programme un job pour dÃ©marrer chacun des managers de ressources. */
 		for (Manager pluginManager : managers) {
 
 			Job job = new Job("KspPluginInit" + pluginManager.getClass().getSimpleName()) {

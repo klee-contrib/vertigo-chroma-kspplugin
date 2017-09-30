@@ -1,19 +1,19 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.Navigable;
 
 import org.eclipse.jface.text.IRegion;
 
 /**
- * Lien vers une implémentation Java.
+ * Lien vers une implÃ©mentation Java.
  */
 public class JavaImplementationHyperLink extends NavigableHyperLink {
 
 	/**
-	 * Créé une nouvelle instance de JavaImplementationHyperLink.
+	 * CrÃ©Ã© une nouvelle instance de JavaImplementationHyperLink.
 	 * 
-	 * @param urlRegion Région du lien dans le document.
-	 * @param navigable Navigable de l'implémentation Java.
+	 * @param urlRegion RÃ©gion du lien dans le document.
+	 * @param navigable Navigable de l'implÃ©mentation Java.
 	 */
 	public JavaImplementationHyperLink(IRegion urlRegion, Navigable navigable) {
 		super(urlRegion, navigable, "Open Java Implementation");

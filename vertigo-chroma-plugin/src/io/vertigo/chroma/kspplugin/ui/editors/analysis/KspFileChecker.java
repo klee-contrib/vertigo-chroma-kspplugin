@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 import io.vertigo.chroma.kspplugin.utils.MarkerUtils;
@@ -9,7 +9,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.ui.editors.text.TextFileDocumentProvider;
 
 /**
- * Vérificateur de fichier KSP.
+ * VÃ©rificateur de fichier KSP.
  */
 public class KspFileChecker {
 
@@ -17,7 +17,7 @@ public class KspFileChecker {
 	private IDocument document;
 
 	/**
-	 * Créé une nouvelle instance de KspFileChecker.
+	 * CrÃ©Ã© une nouvelle instance de KspFileChecker.
 	 * 
 	 * @param file Fichier KSP.
 	 */
@@ -26,7 +26,7 @@ public class KspFileChecker {
 	}
 
 	/**
-	 * Exécute la vérification du fichier et met à jour les marqueurs.
+	 * ExÃ©cute la vÃ©rification du fichier et met Ã  jour les marqueurs.
 	 */
 	public void check() {
 		deleteMarkers();
@@ -41,7 +41,7 @@ public class KspFileChecker {
 	}
 
 	/**
-	 * Créé les marqueurs du fichier courant.
+	 * CrÃ©Ã© les marqueurs du fichier courant.
 	 */
 	private void createMarkers() {
 		try {
@@ -53,7 +53,7 @@ public class KspFileChecker {
 			/* Analyse le document. */
 			checkKspDocument();
 
-			/* Libère le document. */
+			/* LibÃ¨re le document. */
 			documentProvider.disconnect(file);
 		} catch (CoreException e) {
 			ErrorUtils.handle(e);
@@ -69,28 +69,28 @@ public class KspFileChecker {
 
 		/* Parcourt les lignes du document. */
 		for (int lineIdx = 0; lineIdx < document.getNumberOfLines(); lineIdx++) {
-			/* Extrait un candidat de ligne de déclaration. */
+			/* Extrait un candidat de ligne de dÃ©claration. */
 			KspDeclarationChecker candidate = KspDeclarationChecker.extractChecker(file, document, lineIdx);
 
-			/* Cas où la ligne contient une déclaration KSP */
+			/* Cas oÃ¹ la ligne contient une dÃ©claration KSP */
 			if (candidate != null) {
 				if (checker != null) {
-					/* Cas d'une nouvelle déclaration : on génère les marqueurs pour la déclaration précédente. */
+					/* Cas d'une nouvelle dÃ©claration : on gÃ©nÃ¨re les marqueurs pour la dÃ©claration prÃ©cÃ©dente. */
 					checker.generateMarkers();
 				}
 
-				/* Mise à jour de la déclaration inspectée courante. */
+				/* Mise Ã  jour de la dÃ©claration inspectÃ©e courante. */
 				checker = candidate;
 			}
 
-			/* Il existe une déclaration courante */
+			/* Il existe une dÃ©claration courante */
 			if (checker != null) {
 				/* On inspecte la ligne. */
 				checker.inspectLine(lineIdx);
 			}
 		}
 
-		/* Dernière déclaration du fichier */
+		/* DerniÃ¨re dÃ©claration du fichier */
 		if (checker != null) {
 			checker.generateMarkers();
 		}

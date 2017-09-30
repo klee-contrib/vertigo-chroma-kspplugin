@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.completion;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.completion;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.CompletionCandidate;
@@ -16,9 +16,9 @@ import java.util.List;
 import org.eclipse.jface.text.ITextSelection;
 
 /**
- * Processeur gérant l'autocomplétion pour la région principale d'un KSP.
+ * Processeur gÃ©rant l'autocomplÃ©tion pour la rÃ©gion principale d'un KSP.
  * <p>
- * Gère l'autocomplétion sur les noms de domaines.
+ * GÃ¨re l'autocomplÃ©tion sur les noms de domaines.
  * </p>
  */
 public class KspDefaultContentAssistProcessor extends BaseContentAssistProcessor {
@@ -36,7 +36,7 @@ public class KspDefaultContentAssistProcessor extends BaseContentAssistProcessor
 			list.add(new CompletionCandidate(domain.getConstantCaseName(), "Domain of primitive " + domain.getJavaName() + "."));
 		}
 
-		/* Obtient le pattern à utiliser pour les références de DTO. */
+		/* Obtient le pattern Ã  utiliser pour les rÃ©fÃ©rences de DTO. */
 		DtoReferencePattern pattern = LegacyManager.getInstance().getCurrentStrategy().getDtoReferenceSyntaxe();
 
 		/* Ajoute les domaines des DTO et DTC. */
@@ -57,7 +57,7 @@ public class KspDefaultContentAssistProcessor extends BaseContentAssistProcessor
 			}
 		}
 
-		/* Tri par libellé. */
+		/* Tri par libellÃ©. */
 		list.sort((o1, o2) -> o1.getDisplayString().compareTo(o2.getDisplayString()));
 		return list;
 	}

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.Activator;
 import io.vertigo.chroma.kspplugin.model.KspDeclaration;
@@ -11,7 +11,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Utilitaire pour fournir des images pour l'UI.
  * <p>
- * On privilégie le recyclage d'images des plugins standard existants.
+ * On privilÃ©gie le recyclage d'images des plugins standard existants.
  * </p>
  */
 public final class ImageUtils {
@@ -21,9 +21,9 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * Obtient une image pour une déclaration KSP.
+	 * Obtient une image pour une dÃ©claration KSP.
 	 * 
-	 * @param kspDeclaration Déclaration KSP.
+	 * @param kspDeclaration DÃ©claration KSP.
 	 * @return Image.
 	 */
 	public static Image getDeclarationImage(KspDeclaration kspDeclaration) { // NOSONAR
@@ -42,7 +42,7 @@ public final class ImageUtils {
 			return sharedImages.getImage(org.eclipse.ui.ISharedImages.IMG_OBJ_FILE);
 		default:
 			/*
-			 * Pas d'images spécifiques pour : Constraint, Formatter, Association, PublisherNode, Controller...
+			 * Pas d'images spÃ©cifiques pour : Constraint, Formatter, Association, PublisherNode, Controller...
 			 */
 			return sharedImages.getImage(org.eclipse.ui.ISharedImages.IMG_OBJ_ELEMENT);
 		}
@@ -67,18 +67,18 @@ public final class ImageUtils {
 	}
 
 	/**
-	 * Obtient une image pour une implémentation de service.
+	 * Obtient une image pour une implÃ©mentation de service.
 	 * 
-	 * @return Image d'implémentation de service.
+	 * @return Image d'implÃ©mentation de service.
 	 */
 	public static Image getServiceImage() {
 		return JavaUI.getSharedImages().getImage(org.eclipse.jdt.ui.ISharedImages.IMG_OBJS_PUBLIC);
 	}
 
 	/**
-	 * Obtient une image pour une méthode de DAO/PAO.
+	 * Obtient une image pour une mÃ©thode de DAO/PAO.
 	 * 
-	 * @return Image de méthode de DAO/PAO.
+	 * @return Image de mÃ©thode de DAO/PAO.
 	 */
 	public static Image getDaoImage() {
 		return JavaUI.getSharedImages().getImage(org.eclipse.jdt.ui.ISharedImages.IMG_OBJS_PUBLIC);

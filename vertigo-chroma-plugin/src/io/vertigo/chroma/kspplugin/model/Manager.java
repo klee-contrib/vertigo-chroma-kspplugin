@@ -1,9 +1,9 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
  * Contrat des managers.
  * <p>
- * Les managers ont un état qui doit être initialisé au démarrage du plugin.
+ * Les managers ont un Ã©tat qui doit Ãªtre initialisÃ© au dÃ©marrage du plugin.
  * </p>
  */
 @FunctionalInterface

@@ -1,7 +1,7 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
- * Nature de déclaration KSP.
+ * Nature de dÃ©claration KSP.
  */
 public enum KspNature {
 
@@ -11,10 +11,10 @@ public enum KspNature {
 	private final String kspKeywordKasper3;
 
 	/**
-	 * Créé une nouvelle instance de KspNature.
+	 * CrÃ©Ã© une nouvelle instance de KspNature.
 	 * 
-	 * @param kspKeyWord Mot-clé.
-	 * @param kspKeyWordKasper3 Mot-clé pour Kasper 3.
+	 * @param kspKeyWord Mot-clÃ©.
+	 * @param kspKeyWordKasper3 Mot-clÃ© pour Kasper 3.
 	 */
 	KspNature(String kspKeyWord, String kspKeyWordKasper3) {
 		this.kspKeyword = kspKeyWord;

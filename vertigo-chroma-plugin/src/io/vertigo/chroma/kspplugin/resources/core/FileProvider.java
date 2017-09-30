@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources.core;
+ï»¿package io.vertigo.chroma.kspplugin.resources.core;
 
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 
@@ -20,7 +20,7 @@ public class FileProvider {
 	private final IJavaProject javaProject;
 
 	/**
-	 * Créé une nouvelle instance de FileProvider.
+	 * CrÃ©Ã© une nouvelle instance de FileProvider.
 	 * 
 	 * @param file Fichier.
 	 * @param project Projet.

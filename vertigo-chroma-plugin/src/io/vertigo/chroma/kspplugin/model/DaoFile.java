@@ -1,11 +1,11 @@
-package io.vertigo.chroma.kspplugin.model;
+Ôªøpackage io.vertigo.chroma.kspplugin.model;
 
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 
 /**
- * ReprÈsente un fichier DAO/PAO et l'ensemble de ses t‚ches.
+ * Repr√©sente un fichier DAO/PAO et l'ensemble de ses t√¢ches.
  */
 public class DaoFile {
 
@@ -13,10 +13,10 @@ public class DaoFile {
 	private List<DaoImplementation> daoImplementations;
 
 	/**
-	 * CrÈÈ une nouvelle instance de DaoFile.
+	 * Cr√©√© une nouvelle instance de DaoFile.
 	 * 
 	 * @param file Ressource fichier du DAO/PAO dans le workspace.
-	 * @param daoImplementations Liste des t‚ches.
+	 * @param daoImplementations Liste des t√¢ches.
 	 */
 	public DaoFile(IFile file, List<DaoImplementation> daoImplementations) {
 		super();
@@ -35,7 +35,7 @@ public class DaoFile {
 	}
 
 	/**
-	 * @return Renvoie la liste des t‚ches.
+	 * @return Renvoie la liste des t√¢ches.
 	 */
 	public List<DaoImplementation> getDaoImplementations() {
 		return daoImplementations;

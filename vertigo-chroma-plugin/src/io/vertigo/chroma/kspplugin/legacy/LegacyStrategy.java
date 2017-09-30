@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+ï»¿package io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoReferencePattern;
@@ -12,23 +12,23 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jdt.core.IType;
 
 /**
- * Contrat des stratégies de gestion d'un framework Vertigo/Kasper donné.
+ * Contrat des stratÃ©gies de gestion d'un framework Vertigo/Kasper donnÃ©.
  */
 public interface LegacyStrategy {
 
 	/**
-	 * Analyse une ligne de document KSP et renvoie la description d'une déclaration KSP si elle en contient une.
+	 * Analyse une ligne de document KSP et renvoie la description d'une dÃ©claration KSP si elle en contient une.
 	 * 
 	 * @param lineContent Contenu de la ligne du document KSP.
-	 * @return Description de la déclaration.
+	 * @return Description de la dÃ©claration.
 	 */
 	KspDeclarationParts getKspDeclarationParts(String lineContent);
 
 	/**
-	 * Obtient le nom Java pour un nom en constant case d'une déclaration KSP d'une nature donnée.
+	 * Obtient le nom Java pour un nom en constant case d'une dÃ©claration KSP d'une nature donnÃ©e.
 	 * 
 	 * @param constantCaseNameOnly Nom en constant case.
-	 * @param nature Nature de la déclaration.
+	 * @param nature Nature de la dÃ©claration.
 	 * @return Nom Java.
 	 */
 	String getKspDeclarationJavaName(String constantCaseNameOnly, String nature);
@@ -50,7 +50,7 @@ public interface LegacyStrategy {
 	boolean isDtoType(IType type);
 
 	/**
-	 * Indique si un fichier est candidat pour être un DTO.
+	 * Indique si un fichier est candidat pour Ãªtre un DTO.
 	 * 
 	 * @param file Fichier.
 	 * @return <code>true</code> si c'est un candidat.
@@ -66,7 +66,7 @@ public interface LegacyStrategy {
 	List<DtoField> parseDtoFields(IType type);
 
 	/**
-	 * Indique si un fichier est candidat pour être une implémentation de service métier.
+	 * Indique si un fichier est candidat pour Ãªtre une implÃ©mentation de service mÃ©tier.
 	 * 
 	 * @param file Fichier.
 	 * @return <code>true</code> si c'est un candidat.
@@ -74,7 +74,7 @@ public interface LegacyStrategy {
 	boolean isServiceCandidate(IFile file);
 
 	/**
-	 * Indique si un fichier est candidat pour être un DAO/PAO.
+	 * Indique si un fichier est candidat pour Ãªtre un DAO/PAO.
 	 * 
 	 * @param file Fichier.
 	 * @return <code>true</code> si c'est un candidat.
@@ -82,15 +82,15 @@ public interface LegacyStrategy {
 	boolean isDaoCandidate(IFile file);
 
 	/**
-	 * Obtient le mot-clé KSP pour une nature de déclaration donnée.
+	 * Obtient le mot-clÃ© KSP pour une nature de dÃ©claration donnÃ©e.
 	 * 
 	 * @param kspNature Nature.
-	 * @return Mot-clé.
+	 * @return Mot-clÃ©.
 	 */
 	String getKspKeyword(KspNature kspNature);
 
 	/**
-	 * Obtient le pattern utilisé pour référencer un DTO dans un KSP.
+	 * Obtient le pattern utilisÃ© pour rÃ©fÃ©rencer un DTO dans un KSP.
 	 * 
 	 * @return Pattern.
 	 */

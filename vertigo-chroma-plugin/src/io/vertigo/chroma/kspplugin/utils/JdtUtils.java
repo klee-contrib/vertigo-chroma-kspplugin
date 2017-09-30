@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.internal.core.JavaProject;
 
 /**
- * Méthodes utilitaires pour manipuler l'AST Java avec le JDT.
+ * MÃ©thodes utilitaires pour manipuler l'AST Java avec le JDT.
  */
 @SuppressWarnings("restriction")
 public final class JdtUtils {
@@ -29,11 +29,11 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Obtient l'unité de compilation d'un fichier dans un projet donné.
+	 * Obtient l'unitÃ© de compilation d'un fichier dans un projet donnÃ©.
 	 * 
 	 * @param file Ressource fichier.
 	 * @param javaProject Projet Java.
-	 * @return Unité de compilation du fichier.
+	 * @return UnitÃ© de compilation du fichier.
 	 */
 	public static ICompilationUnit getCompilationUnit(IFile file, IJavaProject javaProject) {
 		try {
@@ -48,9 +48,9 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Obtient une annotation d'un nom donné sur un objet donné.
+	 * Obtient une annotation d'un nom donnÃ© sur un objet donnÃ©.
 	 * 
-	 * @param annotable Objet à inspecter.
+	 * @param annotable Objet Ã  inspecter.
 	 * @param name Nom de l'annotation.
 	 * @return Annotation, <code>null</code> sinon.
 	 */
@@ -69,7 +69,7 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Retourne la valeur du membre d'une annotation donnée.
+	 * Retourne la valeur du membre d'une annotation donnÃ©e.
 	 * 
 	 * @param annotation Annotation.
 	 * @param memberName Nom du membre.
@@ -89,7 +89,7 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Retourne la valeur du membre par défaut d'une annotation donnée.
+	 * Retourne la valeur du membre par dÃ©faut d'une annotation donnÃ©e.
 	 * 
 	 * @param annotation Annotation.
 	 * @return Valeur du membre.
@@ -106,18 +106,18 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Indique si le type donné est un DtObject Vertigo.
+	 * Indique si le type donnÃ© est un DtObject Vertigo.
 	 * 
 	 * @param type Type JDT.
 	 * @return <code>true</code> si le type est un DtObject.
 	 */
 	public static boolean isVertigoDtoType(IType type) {
 		try {
-			/* Vérifie que c'est une classe publique final. */
+			/* VÃ©rifie que c'est une classe publique final. */
 			if (!type.isClass() || !Flags.isPublic(type.getFlags()) || !Flags.isFinal(type.getFlags())) {
 				return false;
 			}
-			/* Vérifie les interfaces. */
+			/* VÃ©rifie les interfaces. */
 			return hasVertigoDtoTypeInterface(type);
 		} catch (JavaModelException e) {
 			ErrorUtils.handle(e);
@@ -140,18 +140,18 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Indique si le type donné est un DtObject Kasper 3.
+	 * Indique si le type donnÃ© est un DtObject Kasper 3.
 	 * 
 	 * @param type Type JDT.
 	 * @return <code>true</code> si le type est un DtObject.
 	 */
 	public static boolean isKasper3DtoType(IType type) {
 		try {
-			/* Vérifie que c'est une classe publique. */
+			/* VÃ©rifie que c'est une classe publique. */
 			if (!type.isClass() || !Flags.isPublic(type.getFlags())) {
 				return false;
 			}
-			/* Vérifie que la classe hérite de SuperDtObject */
+			/* VÃ©rifie que la classe hÃ©rite de SuperDtObject */
 			if (type.getSuperclassName() == null) {
 				return false;
 			}
@@ -164,18 +164,18 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Indique si le type donné est un DtObject Kasper 4 ou 5.
+	 * Indique si le type donnÃ© est un DtObject Kasper 4 ou 5.
 	 * 
 	 * @param type Type JDT.
 	 * @return <code>true</code> si le type est un DtObject.
 	 */
 	public static boolean isKasper345DtoType(IType type) {
 		try {
-			/* Vérifie que c'est une classe publique. */
+			/* VÃ©rifie que c'est une classe publique. */
 			if (!type.isClass() || !Flags.isPublic(type.getFlags())) {
 				return false;
 			}
-			/* Vérifie que la classe hérite d'un abstract de même nom préfixé ou suffixé par Abstract */
+			/* VÃ©rifie que la classe hÃ©rite d'un abstract de mÃªme nom prÃ©fixÃ© ou suffixÃ© par Abstract */
 			String superclassName = type.getSuperclassName();
 			if (superclassName == null) {
 				return false;
@@ -192,9 +192,9 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Obtient le type JDT pour un nom complet qualifié dans un projet donné.
+	 * Obtient le type JDT pour un nom complet qualifiÃ© dans un projet donnÃ©.
 	 * 
-	 * @param fullyQualifiedName Nom complet qualifié.
+	 * @param fullyQualifiedName Nom complet qualifiÃ©.
 	 * @param project Projet.
 	 * @return Le type JDT, <code>null</code> sinon.
 	 */
@@ -229,9 +229,9 @@ public final class JdtUtils {
 	}
 
 	/**
-	 * Indique si une unité de compilation Java se trouve dans le build path de son projet.
+	 * Indique si une unitÃ© de compilation Java se trouve dans le build path de son projet.
 	 * 
-	 * @param unit Unité de compilation.
+	 * @param unit UnitÃ© de compilation.
 	 * @return <ocde>true</code> si dans le build path de son projet.
 	 */
 	private static boolean isUnitInProjectBuildPath(ICompilationUnit unit) {

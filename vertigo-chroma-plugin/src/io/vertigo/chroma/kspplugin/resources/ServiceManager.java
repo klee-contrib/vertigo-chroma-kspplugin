@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources;
+ï»¿package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.FileRegion;
@@ -25,11 +25,11 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
 /**
- * Manager des fichiers des services métier.
+ * Manager des fichiers des services mÃ©tier.
  * <p>
  * <ul>
- * <li>index les fichiers d'implémentation de services métier et leurs méthodes.</li>
- * <li>maintient un cache à jour</li>
+ * <li>index les fichiers d'implÃ©mentation de services mÃ©tier et leurs mÃ©thodes.</li>
+ * <li>maintient un cache Ã  jour</li>
  * <li>publie une API de recherche</li>
  * </ul>
  * <p>
@@ -40,7 +40,7 @@ public final class ServiceManager implements Manager {
 	private final ResourceStore<ServiceImplementation> store;
 
 	/**
-	 * Créé une nouvelle instance de ServiceManager.
+	 * CrÃ©Ã© une nouvelle instance de ServiceManager.
 	 */
 	private ServiceManager() {
 		store = new ResourceStore<>(new Implementor());
@@ -58,12 +58,12 @@ public final class ServiceManager implements Manager {
 
 	@Override
 	public void init() {
-		/* Démarre le magasin qui index tous les fichiers concernés. */
+		/* DÃ©marre le magasin qui index tous les fichiers concernÃ©s. */
 		instance.store.start();
 	}
 
 	/**
-	 * @return Workspace des services métier.
+	 * @return Workspace des services mÃ©tier.
 	 */
 	public ServiceWorkspace getWorkspace() {
 		return new ServiceWorkspace(store.getAllItems());
@@ -76,13 +76,13 @@ public final class ServiceManager implements Manager {
 			IFile file = fileProvider.getFile();
 			IJavaProject javaProject = fileProvider.getJavaProject();
 
-			/* Parse le fichier d'implémentation de service. */
+			/* Parse le fichier d'implÃ©mentation de service. */
 			ServiceFile serviceFile = createServiceFile(file, javaProject);
 			if (serviceFile == null) {
 				return null; // NOSONAR
 			}
 
-			/* Récupère toutes les implémentations. */
+			/* RÃ©cupÃ¨re toutes les implÃ©mentations. */
 			return serviceFile.getServiceImplementations();
 		}
 
@@ -92,9 +92,9 @@ public final class ServiceManager implements Manager {
 		}
 
 		/**
-		 * Parse un fichier candidat de service métier.
+		 * Parse un fichier candidat de service mÃ©tier.
 		 * 
-		 * @param document Document du service métier.
+		 * @param document Document du service mÃ©tier.
 		 * @param javaProject Projet Java du service.
 		 * @return Le service, <code>null</code> sinon.
 		 */
@@ -114,19 +114,19 @@ public final class ServiceManager implements Manager {
 				ErrorUtils.handle(e);
 			}
 
-			/* Créé le fichier de service. */
+			/* CrÃ©Ã© le fichier de service. */
 			return new ServiceFile(serviceImplementations);
 		}
 
 		private void handleType(IType type, IFile file, List<ServiceImplementation> serviceImplementations) throws JavaModelException {
-			/* Parcourt les méthodes. */
+			/* Parcourt les mÃ©thodes. */
 			for (IMethod method : type.getMethods()) {
-				/* Filtre pour ne garder que les méthodes publiques d'instance */
+				/* Filtre pour ne garder que les mÃ©thodes publiques d'instance */
 				if (method.isConstructor() || Flags.isStatic(method.getFlags()) || Flags.isPrivate(method.getFlags())) {
 					continue;
 				}
 
-				/* Créé le ServiceImplementation. */
+				/* CrÃ©Ã© le ServiceImplementation. */
 				String javaName = method.getElementName();
 				ISourceRange nameRange = method.getNameRange();
 				FileRegion fileRegion = new FileRegion(file, nameRange.getOffset(), nameRange.getLength());

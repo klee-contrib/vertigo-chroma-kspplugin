@@ -1,9 +1,9 @@
-package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import java.util.regex.Pattern;
 
 /**
- * Enumération des caractères ouvrants fermants dans un KSP.
+ * EnumÃ©ration des caractÃ¨res ouvrants fermants dans un KSP.
  */
 public enum OpenCloseCharacter {
 
@@ -18,12 +18,12 @@ public enum OpenCloseCharacter {
 	CLOSE_CURLY_BRACE("(\\})"),
 
 	/**
-	 * Parenthèse ouvrante.
+	 * ParenthÃ¨se ouvrante.
 	 */
 	OPEN_PARENTHESIS("(\\()"),
 
 	/**
-	 * Parenthèse fermante.
+	 * ParenthÃ¨se fermante.
 	 */
 	CLOSE_PARENTHESIS("(\\))"),
 
@@ -40,16 +40,16 @@ public enum OpenCloseCharacter {
 	private final Pattern pattern;
 
 	/**
-	 * Créé une nouvelle instance de OpenCloseCharacter.
+	 * CrÃ©Ã© une nouvelle instance de OpenCloseCharacter.
 	 * 
-	 * @param regex Regex permettant de détecter le caractère.
+	 * @param regex Regex permettant de dÃ©tecter le caractÃ¨re.
 	 */
 	OpenCloseCharacter(String regex) {
 		this.pattern = Pattern.compile(regex);
 	}
 
 	/**
-	 * Obtient le pattern permettant de détecter le caractère.
+	 * Obtient le pattern permettant de dÃ©tecter le caractÃ¨re.
 	 * 
 	 * @return Pattern regex.
 	 */

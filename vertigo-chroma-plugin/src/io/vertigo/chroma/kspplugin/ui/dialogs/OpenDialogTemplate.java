@@ -1,21 +1,21 @@
-package io.vertigo.chroma.kspplugin.ui.dialogs;
+ï»¿package io.vertigo.chroma.kspplugin.ui.dialogs;
 
 /**
- * Template pour la factory permettant d'ouvrir une fenêtre de recherche.
+ * Template pour la factory permettant d'ouvrir une fenÃªtre de recherche.
  */
 public interface OpenDialogTemplate {
 
 	/**
-	 * Renvoie la nature de l'objet recherché.
+	 * Renvoie la nature de l'objet recherchÃ©.
 	 * 
 	 * @return Nature.
 	 */
 	String getNature();
 
 	/**
-	 * Charge la source de données de la fenêtre de dialogue.
+	 * Charge la source de donnÃ©es de la fenÃªtre de dialogue.
 	 * 
-	 * @return Liste des éléments à rechercher.
+	 * @return Liste des Ã©lÃ©ments Ã  rechercher.
 	 */
 	Object[] getElements();
 }

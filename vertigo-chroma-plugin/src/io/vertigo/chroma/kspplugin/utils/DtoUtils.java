@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 
@@ -17,7 +17,7 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 
 /**
- * Méthodes utilitaires pour parser les DTO.
+ * MÃ©thodes utilitaires pour parser les DTO.
  */
 public final class DtoUtils {
 
@@ -123,10 +123,10 @@ public final class DtoUtils {
 		List<DtoField> fields = new ArrayList<>();
 		try {
 			if (type.getElementName().endsWith("Dt")) {
-				/* Cas d'un bean métier. */
+				/* Cas d'un bean mÃ©tier. */
 				parseKasper3BeanFields(type, fields);
 			} else {
-				/* Cas d'un objet persisté. */
+				/* Cas d'un objet persistÃ©. */
 				parseKasper3PersistedDtoFields(type, fields);
 			}
 		} catch (JavaModelException e) {
@@ -154,7 +154,7 @@ public final class DtoUtils {
 			@Override
 			public boolean visit(MethodInvocation node) {
 				/*
-				 * Exemple d'appel à parser : kasperx.model.GeneratedUtils.createField(def, UTI_ID, "uti_id", true, true, true, true,
+				 * Exemple d'appel Ã  parser : kasperx.model.GeneratedUtils.createField(def, UTI_ID, "uti_id", true, true, true, true,
 				 * kasper.db.KDataType.KDATA_LONG, DO_IDENTIFIANT, null);
 				 */
 				if ("createField".equals(node.getName().getIdentifier())) {

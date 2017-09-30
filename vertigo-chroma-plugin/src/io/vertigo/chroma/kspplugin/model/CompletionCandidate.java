@@ -1,7 +1,7 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
- * Candidat pour une autocomplétion.
+ * Candidat pour une autocomplÃ©tion.
  *
  */
 public class CompletionCandidate {
@@ -10,10 +10,10 @@ public class CompletionCandidate {
 	private final String additionalProposalInfo;
 
 	/**
-	 * Créé une nouvelle instance de CompletionCandidate.
+	 * CrÃ©Ã© une nouvelle instance de CompletionCandidate.
 	 * 
-	 * @param displayString String à afficher dans la liste de choix.
-	 * @param additionalProposalInfo Information supplémentaire affiché à la sélection.
+	 * @param displayString String Ã  afficher dans la liste de choix.
+	 * @param additionalProposalInfo Information supplÃ©mentaire affichÃ© Ã  la sÃ©lection.
 	 */
 	public CompletionCandidate(String displayString, String additionalProposalInfo) {
 		this.displayString = displayString;

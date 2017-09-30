@@ -1,12 +1,12 @@
-package io.vertigo.chroma.kspplugin.model;
+ï»¿package io.vertigo.chroma.kspplugin.model;
 
 /**
- * Enumération des pattern de référencement d'un DTO dans un KSP.
+ * EnumÃ©ration des pattern de rÃ©fÃ©rencement d'un DTO dans un KSP.
  */
 public enum DtoReferencePattern {
 
 	/**
-	 * Le DTO est référence comme un domaine
+	 * Le DTO est rÃ©fÃ©rence comme un domaine
 	 * <p>
 	 * Exemple : DO_DT_UTILISATEUR_DTO, DO_DT_UTILISATEUR_DTC
 	 * </p>
@@ -14,7 +14,7 @@ public enum DtoReferencePattern {
 	DOMAIN,
 
 	/**
-	 * Le DTO est référencé comme un nom simple.
+	 * Le DTO est rÃ©fÃ©rencÃ© comme un nom simple.
 	 * <p>
 	 * Exemple : DT_UTILISATEUR.
 	 * </p>

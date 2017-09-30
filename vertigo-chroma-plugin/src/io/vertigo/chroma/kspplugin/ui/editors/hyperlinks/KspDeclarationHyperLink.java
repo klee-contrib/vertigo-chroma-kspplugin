@@ -1,19 +1,19 @@
-package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.Navigable;
 
 import org.eclipse.jface.text.IRegion;
 
 /**
- * Lien vers une déclaration KSP.
+ * Lien vers une dÃ©claration KSP.
  */
 public class KspDeclarationHyperLink extends NavigableHyperLink {
 
 	/**
-	 * Créé une nouvelle instance de KspDeclarationHyperLink.
+	 * CrÃ©Ã© une nouvelle instance de KspDeclarationHyperLink.
 	 * 
-	 * @param urlRegion Région du lien dans le document.
-	 * @param navigable Navigable de la déclaration KSP.
+	 * @param urlRegion RÃ©gion du lien dans le document.
+	 * @param navigable Navigable de la dÃ©claration KSP.
 	 */
 	public KspDeclarationHyperLink(IRegion urlRegion, Navigable navigable) {
 		super(urlRegion, navigable, "Open KSP declaration");

@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.legacy;
+ï»¿package io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoReferencePattern;
@@ -19,7 +19,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jdt.core.IType;
 
 /**
- * Stratégie pour les projets en Vertigo.
+ * StratÃ©gie pour les projets en Vertigo.
  */
 public final class VertigoStrategy implements LegacyStrategy {
 
@@ -30,7 +30,7 @@ public final class VertigoStrategy implements LegacyStrategy {
 			return null;
 		}
 
-		/* Extrait le préfixe et le nom simple de la déclaration */
+		/* Extrait le prÃ©fixe et le nom simple de la dÃ©claration */
 		KspDeclarationNameParts declarationNameParts = KspStringUtils.getKspDeclarationNameParts(mainParts.getConstantCaseName());
 		if (declarationNameParts == null) {
 			return null;
@@ -62,7 +62,7 @@ public final class VertigoStrategy implements LegacyStrategy {
 	@Override
 	public boolean isDtoCandidate(IFile file) {
 		/* Pas de convention de nommage sur les DTO. */
-		/* On vérifie que c'est un fichier Java dans le dossier Javagen. */
+		/* On vÃ©rifie que c'est un fichier Java dans le dossier Javagen. */
 		return ResourceUtils.isSrcJavagen(file) && ResourceUtils.isJavaFile(file);
 	}
 
@@ -73,13 +73,13 @@ public final class VertigoStrategy implements LegacyStrategy {
 
 	@Override
 	public boolean isServiceCandidate(IFile file) {
-		/* Vérifie la convention de nommage. */
+		/* VÃ©rifie la convention de nommage. */
 		return KspStringUtils.getVertigoServiceFileName(file.getName()) != null;
 	}
 
 	@Override
 	public boolean isDaoCandidate(IFile file) {
-		/* Vérifie que le fichier est dans Javagen */
+		/* VÃ©rifie que le fichier est dans Javagen */
 		/* Filtre avec la convention de nommage sur le nom du fichier. */
 		return ResourceUtils.isSrcJavagen(file) && KspStringUtils.getDaoFileName(file.getName()) != null;
 	}

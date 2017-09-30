@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.ksp;
+ï»¿package io.vertigo.chroma.kspplugin.ui.editors.ksp;
 
 import io.vertigo.chroma.kspplugin.model.KspRegionType;
 
@@ -15,21 +15,21 @@ import org.eclipse.jface.text.rules.RuleBasedPartitionScanner;
 import org.eclipse.jface.text.rules.Token;
 
 /**
- * Définit le paramétrage d'un document KSP.
+ * DÃ©finit le paramÃ©trage d'un document KSP.
  */
 public class KspDocumentSetupParticipant implements IDocumentSetupParticipant {
 
 	private static final String[] TYPES = new String[] {
-	/* Région par défaut. */
+	/* RÃ©gion par dÃ©faut. */
 	KspRegionType.DEFAULT.getContentType(),
-	/* Région commentaire */
+	/* RÃ©gion commentaire */
 	KspRegionType.COMMENT.getContentType(),
-	/* Région string. */
+	/* RÃ©gion string. */
 	KspRegionType.STRING.getContentType() };
 
 	@Override
 	public void setup(IDocument document) {
-		/* Définit un partitionnement du document. */
+		/* DÃ©finit un partitionnement du document. */
 		IDocumentPartitioner p = new FastPartitioner(createKspPartitionScanner(), TYPES);
 		IDocumentExtension3 de3 = (IDocumentExtension3) document;
 		de3.setDocumentPartitioner(KspRegionType.PARTITIONING, p);

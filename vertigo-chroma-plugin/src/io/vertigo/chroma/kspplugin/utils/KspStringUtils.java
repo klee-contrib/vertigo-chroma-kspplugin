@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.utils;
+ï»¿package io.vertigo.chroma.kspplugin.utils;
 
 import io.vertigo.chroma.kspplugin.model.DomainType;
 import io.vertigo.chroma.kspplugin.model.DtoDefinitionPath;
@@ -121,14 +121,14 @@ public final class KspStringUtils {
 
 	public static KspAttribute getVertigoKspAttribute(String lineContent) {
 
-		/* Premier pattern pour détecter l'attribut. */
+		/* Premier pattern pour dÃ©tecter l'attribut. */
 		Matcher matcherAttribute = VERTIGO_KSP_ATTRIBUTE.matcher(lineContent);
 		if (matcherAttribute.matches()) {
 			String attributeName = matcherAttribute.group(1);
 			KspAttribute attribute = new KspAttribute(attributeName);
 			String allProperties = matcherAttribute.group(2);
 
-			/* Second pattern pour détecter les paires clé-valeur de propriétés. */
+			/* Second pattern pour dÃ©tecter les paires clÃ©-valeur de propriÃ©tÃ©s. */
 			Matcher matcherProperties = VERTIGO_KSP_ATTRIBUTE_PROPERTIES.matcher(allProperties);
 			while (matcherProperties.find()) {
 				String propertyName = matcherProperties.group(1);
@@ -144,14 +144,14 @@ public final class KspStringUtils {
 
 	public static KspAttribute getKasper6KspAttribute(String lineContent) {
 
-		/* Premier pattern pour détecter l'attribut. */
+		/* Premier pattern pour dÃ©tecter l'attribut. */
 		Matcher matcherAttribute = KASPER_6_KSP_ATTRIBUTE.matcher(lineContent);
 		if (matcherAttribute.matches()) {
 			String attributeName = matcherAttribute.group(1);
 			KspAttribute attribute = new KspAttribute(attributeName);
 			String allProperties = matcherAttribute.group(2);
 
-			/* Second pattern pour détecter les paires clé-valeur de propriétés. */
+			/* Second pattern pour dÃ©tecter les paires clÃ©-valeur de propriÃ©tÃ©s. */
 			Matcher matcherProperties = VERTIGO_KSP_ATTRIBUTE_PROPERTIES.matcher(allProperties);
 			while (matcherProperties.find()) {
 				String propertyName = matcherProperties.group(1);
@@ -167,14 +167,14 @@ public final class KspStringUtils {
 
 	public static KspAttribute getKasper5KspAttribute(String lineContent) {
 
-		/* Premier pattern pour détecter l'attribut. */
+		/* Premier pattern pour dÃ©tecter l'attribut. */
 		Matcher matcherAttribute = KASPER_5_KSP_ATTRIBUTE.matcher(lineContent);
 		if (matcherAttribute.matches()) {
 			String attributeName = matcherAttribute.group(1);
 			KspAttribute attribute = new KspAttribute(attributeName);
 			String allProperties = matcherAttribute.group(2);
 
-			/* Second pattern pour détecter les paires clé-valeur de propriétés. */
+			/* Second pattern pour dÃ©tecter les paires clÃ©-valeur de propriÃ©tÃ©s. */
 			Matcher matcherProperties = KASPER_5_KSP_ATTRIBUTE_PROPERTIES.matcher(allProperties);
 			while (matcherProperties.find()) {
 				String propertyName = matcherProperties.group(1);
@@ -190,7 +190,7 @@ public final class KspStringUtils {
 
 	public static KspAttribute getKasper3KspAttribute(String lineContent) {
 
-		/* Premier pattern pour détecter l'attribut. */
+		/* Premier pattern pour dÃ©tecter l'attribut. */
 		Matcher matcherAttribute = KASPER_3_KSP_ATTRIBUTE.matcher(lineContent);
 		if (matcherAttribute.matches()) {
 			String rawDomain = matcherAttribute.group(1);

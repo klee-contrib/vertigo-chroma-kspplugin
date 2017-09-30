@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.ui.editors.completion;
+Ôªøpackage io.vertigo.chroma.kspplugin.ui.editors.completion;
 
 import io.vertigo.chroma.kspplugin.model.CompletionCandidate;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
@@ -22,7 +22,7 @@ import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 
 /**
- * Classe de base pour les processeurs d'autocomplÈtion.
+ * Classe de base pour les processeurs d'autocompl√©tion.
  */
 public abstract class BaseContentAssistProcessor implements IContentAssistProcessor {
 
@@ -32,7 +32,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer textViewer, int documentOffset) {
 		IDocument document = textViewer.getDocument();
 
-		/* Extrait le mot courant en snake-case pour tolÈrer les minuscules. */
+		/* Extrait le mot courant en snake-case pour tol√©rer les minuscules. */
 		ITextSelection selection = new TextSelection(document, documentOffset - 1, 1);
 		ITextSelection currentWordSelection = DocumentUtils.findCurrentWord(document, selection, getWordSelectionType());
 		if (currentWordSelection == null) {
@@ -53,7 +53,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 			return null; // NOSONAR
 		}
 
-		/* Construit le rÈsultat. */
+		/* Construit le r√©sultat. */
 		try {
 			return buildProposals(suggestions, currentWord, documentOffset);
 		} catch (Exception e) {
@@ -90,7 +90,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	}
 
 	/**
-	 * @return Type de sÈlection de mot.
+	 * @return Type de s√©lection de mot.
 	 */
 	protected abstract WordSelectionType getWordSelectionType();
 
@@ -107,7 +107,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	/**
 	 * Construit la liste des candidats.
 	 * 
-	 * @param currentWordSelection Mot courant sÈlectionnÈ.
+	 * @param currentWordSelection Mot courant s√©lectionn√©.
 	 * @return Liste des domaines candidats.
 	 */
 	protected abstract List<CompletionCandidate> getCandidates(ITextSelection currentWordSelection);
@@ -115,9 +115,9 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	/**
 	 * Filtre les candidats en recherchant les mots qui commencent par le mot courant.
 	 * 
-	 * @param candidates Candidats ‡ l'autocomplÈtion.
+	 * @param candidates Candidats √† l'autocompl√©tion.
 	 * @param currentWord Mot courant.
-	 * @return Liste des candidats filtrÈs.
+	 * @return Liste des candidats filtr√©s.
 	 */
 	private static List<CompletionCandidate> filterSuggestions(List<CompletionCandidate> candidates, String currentWord) {
 		String currentWordUpperCase = currentWord.toUpperCase(Locale.ENGLISH);
@@ -125,15 +125,15 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	}
 
 	/**
-	 * Constuit les propositions d'aucomplÈtion.
+	 * Constuit les propositions d'aucompl√©tion.
 	 * 
-	 * @param suggestions Suggestions‡ proposer.
-	 * @param replacedWord Mot courant ‡ remplacer dans le document.
-	 * @param documentOffset Offset dans le document du curseur. Le mot est placÈ avant ce curseur.
-	 * @return Propositions d'autocomplÈtion.
+	 * @param suggestions Suggestions√† proposer.
+	 * @param replacedWord Mot courant √† remplacer dans le document.
+	 * @param documentOffset Offset dans le document du curseur. Le mot est plac√© avant ce curseur.
+	 * @return Propositions d'autocompl√©tion.
 	 */
 	private ICompletionProposal[] buildProposals(List<CompletionCandidate> suggestions, String replacedWord, int documentOffset) {
-		/* Calcul l'offset et la longueur du mot ‡ remplacer dans le document. */
+		/* Calcul l'offset et la longueur du mot √† remplacer dans le document. */
 		int replacementLength = replacedWord.length();
 		int replacementOffset = documentOffset - replacementLength;
 
@@ -143,10 +143,10 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 			/* String qui remplacera le mot courant. */
 			String replacementString = suggestion.getDisplayString();
 
-			/* String affichÈ comme libellÈ de la proposition. */
+			/* String affich√© comme libell√© de la proposition. */
 			String displayString = replacementString;
 
-			/* String affichÈ comme description de la proposition (dans la boÓte jaune). */
+			/* String affich√© comme description de la proposition (dans la bo√Æte jaune). */
 			String additionalProposalInfo = suggestion.getAdditionalProposalInfo();
 			CompletionProposal proposal = new CompletionProposal(replacementString, replacementOffset, replacementLength, replacementString.length(), null,
 					displayString, null, additionalProposalInfo);
