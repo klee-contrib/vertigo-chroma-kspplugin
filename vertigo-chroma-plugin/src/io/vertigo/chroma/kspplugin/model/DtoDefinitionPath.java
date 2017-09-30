@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.model;
+package io.vertigo.chroma.kspplugin.model;
 
 /**
  * Représente un chemin de définition de DTO (en Kasper 3).

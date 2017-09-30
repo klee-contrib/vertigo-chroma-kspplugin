@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 import io.vertigo.chroma.kspplugin.utils.MarkerUtils;

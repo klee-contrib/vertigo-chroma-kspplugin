@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.analysis;
+package io.vertigo.chroma.kspplugin.ui.editors.analysis;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.KspDeclarationMainParts;

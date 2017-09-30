@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.theme;
+package io.vertigo.chroma.kspplugin.ui.theme;
 
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
 

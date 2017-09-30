@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.utils;
+package io.vertigo.chroma.kspplugin.utils;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

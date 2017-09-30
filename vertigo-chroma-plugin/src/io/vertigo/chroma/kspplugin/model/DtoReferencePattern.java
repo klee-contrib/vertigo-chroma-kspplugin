@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.model;
+package io.vertigo.chroma.kspplugin.model;
 
 /**
  * Enumération des pattern de référencement d'un DTO dans un KSP.

@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin;
+package io.vertigo.chroma.kspplugin;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

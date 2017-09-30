@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.resources.core;
+package io.vertigo.chroma.kspplugin.resources.core;
 
 import io.vertigo.chroma.kspplugin.model.Navigable;
 

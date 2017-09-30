@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.commands;
+package io.vertigo.chroma.kspplugin.ui.commands;
 
 import io.vertigo.chroma.kspplugin.ui.dialogs.AboutDialog;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;

@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.resources;
+package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.Manager;

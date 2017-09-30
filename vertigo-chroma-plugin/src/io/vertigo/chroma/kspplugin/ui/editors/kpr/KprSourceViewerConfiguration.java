@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.kpr;
+package io.vertigo.chroma.kspplugin.ui.editors.kpr;
 
 import io.vertigo.chroma.kspplugin.ui.editors.hyperlinks.FilePathHyperLinkDetector;
 

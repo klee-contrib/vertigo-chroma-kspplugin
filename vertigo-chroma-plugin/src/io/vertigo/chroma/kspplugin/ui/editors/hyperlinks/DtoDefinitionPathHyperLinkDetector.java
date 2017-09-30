@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
+package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
 import io.vertigo.chroma.kspplugin.model.DtoDefinitionPath;
 import io.vertigo.chroma.kspplugin.model.DtoFile;

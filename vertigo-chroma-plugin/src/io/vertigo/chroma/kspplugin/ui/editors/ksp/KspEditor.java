@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.ksp;
+package io.vertigo.chroma.kspplugin.ui.editors.ksp;
 
 import io.vertigo.chroma.kspplugin.ui.editors.analysis.KspCheckerJob;
 import io.vertigo.chroma.kspplugin.ui.editors.ksp.outline.KspOutlinePage;

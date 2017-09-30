@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.dialogs;
+package io.vertigo.chroma.kspplugin.ui.dialogs;
 
 /**
  * Template pour la factory permettant d'ouvrir une fenêtre de recherche.

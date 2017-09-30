@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
+package io.vertigo.chroma.kspplugin.ui.editors.ksp.scanners;
 
 import io.vertigo.chroma.kspplugin.lexicon.LexiconManager;
 import io.vertigo.chroma.kspplugin.lexicon.Lexicons;

@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.lexicon;
+package io.vertigo.chroma.kspplugin.lexicon;
 
 import io.vertigo.chroma.kspplugin.Activator;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;

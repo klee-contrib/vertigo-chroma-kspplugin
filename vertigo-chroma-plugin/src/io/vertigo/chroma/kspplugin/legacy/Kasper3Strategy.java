@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.legacy;
+package io.vertigo.chroma.kspplugin.legacy;
 
 import io.vertigo.chroma.kspplugin.model.DtoField;
 import io.vertigo.chroma.kspplugin.model.DtoReferencePattern;

@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.dialogs;
+package io.vertigo.chroma.kspplugin.ui.dialogs;
 
 import io.vertigo.chroma.kspplugin.model.Openable;
 import io.vertigo.chroma.kspplugin.utils.MessageUtils;

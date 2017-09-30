@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.completion;
+package io.vertigo.chroma.kspplugin.ui.editors.completion;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;

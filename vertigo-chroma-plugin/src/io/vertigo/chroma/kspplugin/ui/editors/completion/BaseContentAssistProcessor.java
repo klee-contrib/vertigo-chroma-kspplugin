@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.editors.completion;
+package io.vertigo.chroma.kspplugin.ui.editors.completion;
 
 import io.vertigo.chroma.kspplugin.model.CompletionCandidate;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;

@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.legacy;
+package io.vertigo.chroma.kspplugin.legacy;
 
 /**
  * Version du framework Kasper / Vertigo.

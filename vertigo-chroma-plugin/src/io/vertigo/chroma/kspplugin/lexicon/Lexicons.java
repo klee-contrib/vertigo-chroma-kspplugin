@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.lexicon;
+package io.vertigo.chroma.kspplugin.lexicon;
 
 /**
  * Enumération des lexiques.

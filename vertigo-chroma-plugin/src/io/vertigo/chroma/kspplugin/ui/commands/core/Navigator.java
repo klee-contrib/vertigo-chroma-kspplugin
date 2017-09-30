@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.ui.commands.core;
+package io.vertigo.chroma.kspplugin.ui.commands.core;
 
 import io.vertigo.chroma.kspplugin.model.DaoImplementation;
 import io.vertigo.chroma.kspplugin.model.DtoFile;

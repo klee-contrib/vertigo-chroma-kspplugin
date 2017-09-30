@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.boot;
+package io.vertigo.chroma.kspplugin.boot;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.Manager;

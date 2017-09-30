@@ -1,4 +1,4 @@
-﻿package io.vertigo.chroma.kspplugin.model;
+package io.vertigo.chroma.kspplugin.model;
 
 /**
  * Classe de base pour un navigable vers un élément ayant un nom Java.
