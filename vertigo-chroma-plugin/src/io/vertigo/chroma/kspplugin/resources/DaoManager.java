@@ -1,4 +1,4 @@
-package io.vertigo.chroma.kspplugin.resources;
+ï»¿package io.vertigo.chroma.kspplugin.resources;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.DaoFile;
@@ -28,8 +28,8 @@ import org.eclipse.jdt.core.JavaModelException;
  * Manager des fichiers DAO / PAO.
  * <p>
  * <ul>
- * <li>index les fichiers DAO / PAO et leurs méthodes de Task SQL.</li>
- * <li>maintient un cache à jour</li>
+ * <li>index les fichiers DAO / PAO et leurs mÃ©thodes de Task SQL.</li>
+ * <li>maintient un cache Ã  jour</li>
  * <li>publie une API de recherche</li>
  * </ul>
  * <p>
@@ -40,7 +40,7 @@ public final class DaoManager implements Manager {
 	private final ResourceStore<DaoImplementation> store;
 
 	/**
-	 * Créé une nouvelle instance de DaoManager.
+	 * CrÃ©Ã© une nouvelle instance de DaoManager.
 	 */
 	private DaoManager() {
 		store = new ResourceStore<>(new Implementor());
@@ -58,7 +58,7 @@ public final class DaoManager implements Manager {
 
 	@Override
 	public void init() {
-		/* Démarre le magasin qui index tous les fichiers concernés. */
+		/* DÃ©marre le magasin qui index tous les fichiers concernÃ©s. */
 		instance.store.start();
 	}
 
@@ -70,9 +70,9 @@ public final class DaoManager implements Manager {
 	}
 
 	/**
-	 * Cherche une méthode de Task à partir de son nom Java.
+	 * Cherche une mÃ©thode de Task Ã  partir de son nom Java.
 	 * 
-	 * @param javaName Nom java de la méthode de Task.
+	 * @param javaName Nom java de la mÃ©thode de Task.
 	 * @return Le premier DaoImplementation qui correspond.
 	 */
 	public DaoImplementation findDaoImplementation(String javaName) {
@@ -86,13 +86,13 @@ public final class DaoManager implements Manager {
 			IFile file = fileProvider.getFile();
 			IJavaProject javaProject = fileProvider.getJavaProject();
 
-			/* Parse le fichier DAO et ses implémentations. */
+			/* Parse le fichier DAO et ses implÃ©mentations. */
 			DaoFile daoFile = createDaoFile(file, javaProject);
 			if (daoFile == null) {
 				return null; // NOSONAR
 			}
 
-			/* Récupère toutes les implémentations. */
+			/* RÃ©cupÃ¨re toutes les implÃ©mentations. */
 			return daoFile.getDaoImplementations();
 		}
 
@@ -124,19 +124,19 @@ public final class DaoManager implements Manager {
 				ErrorUtils.handle(e);
 			}
 
-			/* Créé le fichier de DAO/PAO. */
+			/* CrÃ©Ã© le fichier de DAO/PAO. */
 			return new DaoFile(file, daoImplementations);
 		}
 
 		private void handleType(IType type, IFile file, List<DaoImplementation> daoImplementations) throws JavaModelException {
-			/* Parcourt les méthodes. */
+			/* Parcourt les mÃ©thodes. */
 			for (IMethod method : type.getMethods()) {
-				/* Filtre pour ne garder que les méthodes publiques d'instance */
+				/* Filtre pour ne garder que les mÃ©thodes publiques d'instance */
 				if (method.isConstructor() || Flags.isStatic(method.getFlags()) || Flags.isPrivate(method.getFlags())) {
 					continue;
 				}
 
-				/* Créé le DaoImplementation. */
+				/* CrÃ©Ã© le DaoImplementation. */
 				String javaName = method.getElementName();
 				ISourceRange nameRange = method.getNameRange();
 				FileRegion fileRegion = new FileRegion(file, nameRange.getOffset(), nameRange.getLength());
