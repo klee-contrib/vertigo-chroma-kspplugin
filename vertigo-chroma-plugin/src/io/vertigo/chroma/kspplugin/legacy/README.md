@@ -1,5 +1,5 @@
 # Description
 
-Ce package contient la logique gérant les différentes versions de Vertigo/Kasper.
+Ce package contient la logique gÃ©rant les diffÃ©rentes versions de Vertigo/Kasper.
 
-Le plugin détermine automatiquement la version de Vertigo/Kasper d'un projet en analysant la présence de type Java discriminant dans le classpath du projet.
+Le plugin dÃ©termine automatiquement la version de Vertigo/Kasper d'un projet en analysant la prÃ©sence de type Javas discriminants dans le classpath du projet.
