@@ -5,7 +5,7 @@ import org.eclipse.ui.editors.text.TextEditor;
 /**
  * Editeur des fichiers KPR.
  */
-public class KprEditor extends TextEditor {
+public class KprEditor extends TextEditor { // NOSONAR
 
 	/**
 	 * Créé une nouvelle instance de KspTextEditor.

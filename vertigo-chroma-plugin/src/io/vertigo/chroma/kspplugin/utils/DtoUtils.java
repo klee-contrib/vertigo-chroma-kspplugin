@@ -151,12 +151,12 @@ public final class DtoUtils {
 				return "initDefinition".equals(node.getName().getIdentifier());
 			}
 
+			/*
+			 * Exemple d'appel à parser : kasperx.model.GeneratedUtils.createField(def, UTI_ID, "uti_id", true, true, true, true,
+			 * kasper.db.KDataType.KDATA_LONG, DO_IDENTIFIANT, null);
+			 */
 			@Override
 			public boolean visit(MethodInvocation node) {
-				/*
-				 * Exemple d'appel à parser : kasperx.model.GeneratedUtils.createField(def, UTI_ID, "uti_id", true, true, true, true,
-				 * kasper.db.KDataType.KDATA_LONG, DO_IDENTIFIANT, null);
-				 */
 				if ("createField".equals(node.getName().getIdentifier())) {
 					List<?> arguments = node.arguments();
 					String columnName = JdtUtils.getSimpleNameIdentifier(arguments.get(1));

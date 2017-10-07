@@ -264,7 +264,7 @@ public class KspOutlinePage extends ContentOutlinePage {
 		}
 	}
 
-	class KspLabelProvider extends StyledCellLabelProvider {
+	class KspLabelProvider extends StyledCellLabelProvider { // NOSONAR
 
 		@Override
 		public void update(ViewerCell cell) {

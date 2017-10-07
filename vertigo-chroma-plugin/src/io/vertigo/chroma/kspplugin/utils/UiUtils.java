@@ -100,7 +100,7 @@ public final class UiUtils {
 		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
 
-	private synchronized static IEditorPart getCurrentEditor() {
+	private static synchronized IEditorPart getCurrentEditor() {
 		IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 
 		/* Cas d'un thread non UI sans workbench actif. */

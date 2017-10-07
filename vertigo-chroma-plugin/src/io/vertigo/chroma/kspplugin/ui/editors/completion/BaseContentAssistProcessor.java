@@ -101,7 +101,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	 * @return <code>true</code> si le mot est valide.
 	 */
 	protected boolean isCurrentWordValid(String currentWord) {
-		return true;
+		return currentWord != null;
 	}
 
 	/**

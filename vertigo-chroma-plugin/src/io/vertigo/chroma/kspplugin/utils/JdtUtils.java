@@ -96,9 +96,11 @@ public final class JdtUtils {
 	 */
 	public static String getMemberValue(IAnnotation annotation) {
 		try {
-			for (IMemberValuePair pair : annotation.getMemberValuePairs()) {
-				return (String) pair.getValue();
+			IMemberValuePair[] memberValuePairs = annotation.getMemberValuePairs();
+			if (memberValuePairs.length == 0) {
+				return null;
 			}
+			return (String) memberValuePairs[0].getValue();
 		} catch (JavaModelException e) {
 			ErrorUtils.handle(e);
 		}

@@ -164,7 +164,7 @@ public final class WsRouteManager implements Manager {
 			}
 		}
 
-		private String getPathPrefix(IType type) throws JavaModelException {
+		private String getPathPrefix(IType type) {
 			/* Extrait un éventuel PathPrefix de la classe. */
 			IAnnotation pathPrefixAnnotation = JdtUtils.getAnnotation(type, "PathPrefix");
 			if (pathPrefixAnnotation == null) {

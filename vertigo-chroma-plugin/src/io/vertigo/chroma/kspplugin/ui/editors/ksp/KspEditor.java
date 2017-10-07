@@ -25,7 +25,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 /**
  * Editeur des fichiers KSP.
  */
-public class KspEditor extends TextEditor implements IResourceChangeListener {
+public class KspEditor extends TextEditor implements IResourceChangeListener { // NOSONAR
 
 	/*
 	 * La vérification des KSP ramène des faux positifs. Désactivé pour le lot 1.

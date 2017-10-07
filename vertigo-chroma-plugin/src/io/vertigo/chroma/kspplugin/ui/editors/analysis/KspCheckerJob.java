@@ -11,7 +11,7 @@ import org.eclipse.core.runtime.Status;
  * Job de vérification d'un fichier Ksp. L'encapsulation dans un WorkspaceJob permet d'exécuter la vérification de manière asynchrone et sans accès concurrent
  * aux ressources du projet.
  */
-public final class KspCheckerJob extends WorkspaceJob {
+public final class KspCheckerJob extends WorkspaceJob { // NOSONAR
 
 	private final IFile file;
 
