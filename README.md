@@ -25,3 +25,7 @@ Voir [la liste exhautive des fonctionnalités](https://github.com/sebez/vertigo-
 Le plugin KSP est un plugin Eclipse standard et s'installe via une archive contenant un `update site`.
 
 Voir la [procédure d'installation détaillée](https://github.com/sebez/vertigo-chroma-kspplugin/wiki/Proc%C3%A9dure-d'installation) dans le wiki.
+
+## Licence
+
+[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)
