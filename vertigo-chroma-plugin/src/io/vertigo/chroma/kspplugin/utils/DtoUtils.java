@@ -151,10 +151,6 @@ public final class DtoUtils {
 				return "initDefinition".equals(node.getName().getIdentifier());
 			}
 
-			/*
-			 * Exemple d'appel à parser : kasperx.model.GeneratedUtils.createField(def, UTI_ID, "uti_id", true, true, true, true,
-			 * kasper.db.KDataType.KDATA_LONG, DO_IDENTIFIANT, null);
-			 */
 			@Override
 			public boolean visit(MethodInvocation node) {
 				if ("createField".equals(node.getName().getIdentifier())) {
@@ -176,20 +172,26 @@ public final class DtoUtils {
 		IType superclass = hierarchy.getSuperclass(type);
 
 		for (IMethod method : superclass.getMethods()) {
-			if (method.isConstructor() || !Flags.isPublic(method.getFlags()) || !Flags.isFinal(method.getFlags())) {
-				continue;
+			DtoField field = parseKasper3BeanFieldGetter(method);
+			if (field != null) {
+				fields.add(field);
 			}
-			String methodName = method.getElementName();
-			if (!methodName.startsWith("get")) {
-				continue;
-			}
-
-			String constantCaseName = StringUtils.toConstantCase(KspStringUtils.getFieldNameFromGetter(method.getElementName()));
-			String label = "Unknown";
-			Boolean persistent = false;
-
-			DtoField field = new DtoField(constantCaseName, label, "Unknown", persistent);
-			fields.add(field);
 		}
+	}
+
+	private static DtoField parseKasper3BeanFieldGetter(IMethod method) throws JavaModelException {
+		if (method.isConstructor() || !Flags.isPublic(method.getFlags()) || !Flags.isFinal(method.getFlags())) {
+			return null;
+		}
+		String methodName = method.getElementName();
+		if (!methodName.startsWith("get")) {
+			return null;
+		}
+
+		String constantCaseName = StringUtils.toConstantCase(KspStringUtils.getFieldNameFromGetter(method.getElementName()));
+		String label = "Unknown";
+		Boolean persistent = false;
+
+		return new DtoField(constantCaseName, label, "Unknown", persistent);
 	}
 }

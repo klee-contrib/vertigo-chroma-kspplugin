@@ -128,7 +128,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 			return;
 		}
 
-		/* Choisit une stratégie pour chaque projet. */
+		/* Choisit une stratégie pour le projet. */
 		LegacyVersion version = getProjectLegacyVersion(project);
 		LogUtils.info("Projet " + project.getName() + " en version " + version.name());
 
@@ -178,7 +178,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 			return LegacyVersion.KASPER_2;
 		}
 
-		/* Kasper 2 */
+		/* Aucun framework */
 		return LegacyVersion.NO_FRAMEWORK;
 	}
 

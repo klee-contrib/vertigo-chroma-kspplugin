@@ -38,12 +38,10 @@ public final class Kasper2Strategy implements LegacyStrategy {
 
 	@Override
 	public String getKspDeclarationJavaName(String constantCaseNameOnly, String nature) {
-		switch (nature) {
-		case "Service":
+		if ("Service".equals(nature)) {
 			return StringUtils.toCamelCase(constantCaseNameOnly);
-		default:
-			return StringUtils.toPascalCase(constantCaseNameOnly);
 		}
+		return StringUtils.toPascalCase(constantCaseNameOnly);
 	}
 
 	@Override

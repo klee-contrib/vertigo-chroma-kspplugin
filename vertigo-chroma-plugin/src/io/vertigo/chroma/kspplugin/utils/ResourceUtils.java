@@ -57,13 +57,8 @@ public final class ResourceUtils {
 		/* Parcourt les projets de la racine. */
 		for (IProject project : wsRoot.getProjects()) {
 
-			/* Vérication que le projet est accessible. */
-			if (!project.isAccessible()) {
-				continue;
-			}
-
-			/* Vérifie que le projet est un projet Java. */
-			if (!JdtUtils.isJavaProject(project)) {
+			/* Vérication que le projet est un projet Java accessible. */
+			if (!project.isAccessible() || !JdtUtils.isJavaProject(project)) {
 				continue;
 			}
 
