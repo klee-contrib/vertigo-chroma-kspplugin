@@ -2,4 +2,4 @@
 
 Ce package contient les managers responsables des ressources.
 
-Ils maintiennent un cache à jour des ressources et publie une API utilisée par les fenêtres de recherche et les actions de navigation.
+Ils maintiennent un cache Ã  jour des ressources et publient une API utilisÃ©e par les fenÃªtres de recherche et les actions de navigation.
