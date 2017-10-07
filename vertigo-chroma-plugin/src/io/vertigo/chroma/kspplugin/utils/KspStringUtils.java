@@ -120,32 +120,16 @@ public final class KspStringUtils {
 	}
 
 	public static KspAttribute getVertigoKspAttribute(String lineContent) {
-
-		/* Premier pattern pour détecter l'attribut. */
-		Matcher matcherAttribute = VERTIGO_KSP_ATTRIBUTE.matcher(lineContent);
-		if (matcherAttribute.matches()) {
-			String attributeName = matcherAttribute.group(1);
-			KspAttribute attribute = new KspAttribute(attributeName);
-			String allProperties = matcherAttribute.group(2);
-
-			/* Second pattern pour détecter les paires clé-valeur de propriétés. */
-			Matcher matcherProperties = VERTIGO_KSP_ATTRIBUTE_PROPERTIES.matcher(allProperties);
-			while (matcherProperties.find()) {
-				String propertyName = matcherProperties.group(1);
-				String propertyValue = matcherProperties.group(2);
-				attribute.addProperty(propertyName, propertyValue);
-			}
-
-			return attribute;
-		}
-
-		return null;
+		return getKspAttribute(lineContent, VERTIGO_KSP_ATTRIBUTE);
 	}
 
 	public static KspAttribute getKasper6KspAttribute(String lineContent) {
+		return getKspAttribute(lineContent, KASPER_6_KSP_ATTRIBUTE);
+	}
 
+	private static KspAttribute getKspAttribute(String lineContent, Pattern attributePattern) {
 		/* Premier pattern pour détecter l'attribut. */
-		Matcher matcherAttribute = KASPER_6_KSP_ATTRIBUTE.matcher(lineContent);
+		Matcher matcherAttribute = attributePattern.matcher(lineContent);
 		if (matcherAttribute.matches()) {
 			String attributeName = matcherAttribute.group(1);
 			KspAttribute attribute = new KspAttribute(attributeName);
