@@ -18,9 +18,13 @@ Voir [la liste exhautive des fonctionnalités](https://github.com/sebez/vertigo-
 
 ## Installation
 
-Le plugin KSP est un plugin Eclipse standard et s'installe dans Eclipse via le site https://sebez.github.io/release/vertigo-chroma-kspplugin ou via une archive.
+Le plugin KSP s'installe via le menu `Help > Install New Software` avec cette URL :
+
+https://sebez.github.io/release/vertigo-chroma-kspplugin
 
 Voir la [procédure d'installation détaillée](https://github.com/sebez/vertigo-chroma-kspplugin/wiki/Proc%C3%A9dure-d'installation) dans le wiki.
+
+![Installation](https://github.com/sebez/vertigo-chroma-kspplugin/blob/master/vertigo-chroma-demo/InstallationAuto.gif)
 
 ## Licence
 
