@@ -108,8 +108,6 @@ public final class DtoManager implements Manager {
 
 		@Override
 		public boolean isCandidate(IFile file) {
-			/* Pas de convention de nommage sur les DTO. */
-			/* On vérifie que c'est un fichier Java. */
 			return LegacyManager.getInstance().getStrategy(file).isDtoCandidate(file);
 		}
 

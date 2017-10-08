@@ -28,6 +28,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.Version;
 
+/**
+ * Dialogue "à propos de".
+ */
 public class AboutDialog extends Dialog {
 
 	private static final int LOGO_SIZE = 50;

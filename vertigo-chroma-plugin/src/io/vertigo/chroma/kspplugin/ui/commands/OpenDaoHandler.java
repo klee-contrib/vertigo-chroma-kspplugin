@@ -24,7 +24,7 @@ public class OpenDaoHandler extends AbstractHandler {
 
 			@Override
 			public Object[] getElements() {
-				/* Charge les services du cache du ServiceManager. */
+				/* Charge les DAO/PAO du cache du DaoManager. */
 				return DaoManager.getInstance().getWorkspace().getDaoImplementations().toArray();
 			}
 		});
