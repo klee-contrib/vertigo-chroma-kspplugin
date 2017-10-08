@@ -1,6 +1,6 @@
 # vertigo-chroma-kspPlugin
 
-[![master](https://travis-ci.org/sebez/vertigo-chroma-kspplugin.svg?branch=master)](https://travis-ci.org/sebez/vertigo-chroma-kspplugin) [![master](https://sonarcloud.io/api/badges/gate?key=io.vertigo.chroma:kspplugin-main)](https://sonarcloud.io/dashboard?id=io.vertigo.chroma%3Akspplugin-main) [![release](http://github-release-version.herokuapp.com/github/sebez/vertigo-chroma-kspplugin/release.svg?style=flat)](https://github.com/sebez/vertigo-chroma-kspplugin/releases/latest)
+[![master](https://travis-ci.org/sebez/vertigo-chroma-kspplugin.svg?branch=master)](https://travis-ci.org/sebez/vertigo-chroma-kspplugin) [![master](https://sonarcloud.io/api/badges/gate?key=io.vertigo.chroma:kspplugin-main)](https://sonarcloud.io/dashboard?id=io.vertigo.chroma%3Akspplugin-main) [![Dependency Status](https://www.versioneye.com/user/projects/59d8c9842de28c0051e20dae/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59d8c9842de28c0051e20dae) [![release](http://github-release-version.herokuapp.com/github/sebez/vertigo-chroma-kspplugin/release.svg?style=flat)](https://github.com/sebez/vertigo-chroma-kspplugin/releases/latest)
 
 Plugin Eclipse pour améliorer l'expérience de développement [Vertigo](https://github.com/KleeGroup/vertigo).
 
