@@ -26,6 +26,12 @@ Voir la [procédure d'installation détaillée](https://github.com/sebez/vertigo
 
 ![Installation](https://github.com/sebez/vertigo-chroma-kspplugin/blob/master/vertigo-chroma-demo/InstallationAuto.gif)
 
+## Contribution
+
+Les remontées d'anomalies et les demandes d'évolution sont les bienvenues. 
+
+Voir la page [Contribution](https://github.com/sebez/vertigo-chroma-kspplugin/wiki/Contribution) du wiki.
+
 ## Licence
 
-[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)
+Ce projet est publié sous la licence [Apache 2](https://www.apache.org/licenses/LICENSE-2.0).
