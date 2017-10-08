@@ -2,7 +2,7 @@
 <feature
       id="KspPluginFeature"
       label="KspPluginFeature"
-      version="0.5.0.qualifier"
+      version="1.0.0"
       provider-name="Sebez">
 
    <description url="https://github.com/sebez/vertigo-chroma-kspplugin">
@@ -251,6 +251,10 @@ limitations under the License.
    See the License for the specific language governing permissions and
 limitations under the License.
    </license>
+
+   <url>
+      <update label="Sebez Github KSP Plugin Update site" url="https://sebez.github.io/release/vertigo-chroma-kspplugin/"/>
+   </url>
 
    <plugin
          id="io.vertigo.chroma.kspPlugin"
