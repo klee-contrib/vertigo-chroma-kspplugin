@@ -6,7 +6,7 @@ Plugin Eclipse pour améliorer l'expérience de développement [Vertigo](https:/
 
 ## Démo express
 
-[[https://github.com/sebez/vertigo-chroma-kspplugin/blob/master/vertigo-chroma-demo/DemoExpress.gif]]
+![Démo express](https://github.com/sebez/vertigo-chroma-kspplugin/blob/master/vertigo-chroma-demo/DemoExpress.gif)
 
 ## Fonctionnalités
 
