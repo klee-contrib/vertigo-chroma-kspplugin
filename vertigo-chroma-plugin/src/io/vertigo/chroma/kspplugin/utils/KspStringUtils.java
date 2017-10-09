@@ -36,6 +36,7 @@ public final class KspStringUtils {
 	private static final Pattern KASPER_4_DAO_FILE_NAME = Pattern.compile("^(Services.+)\\.java$");
 	private static final Pattern KASPER_3_DAO_FILE_NAME = Pattern.compile("^(.+Services)\\.java$");
 	private static final Pattern VERTIGO_SERVICE_FILE_NAME = Pattern.compile("^(.+ServicesImpl)\\.java$");
+	private static final Pattern SPARK_SERVICE_FILE_NAME = Pattern.compile("^(.+Service)\\.java$");
 	private static final Pattern KASPER_4_SERVICE_FILE_NAME = Pattern.compile("^(Facade.+Bean)\\.java$");
 	private static final Pattern KASPER_3_SERVICE_FILE_NAME = Pattern.compile("^(.+FacadeMetier)\\.java$");
 	private static final Pattern WS_FILE_NAME = Pattern.compile("^(.*Web.*)\\.java$");
@@ -251,6 +252,14 @@ public final class KspStringUtils {
 
 	public static String getKasper4ServiceFileName(String s) {
 		Matcher matcher = KASPER_4_SERVICE_FILE_NAME.matcher(s);
+		if (matcher.matches()) {
+			return matcher.group(1);
+		}
+		return null;
+	}
+
+	public static String getSparkServiceFileName(String s) {
+		Matcher matcher = SPARK_SERVICE_FILE_NAME.matcher(s);
 		if (matcher.matches()) {
 			return matcher.group(1);
 		}

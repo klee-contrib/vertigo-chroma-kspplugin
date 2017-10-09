@@ -153,6 +153,11 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 			return LegacyVersion.KASPER_6;
 		}
 
+		/* Kasper 6 - Spark */
+		if (isTypeExists("spark.commons.SparkRuntimeException", project)) {
+			return LegacyVersion.SPARK_KASPER_6;
+		}
+
 		/* Kasper 5 */
 		if (isTypeExists("org.codehaus.janino.ScriptEvaluator", project)) {
 			return LegacyVersion.KASPER_5;
