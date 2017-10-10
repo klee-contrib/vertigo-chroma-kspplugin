@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: KspPlugin
 Bundle-SymbolicName: io.vertigo.chroma.kspPlugin;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-Activator: io.vertigo.chroma.kspplugin.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

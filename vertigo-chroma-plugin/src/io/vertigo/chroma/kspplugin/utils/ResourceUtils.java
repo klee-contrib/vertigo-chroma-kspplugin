@@ -101,6 +101,16 @@ public final class ResourceUtils {
 	}
 
 	/**
+	 * Indique si une ressource est dans le dossier de classes générées de Spark.
+	 *
+	 * @param resource Resource.
+	 * @return <code>true</code> si la ressource est dans le dossier target/generated-sources/ksp.
+	 */
+	public static boolean isSrcSparkGenerated(IResource resource) {
+		return resource.getFullPath().toString().contains("target/generated-sources/ksp");
+	}
+
+	/**
 	 * Indique si une ressource est un fichier Java.
 	 * 
 	 * @param resource Resource.

@@ -16,6 +16,11 @@ public enum LegacyVersion {
 	KASPER_6(new Kasper6Strategy()),
 
 	/**
+	 * Spark.
+	 */
+	SPARK_KASPER_6(new SparkKasper6Strategy()),
+
+	/**
 	 * Kasper 5.
 	 */
 	KASPER_5(new Kasper5Strategy()),
