@@ -55,7 +55,7 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 
 		/* Construit le résultat. */
 		try {
-			return buildProposals(suggestions, currentWord, documentOffset);
+			return buildProposals(suggestions, currentWordSelection);
 		} catch (Exception e) {
 			ErrorUtils.handle(e);
 		}
@@ -128,14 +128,13 @@ public abstract class BaseContentAssistProcessor implements IContentAssistProces
 	 * Constuit les propositions d'aucomplétion.
 	 * 
 	 * @param suggestions Suggestionsà proposer.
-	 * @param replacedWord Mot courant à remplacer dans le document.
-	 * @param documentOffset Offset dans le document du curseur. Le mot est placé avant ce curseur.
+	 * @param currentWordSelection Mot courant à remplacer dans le document.
 	 * @return Propositions d'autocomplétion.
 	 */
-	private ICompletionProposal[] buildProposals(List<CompletionCandidate> suggestions, String replacedWord, int documentOffset) {
+	private ICompletionProposal[] buildProposals(List<CompletionCandidate> suggestions, ITextSelection currentWordSelection) {
 		/* Calcul l'offset et la longueur du mot à remplacer dans le document. */
-		int replacementLength = replacedWord.length();
-		int replacementOffset = documentOffset - replacementLength;
+		int replacementLength = currentWordSelection.getLength();
+		int replacementOffset = currentWordSelection.getOffset();
 
 		/* Construit les propositions en parcourant les suggestions. */
 		List<ICompletionProposal> proposals = new ArrayList<>();
