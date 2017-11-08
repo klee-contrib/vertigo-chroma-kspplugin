@@ -1,14 +1,16 @@
 package io.vertigo.chroma.kspplugin.utils;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import io.vertigo.chroma.kspplugin.Activator;
+
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Status;
 
 /**
  * Méthodes utilitaires pour gérer les erreurs.
  */
 public final class ErrorUtils {
 
-	private static final Logger LOGGER = Logger.getLogger("vertigo.chroma.kspplugin");
+	private static final ILog LOGGER = Activator.getDefault().getLog();
 
 	private ErrorUtils() {
 		// RAS
@@ -20,6 +22,6 @@ public final class ErrorUtils {
 	 * @param e Exception.
 	 */
 	public static void handle(Exception e) {
-		LOGGER.log(Level.SEVERE, "Erreur dans le plugin KSP.", e);
+		LOGGER.log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.OK, "Erreur non gérée dans le plugin KSP.", e));
 	}
 }

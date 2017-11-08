@@ -1,14 +1,16 @@
 package io.vertigo.chroma.kspplugin.utils;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import io.vertigo.chroma.kspplugin.Activator;
+
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Status;
 
 /**
  * Méthodes utilitaires pour gérer les logs.
  */
 public final class LogUtils {
 
-	private static final Logger LOGGER = Logger.getLogger("vertigo.chroma.kspplugin");
+	private static final ILog LOGGER = Activator.getDefault().getLog();
 
 	private LogUtils() {
 		// RAS
@@ -20,6 +22,6 @@ public final class LogUtils {
 	 * @param e Exception.
 	 */
 	public static void info(String s) {
-		LOGGER.log(Level.INFO, s);
+		LOGGER.log(new Status(Status.INFO, Activator.PLUGIN_ID, Status.OK, s, null));
 	}
 }
