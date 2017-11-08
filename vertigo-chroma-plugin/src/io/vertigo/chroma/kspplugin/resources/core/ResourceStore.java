@@ -84,14 +84,10 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	@Override
 	public void versionChanged(IProject project, LegacyVersion newVerwion) {
 		/* Supprime tous les items de tous les fichiers du projet */
-		removeProject(project);
+		this.map.removeProjectItems(project);
 
 		/* Réindex le projet. */
 		initProjects(p -> p == project);
-	}
-
-	private void removeProject(IProject project) {
-		this.map.removeProjectItems(project);
 	}
 
 	/**
