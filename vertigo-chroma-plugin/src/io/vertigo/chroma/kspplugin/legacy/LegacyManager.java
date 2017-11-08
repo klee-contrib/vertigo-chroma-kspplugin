@@ -4,9 +4,12 @@ import io.vertigo.chroma.kspplugin.model.Manager;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 import io.vertigo.chroma.kspplugin.utils.JdtUtils;
 import io.vertigo.chroma.kspplugin.utils.LogUtils;
+import io.vertigo.chroma.kspplugin.utils.PropertyUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.eclipse.core.resources.IFile;
@@ -26,7 +29,8 @@ import org.eclipse.core.runtime.CoreException;
 public final class LegacyManager implements Manager, IResourceChangeListener {
 
 	private static LegacyManager instance;
-	private final ProjectStrategyMap map = new ProjectStrategyMap();
+	private final ProjectVersionMap map = new ProjectVersionMap();
+	private final Collection<LegacyVersionListener> legacyVersionListeners = new ArrayList<>();
 
 	/**
 	 * @return Instance du singleton.
@@ -51,7 +55,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 * @return Stratégie.
 	 */
 	public LegacyStrategy getStrategy(IProject project) {
-		return map.getOrDefault(project, new NoFrameworkStrategy());
+		return getVersion(project).getStrategy();
 	}
 
 	/**
@@ -71,6 +75,40 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 */
 	public LegacyStrategy getCurrentStrategy() {
 		return getStrategy(UiUtils.getCurrentEditorProject());
+	}
+
+	/**
+	 * Obtient la version d'un projet.
+	 * 
+	 * @param project Projet.
+	 * @return Version.
+	 */
+	public LegacyVersion getVersion(IProject project) {
+		return this.map.getOrDefault(project, LegacyVersion.NO_FRAMEWORK);
+	}
+
+	/**
+	 * Met à jour la version d'un projet.
+	 * <p>
+	 * Recalcule les stores.
+	 * </p>
+	 * 
+	 * @param project Projet.
+	 * @param legacyVersion Version.
+	 */
+	public void setVersion(IProject project, LegacyVersion legacyVersion) {
+
+		setProjectVersion(project, legacyVersion);
+
+		fireLegacyVersionChanged(project, legacyVersion);
+	}
+
+	public LegacyVersion getDefaultVersion(IProject project) {
+		return getProjectLegacyVersion(project);
+	}
+
+	public void addLegacyVersionChangedListener(LegacyVersionListener listener) {
+		legacyVersionListeners.add(listener);
 	}
 
 	@Override
@@ -122,18 +160,39 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 
+	private void fireLegacyVersionChanged(IProject project, LegacyVersion legacyVersion) {
+		for (LegacyVersionListener listener : legacyVersionListeners) {
+			listener.versionChanged(project, legacyVersion);
+		}
+	}
+
 	private void handleProject(IProject project) {
 		/* Vérifie si le projet n'est pas déjà connu. */
 		if (this.map.containsKey(project)) {
 			return;
 		}
 
-		/* Choisit une stratégie pour le projet. */
-		LegacyVersion version = getProjectLegacyVersion(project);
-		LogUtils.info("Projet " + project.getName() + " en version " + version.name());
+		String legacyVersionName = PropertyUtils.getLegacyVersion(project);
+
+		/* La version est stockée dans les propriétés du projet : on l'utilise. */
+		if (legacyVersionName != null) {
+			LegacyVersion propertyVersion = LegacyVersion.valueOf(legacyVersionName);
+			setProjectVersion(project, propertyVersion);
+			return;
+		}
+
+		/* Version inconnue : on calcule la version par défaut. */
+		LegacyVersion defaultVersion = getDefaultVersion(project);
+		setProjectVersion(project, defaultVersion);
+	}
+
+	private void setProjectVersion(IProject project, LegacyVersion legacyVersion) {
+		LogUtils.info("Projet " + project.getName() + " en version " + legacyVersion.name());
 
 		/* Récupère la stratégie pour la version */
-		this.map.put(project, version.getStrategy());
+		this.map.put(project, legacyVersion);
+
+		PropertyUtils.setLegacyVersion(project, legacyVersion.name());
 	}
 
 	private static LegacyVersion getProjectLegacyVersion(IProject project) {
@@ -192,9 +251,9 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	}
 
 	/**
-	 * Map projet vers stratégie.
+	 * Map projet vers version.
 	 */
-	private static class ProjectStrategyMap extends HashMap<IProject, LegacyStrategy> {
+	private static class ProjectVersionMap extends HashMap<IProject, LegacyVersion> {
 		private static final long serialVersionUID = 1L;
 	}
 }

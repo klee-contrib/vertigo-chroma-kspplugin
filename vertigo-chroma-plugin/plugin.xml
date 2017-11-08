@@ -253,4 +253,25 @@
             class="io.vertigo.chroma.kspplugin.boot.KspPluginStartup">
       </startup>
    </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="io.vertigo.chroma.kspplugin.ui.properties.VertigoPropertyPage"
+            icon="icons/ksp.gif"
+            id="io.vertigo.chroma.kspplugin.ui.properties.vertigoPropertyPage"
+            name="Vertigo"
+            selectionFilter="single">
+            
+         <enabledWhen>
+            <or>
+	            <instanceof
+	                  value="org.eclipse.core.resources.IProject">
+	            </instanceof>
+	            <instanceof
+	                  value="org.eclipse.jdt.core.IJavaProject">
+	            </instanceof>
+            </or>
+         </enabledWhen>
+      </page>
+   </extension>
 </plugin>

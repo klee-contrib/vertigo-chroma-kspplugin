@@ -1,5 +1,7 @@
 package io.vertigo.chroma.kspplugin.legacy;
 
+import java.util.Arrays;
+
 /**
  * Version du framework Kasper / Vertigo.
  */
@@ -58,5 +60,9 @@ public enum LegacyVersion {
 
 	public LegacyStrategy getStrategy() {
 		return strategy;
+	}
+
+	public static String[] names() {
+		return Arrays.stream(values()).map(Enum::name).toArray(String[]::new);
 	}
 }

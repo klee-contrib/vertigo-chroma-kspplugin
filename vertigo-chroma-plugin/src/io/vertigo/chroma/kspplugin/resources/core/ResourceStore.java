@@ -1,5 +1,8 @@
 package io.vertigo.chroma.kspplugin.resources.core;
 
+import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
+import io.vertigo.chroma.kspplugin.legacy.LegacyVersion;
+import io.vertigo.chroma.kspplugin.legacy.LegacyVersionListener;
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.JavaProjectMap;
 import io.vertigo.chroma.kspplugin.model.Navigable;
@@ -40,7 +43,7 @@ import org.eclipse.ui.editors.text.TextFileDocumentProvider;
  * 
  * @param <T> Type de l'élément du magasin.
  */
-public class ResourceStore<T extends Navigable> implements IResourceChangeListener {
+public class ResourceStore<T extends Navigable> implements IResourceChangeListener, LegacyVersionListener {
 
 	private final ResourceStoreImplementor<T> implementor;
 	private final ItemMap map = new ItemMap();
@@ -76,6 +79,19 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 		} catch (CoreException e) {
 			ErrorUtils.handle(e);
 		}
+	}
+
+	@Override
+	public void versionChanged(IProject project, LegacyVersion newVerwion) {
+		/* Supprime tous les items de tous les fichiers du projet */
+		removeProject(project);
+
+		/* Réindex le projet. */
+		initProjects(p -> p == project);
+	}
+
+	private void removeProject(IProject project) {
+		this.map.removeProjectItems(project);
 	}
 
 	/**
@@ -189,6 +205,27 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 	 * Initialise le magasin.
 	 */
 	private void initStore() {
+		/* Index tous les projets. */
+		initProjects(project -> true);
+	}
+
+	/**
+	 * Initialise le listener de ressources du workspace.
+	 */
+	private void initListener() {
+		/* Comme la durée de vie du store est celle du plugin, il n'est pas nécessaire de prévoir de se désabonner. */
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+
+		/* Ecoute les changements de version de projet */
+		LegacyManager.getInstance().addLegacyVersionChangedListener(this);
+	}
+
+	/**
+	 * Initialise les projets respectant le filtre.
+	 * 
+	 * @param filter Filtre.
+	 */
+	private void initProjects(Predicate<IProject> filter) {
 
 		/* Charge les projets ouverts. */
 		JavaProjectMap projectMap = ResourceUtils.getProjectMap();
@@ -200,20 +237,17 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 				IProject project = entry.getKey();
 				IJavaProject javaProject = entry.getValue();
 
+				/* Filtre les projets */
+				if (!filter.test(project)) {
+					continue;
+				}
+
 				/* Parcours les resources du projet. */
 				project.accept(new ItemVisitor(project, javaProject));
 			}
 		} catch (Exception e) {
 			ErrorUtils.handle(e);
 		}
-	}
-
-	/**
-	 * Initialise le listener de ressources du workspace.
-	 */
-	private void initListener() {
-		/* Comme la durée de vie du store est celle du plugin, il n'est pas nécessaire de prévoir de se désabonner. */
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 
 	/**
@@ -365,6 +399,15 @@ public class ResourceStore<T extends Navigable> implements IResourceChangeListen
 		public List<T> getAll() {
 			/* Renvoie l'union de tous les éléments de tous les fichiers. */
 			return this.values().stream().flatMap(List::stream).collect(Collectors.toList());
+		}
+
+		/**
+		 * Supprime les items des fichiers d'un projet.
+		 * 
+		 * @param project Projet.
+		 */
+		public void removeProjectItems(IProject project) {
+			this.entrySet().removeIf(entry -> entry.getKey().getProject() == project);
 		}
 	}
 }
