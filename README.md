@@ -28,7 +28,7 @@ Voir la [procédure d'installation détaillée](https://github.com/sebez/vertigo
 
 ## Contribution
 
-Les remontées d'anomalies et les demandes d'évolution sont les bienvenues. 
+Les remontées d'anomalies, les demandes d'évolution et pull request sont les bienvenues. 
 
 Voir la page [Contribution](https://github.com/sebez/vertigo-chroma-kspplugin/wiki/Contribution) du wiki.
 
