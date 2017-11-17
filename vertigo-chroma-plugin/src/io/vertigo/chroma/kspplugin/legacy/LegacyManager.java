@@ -97,7 +97,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 * @param legacyVersion Version.
 	 */
 	public void setVersion(IProject project, LegacyVersion legacyVersion) {
-		setProjectVersion(project, legacyVersion);
+		setProjectVersion(project, legacyVersion, true);
 	}
 
 	public LegacyVersion getDefaultVersion(IProject project) {
@@ -174,16 +174,16 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 		/* La version est stockée dans les propriétés du projet : on l'utilise. */
 		if (legacyVersionName != null) {
 			LegacyVersion propertyVersion = LegacyVersion.valueOf(legacyVersionName);
-			setProjectVersion(project, propertyVersion);
+			setProjectVersion(project, propertyVersion, false);
 			return;
 		}
 
 		/* Version inconnue : on utilise la version par défaut. */
-		setProjectVersion(project, defaultVersion);
+		setProjectVersion(project, defaultVersion, false);
 	}
 
-	private void setProjectVersion(IProject project, LegacyVersion legacyVersion) {
-		if (legacyVersion == LegacyVersion.NO_FRAMEWORK) {
+	private void setProjectVersion(IProject project, LegacyVersion legacyVersion, boolean enableNoFramework) {
+		if (!enableNoFramework && legacyVersion == LegacyVersion.NO_FRAMEWORK) {
 			return;
 		}
 
