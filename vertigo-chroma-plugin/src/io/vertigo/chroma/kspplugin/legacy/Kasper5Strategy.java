@@ -106,10 +106,14 @@ public final class Kasper5Strategy implements LegacyStrategy {
 		case "attribute":
 		case "Field":
 		case "field":
+		case "action":
+		case "Action":
 		case "stringField":
 		case "booleanField":
 		case "dataField":
 		case "listField":
+		case "DataField":
+		case "NodeField":
 			return false;
 		default:
 			return true;
