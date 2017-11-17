@@ -97,10 +97,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 * @param legacyVersion Version.
 	 */
 	public void setVersion(IProject project, LegacyVersion legacyVersion) {
-
 		setProjectVersion(project, legacyVersion);
-
-		fireLegacyVersionChanged(project, legacyVersion);
 	}
 
 	public LegacyVersion getDefaultVersion(IProject project) {
@@ -128,12 +125,8 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 					}
 
 					/* Visite le projet. */
-					if (resource instanceof IProject) {
-						return true;
-					}
-
-					/* Cas d'un ajout : potentiellement une ouverture de projet. */
-					if (delta.getKind() == IResourceDelta.ADDED) {
+					if (resource instanceof IProject && delta.getKind() == IResourceDelta.CHANGED) {
+						/* Cas d'un changement : potentiellement une ouverture de projet. */
 						handleProject(resource.getProject());
 					}
 
@@ -172,6 +165,10 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 			return;
 		}
 
+		/* Calcul de la version par défaut. */
+		LegacyVersion defaultVersion = getDefaultVersion(project);
+
+		/* Lecture de la version stockée dans les propriété du projet. */
 		String legacyVersionName = PropertyUtils.getLegacyVersion(project);
 
 		/* La version est stockée dans les propriétés du projet : on l'utilise. */
@@ -181,18 +178,25 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 			return;
 		}
 
-		/* Version inconnue : on calcule la version par défaut. */
-		LegacyVersion defaultVersion = getDefaultVersion(project);
+		/* Version inconnue : on utilise la version par défaut. */
 		setProjectVersion(project, defaultVersion);
 	}
 
 	private void setProjectVersion(IProject project, LegacyVersion legacyVersion) {
+		if (legacyVersion == LegacyVersion.NO_FRAMEWORK) {
+			return;
+		}
+
 		LogUtils.info("Projet " + project.getName() + " en version " + legacyVersion.name());
 
-		/* Récupère la stratégie pour la version */
+		/* Met à jour la map. */
 		this.map.put(project, legacyVersion);
 
+		/* Met à jour les propriétés du projet. */
 		PropertyUtils.setLegacyVersion(project, legacyVersion.name());
+
+		/* Lève l'événement de changement de version. */
+		fireLegacyVersionChanged(project, legacyVersion);
 	}
 
 	private static LegacyVersion getProjectLegacyVersion(IProject project) {
