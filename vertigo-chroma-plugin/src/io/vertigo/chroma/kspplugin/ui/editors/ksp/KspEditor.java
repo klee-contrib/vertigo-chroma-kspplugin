@@ -12,6 +12,7 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -82,7 +83,12 @@ public class KspEditor extends TextEditor implements IResourceChangeListener { /
 		if (event.getType() != IResourceChangeEvent.POST_CHANGE) {
 			return;
 		}
-		FileEditorInput fileInput = (FileEditorInput) this.getEditorInput();
+		IEditorInput editorInput = this.getEditorInput();
+		if (!(editorInput instanceof FileEditorInput)) {
+			return;
+		}
+
+		FileEditorInput fileInput = (FileEditorInput) editorInput;
 		IFile file = fileInput.getFile();
 		IResourceDelta candidate = event.getDelta().findMember(file.getFullPath());
 		if (candidate == null) {

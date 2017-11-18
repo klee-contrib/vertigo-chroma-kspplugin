@@ -131,10 +131,13 @@ public final class UiUtils {
 		if (editor == null) {
 			return null;
 		}
-		FileEditorInput fileInput = (FileEditorInput) editor.getEditorInput();
-		if (fileInput == null) {
+		IEditorInput editorInput = editor.getEditorInput();
+		if (!(editorInput instanceof FileEditorInput)) {
 			return null;
 		}
+
+		FileEditorInput fileInput = (FileEditorInput) editorInput;
+
 		return fileInput.getFile();
 	}
 

@@ -167,7 +167,9 @@ public class KspOutlinePage extends ContentOutlinePage {
 			if (oldInput == null) {
 				IResource resource = (IResource) newInput;
 				/* Abonnement aux changement de ressources. */
-				resource.getWorkspace().addResourceChangeListener(this);
+				if (newInput != null) {
+					resource.getWorkspace().addResourceChangeListener(this);
+				}
 			}
 			this.viewer = newViewer;
 			this.input = (IResource) newInput;
@@ -180,6 +182,9 @@ public class KspOutlinePage extends ContentOutlinePage {
 
 		@Override
 		public Object[] getElements(Object parent) {
+			if (input == null) {
+				return new Object[0];
+			}
 			if (parent.equals(input)) {
 				initialize();
 				return getChildren(invisibleRoot);
