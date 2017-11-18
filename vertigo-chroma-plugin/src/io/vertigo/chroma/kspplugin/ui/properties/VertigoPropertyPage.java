@@ -106,6 +106,7 @@ public class VertigoPropertyPage extends PropertyPage {
 		return composite;
 	}
 
+	@Override
 	protected void performDefaults() {
 		super.performDefaults();
 		LegacyVersion legacyVersion = LegacyManager.getInstance().getDefaultVersion(getProject());
