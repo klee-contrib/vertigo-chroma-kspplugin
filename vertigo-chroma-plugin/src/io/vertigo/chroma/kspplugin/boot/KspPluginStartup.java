@@ -4,6 +4,7 @@ import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.model.Manager;
 import io.vertigo.chroma.kspplugin.resources.DaoManager;
 import io.vertigo.chroma.kspplugin.resources.DtoManager;
+import io.vertigo.chroma.kspplugin.resources.JavaClassManager;
 import io.vertigo.chroma.kspplugin.resources.KspManager;
 import io.vertigo.chroma.kspplugin.resources.ServiceManager;
 import io.vertigo.chroma.kspplugin.resources.WsRouteManager;
@@ -27,7 +28,7 @@ public class KspPluginStartup implements IStartup {
 
 		/* Liste et instancie les singletons des managers de ressources. */
 		Manager[] managers = new Manager[] { KspManager.getInstance(), DaoManager.getInstance(), DtoManager.getInstance(), ServiceManager.getInstance(),
-				WsRouteManager.getInstance() };
+				WsRouteManager.getInstance(), JavaClassManager.getInstance() };
 
 		/* Créé et programme un job pour démarrer chacun des managers de ressources. */
 		for (Manager pluginManager : managers) {

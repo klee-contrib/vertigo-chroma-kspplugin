@@ -1,10 +1,13 @@
 package io.vertigo.chroma.kspplugin.ui.editors.hyperlinks;
 
+import io.vertigo.chroma.kspplugin.model.JavaClassFile;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
+import io.vertigo.chroma.kspplugin.resources.JavaClassManager;
 import io.vertigo.chroma.kspplugin.utils.DocumentUtils;
 import io.vertigo.chroma.kspplugin.utils.JdtUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
@@ -41,7 +44,7 @@ public class CanonicalJavaNameHyperLinkDetector extends AbstractHyperlinkDetecto
 		}
 
 		/* Charge le type Java. */
-		IType javaType = JdtUtils.getJavaType(currentWord, UiUtils.getCurrentEditorProject());
+		IType javaType = findJavaType(currentWord);
 		if (javaType == null) {
 			return null; // NOSONAR
 		}
@@ -49,5 +52,27 @@ public class CanonicalJavaNameHyperLinkDetector extends AbstractHyperlinkDetecto
 		/* Renvoie un lien pour ouvrir le type Java. */
 		IRegion targetRegion = new Region(currentWordSelection.getOffset(), currentWordSelection.getLength());
 		return new IHyperlink[] { new JavaTypeHyperLink(targetRegion, javaType) };
+	}
+
+	private IType findJavaType(String currentWord) {
+
+		IProject currentEditorProject = UiUtils.getCurrentEditorProject();
+
+		/* Cas d'un nom qualifié complet. */
+		IType javaTypeFromFullyQualifiedName = JdtUtils.getJavaType(currentWord, currentEditorProject);
+		if (javaTypeFromFullyQualifiedName != null) {
+			return javaTypeFromFullyQualifiedName;
+		}
+
+		/* Cas d'un nom simple. */
+		JavaClassFile javaClassFromSimpleName = JavaClassManager.getInstance().findJavaClassFile(currentWord);
+		if (javaClassFromSimpleName != null) {
+			IType javaTypeFromSimpleName = JdtUtils.getJavaType(javaClassFromSimpleName.getFullyQualifiedName(), currentEditorProject);
+			if (javaTypeFromSimpleName != null) {
+				return javaTypeFromSimpleName;
+			}
+		}
+
+		return null;
 	}
 }
