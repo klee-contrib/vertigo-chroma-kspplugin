@@ -1,5 +1,6 @@
 package io.vertigo.chroma.kspplugin.resources;
 
+import io.vertigo.chroma.kspplugin.model.DaoImplementation;
 import io.vertigo.chroma.kspplugin.model.FileRegion;
 import io.vertigo.chroma.kspplugin.model.JavaClassFile;
 import io.vertigo.chroma.kspplugin.model.Manager;
@@ -9,6 +10,7 @@ import io.vertigo.chroma.kspplugin.resources.core.ResourceStoreImplementor;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 import io.vertigo.chroma.kspplugin.utils.JdtUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
+import io.vertigo.chroma.kspplugin.utils.VertigoStringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -78,6 +80,18 @@ public final class JavaClassManager implements Manager {
 	 */
 	public JavaClassFile findJavaClassFile(String javaName, String packageSuffix) {
 		return store.findFirstItem(javaClassFile -> javaName.equals(javaClassFile.getJavaName()) && javaClassFile.getPackageName().endsWith(packageSuffix));
+	}
+
+	/**
+	 * Retrouve la classe de test unitaire correspondant à une implémentation de DAO.
+	 * 
+	 * @param daoImplementation Implémentation de DAO.
+	 * @return Classe de test unitaire, null sinon.
+	 */
+	public JavaClassFile findJavaClassTest(DaoImplementation daoImplementation) {
+		String methodClassTestName = VertigoStringUtils.first2UpperCase(daoImplementation.getJavaName()) + "Test";
+		String packageSuffix = "." + VertigoStringUtils.first2LowerCase(daoImplementation.getFile().getName()) + "Test";
+		return findJavaClassFile(methodClassTestName, packageSuffix);
 	}
 
 	private class Implementor implements ResourceStoreImplementor<JavaClassFile> {

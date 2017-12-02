@@ -17,7 +17,6 @@ import io.vertigo.chroma.kspplugin.utils.DocumentUtils;
 import io.vertigo.chroma.kspplugin.utils.KspStringUtils;
 import io.vertigo.chroma.kspplugin.utils.StringUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
-import io.vertigo.chroma.kspplugin.utils.VertigoStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,9 +129,7 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 		hyperLinks.add(new JavaImplementationHyperLink(targetRegion, daoImplementation));
 
 		/* Recherche du test unitaire de la Task. */
-		String methodClassTestName = VertigoStringUtils.first2UpperCase(javaName) + "Test";
-		String packageSuffix = "." + VertigoStringUtils.first2LowerCase(daoImplementation.getFile().getName()) + "Test";
-		JavaClassFile testClass = JavaClassManager.getInstance().findJavaClassFile(methodClassTestName, packageSuffix);
+		JavaClassFile testClass = JavaClassManager.getInstance().findJavaClassTest(daoImplementation);
 		if (testClass != null) {
 			hyperLinks.add(new JavaTestClassHyperLink(targetRegion, testClass));
 		}
