@@ -11,6 +11,7 @@ import io.vertigo.chroma.kspplugin.resources.core.ResourceStore;
 import io.vertigo.chroma.kspplugin.resources.core.ResourceStoreImplementor;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 import io.vertigo.chroma.kspplugin.utils.JdtUtils;
+import io.vertigo.chroma.kspplugin.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +126,8 @@ public final class DaoManager implements Manager {
 			}
 
 			/* Créé le fichier de DAO/PAO. */
-			return new DaoFile(file, daoImplementations);
+			String daoName = StringUtils.removeExtension(compilationUnit.getElementName());
+			return new DaoFile(daoName, file, daoImplementations);
 		}
 
 		private void handleType(IType type, IFile file, List<DaoImplementation> daoImplementations) throws JavaModelException {

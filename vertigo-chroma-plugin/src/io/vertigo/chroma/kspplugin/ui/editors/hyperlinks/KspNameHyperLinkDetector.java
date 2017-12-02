@@ -5,16 +5,19 @@ import io.vertigo.chroma.kspplugin.legacy.LegacyStrategy;
 import io.vertigo.chroma.kspplugin.model.DaoImplementation;
 import io.vertigo.chroma.kspplugin.model.DtoFile;
 import io.vertigo.chroma.kspplugin.model.FileRegion;
+import io.vertigo.chroma.kspplugin.model.JavaClassFile;
 import io.vertigo.chroma.kspplugin.model.KspDeclaration;
 import io.vertigo.chroma.kspplugin.model.KspNature;
 import io.vertigo.chroma.kspplugin.model.WordSelectionType;
 import io.vertigo.chroma.kspplugin.resources.DaoManager;
 import io.vertigo.chroma.kspplugin.resources.DtoManager;
+import io.vertigo.chroma.kspplugin.resources.JavaClassManager;
 import io.vertigo.chroma.kspplugin.resources.KspManager;
 import io.vertigo.chroma.kspplugin.utils.DocumentUtils;
 import io.vertigo.chroma.kspplugin.utils.KspStringUtils;
 import io.vertigo.chroma.kspplugin.utils.StringUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
+import io.vertigo.chroma.kspplugin.utils.VertigoStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +109,9 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 	}
 
 	private IHyperlink[] detectTaskName(String currentWord, IRegion targetRegion) {
+
+		List<IHyperlink> hyperLinks = new ArrayList<>();
+
 		/* Extrait un nom de tâche DAO / PAO. */
 		String taskName = KspStringUtils.getTaskName(currentWord);
 		if (taskName == null) {
@@ -120,8 +126,23 @@ public class KspNameHyperLinkDetector extends AbstractHyperlinkDetector {
 			return null; // NOSONAR
 		}
 
-		/* On retourne le lien vers la tâche. */
-		return new IHyperlink[] { new JavaImplementationHyperLink(targetRegion, daoImplementation) };
+		/* On ajoute le lien vers la tâche. */
+		hyperLinks.add(new JavaImplementationHyperLink(targetRegion, daoImplementation));
+
+		/* Recherche du test unitaire de la Task. */
+		String methodClassTestName = VertigoStringUtils.first2UpperCase(javaName) + "Test";
+		String packageSuffix = "." + VertigoStringUtils.first2LowerCase(daoImplementation.getFile().getName()) + "Test";
+		JavaClassFile testClass = JavaClassManager.getInstance().findJavaClassFile(methodClassTestName, packageSuffix);
+		if (testClass != null) {
+			hyperLinks.add(new JavaTestClassHyperLink(targetRegion, testClass));
+		}
+
+		if (hyperLinks.isEmpty()) {
+			return null; // NOSONAR
+		}
+
+		/* On retourne les liens de la Task. */
+		return hyperLinks.toArray(new IHyperlink[0]);
 	}
 
 	private IHyperlink[] detectKspName(String currentWord, IRegion targetRegion, FileRegion fileRegion) {

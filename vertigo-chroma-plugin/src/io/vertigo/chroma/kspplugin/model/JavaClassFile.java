@@ -16,7 +16,7 @@ public class JavaClassFile extends JavaNavigable {
 	 */
 	public JavaClassFile(FileRegion fileRegion, String javaName, String packageName) {
 		super(fileRegion, javaName);
-		this.packageName = packageName;
+		this.packageName = packageName == null ? "" : packageName;
 	}
 
 	/**

@@ -69,6 +69,17 @@ public final class JavaClassManager implements Manager {
 		return store.findFirstItem(javaClassFile -> javaName.equals(javaClassFile.getJavaName()));
 	}
 
+	/**
+	 * Cherche un fichier Java à partir de son nom simple et de la fin du package.
+	 * 
+	 * @param javaName Nom simple Java de la classe.
+	 * @param packageSuffix Suffix de package.
+	 * @return Le premier JavaClassFile qui correspond.
+	 */
+	public JavaClassFile findJavaClassFile(String javaName, String packageSuffix) {
+		return store.findFirstItem(javaClassFile -> javaName.equals(javaClassFile.getJavaName()) && javaClassFile.getPackageName().endsWith(packageSuffix));
+	}
+
 	private class Implementor implements ResourceStoreImplementor<JavaClassFile> {
 
 		@Override
