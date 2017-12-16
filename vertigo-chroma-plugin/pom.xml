@@ -4,7 +4,7 @@
 
 	<groupId>io.vertigo.chroma</groupId>
 	<artifactId>kspplugin</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
 	<name>kspplugin</name>
 	<description>Eclipse plugin for Vertigo dev.</description>
