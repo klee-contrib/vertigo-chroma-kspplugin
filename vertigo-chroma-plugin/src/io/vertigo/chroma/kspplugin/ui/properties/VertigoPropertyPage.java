@@ -2,6 +2,7 @@ package io.vertigo.chroma.kspplugin.ui.properties;
 
 import io.vertigo.chroma.kspplugin.legacy.LegacyManager;
 import io.vertigo.chroma.kspplugin.legacy.LegacyVersion;
+import io.vertigo.chroma.kspplugin.utils.PropertyUtils;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -24,10 +25,12 @@ public class VertigoPropertyPage extends PropertyPage {
 
 	private static final String PATH_TITLE = "Path:";
 	private static final String LEGACY_VERSION_TITLE = "&Legacy version:";
+	private static final String DTO_PARENTS_TITLE = "&DTO parents:";
 
-	private static final int TEXT_FIELD_WIDTH = 50;
+	private static final int COMBO_FIELD_WIDTH = 50;
 
 	private Combo legacyVersionCombo;
+	private Text dtoParentsText;
 
 	/**
 	 * Constructor for VertigoPropertyPage.
@@ -36,7 +39,7 @@ public class VertigoPropertyPage extends PropertyPage {
 		super();
 	}
 
-	private void addFirstSection(Composite parent) {
+	private void addPathSection(Composite parent) {
 		Composite composite = createDefaultComposite(parent);
 
 		// Label for path field
@@ -56,7 +59,7 @@ public class VertigoPropertyPage extends PropertyPage {
 		separator.setLayoutData(gridData);
 	}
 
-	private void addSecondSection(Composite parent) {
+	private void addVersionSection(Composite parent) {
 		Composite composite = createDefaultComposite(parent);
 
 		// Label for owner field
@@ -66,13 +69,34 @@ public class VertigoPropertyPage extends PropertyPage {
 		// Owner text field
 		legacyVersionCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);
 		GridData gd = new GridData();
-		gd.widthHint = convertWidthInCharsToPixels(TEXT_FIELD_WIDTH);
+		gd.widthHint = convertWidthInCharsToPixels(COMBO_FIELD_WIDTH);
 		legacyVersionCombo.setLayoutData(gd);
 
 		// Populate owner text field
 		LegacyVersion legacyVersion = LegacyManager.getInstance().getVersion(getProject());
 		legacyVersionCombo.setItems(LegacyVersion.names());
 		legacyVersionCombo.setText(legacyVersion.name());
+	}
+
+	private void addDtoParentsSection(Composite parent) {
+		Composite composite = createDefaultComposite(parent);
+
+		// Label for owner field
+		Label ownerLabel = new Label(composite, SWT.NONE);
+		ownerLabel.setText(DTO_PARENTS_TITLE);
+
+		// Owner text field
+		dtoParentsText = new Text(composite, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+		GridData gridData = new GridData(GridData.FILL_BOTH);
+		gridData.heightHint = 100;
+		dtoParentsText.setLayoutData(gridData);
+
+		// Populate owner text field
+		String text = PropertyUtils.getDtoParentClasses(getProject());
+		if (text == null) {
+			text = "";
+		}
+		dtoParentsText.setText(text);
 	}
 
 	/**
@@ -86,9 +110,11 @@ public class VertigoPropertyPage extends PropertyPage {
 		data.grabExcessHorizontalSpace = true;
 		composite.setLayoutData(data);
 
-		addFirstSection(composite);
+		addPathSection(composite);
 		addSeparator(composite);
-		addSecondSection(composite);
+		addVersionSection(composite);
+		addSeparator(composite);
+		addDtoParentsSection(composite);
 		return composite;
 	}
 
@@ -109,13 +135,25 @@ public class VertigoPropertyPage extends PropertyPage {
 	@Override
 	protected void performDefaults() {
 		super.performDefaults();
+
+		/* Version legacy */
 		LegacyVersion legacyVersion = LegacyManager.getInstance().getDefaultVersion(getProject());
 		legacyVersionCombo.setText(legacyVersion.name());
+
+		/* Dto Parents */
+		dtoParentsText.setText("");
 	}
 
 	public boolean performOk() {
+
+		/* Dto parents */
+		String dtoParents = dtoParentsText.getText();
+		LegacyManager.getInstance().setDtoParentsClassList(getProject(), dtoParents);
+
+		/* Version legacy */
 		LegacyVersion legacyVersion = LegacyVersion.valueOf(legacyVersionCombo.getText());
 		LegacyManager.getInstance().setVersion(getProject(), legacyVersion);
+
 		return true;
 	}
 

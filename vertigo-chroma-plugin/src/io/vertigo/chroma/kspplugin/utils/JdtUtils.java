@@ -1,5 +1,7 @@
 package io.vertigo.chroma.kspplugin.utils;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.Flags;
@@ -157,7 +159,7 @@ public final class JdtUtils {
 			if (type.getSuperclassName() == null) {
 				return false;
 			}
-			return "SuperDtObject".equals(type.getSuperclassName());
+			return "SuperDtObject".equals(type.getSuperclassName()) || "kasper.model.SuperDtObject".equals(type.getSuperclassName());
 
 		} catch (JavaModelException e) {
 			ErrorUtils.handle(e);
@@ -194,6 +196,37 @@ public final class JdtUtils {
 	}
 
 	/**
+	 * Indique si le type donné est une sous-classe direct d'un type parmi une liste.
+	 * 
+	 * @param type Type JDT.
+	 * @param parentClasses Liste des classes parentes candidates.
+	 * @return <code>true</code> si le type est une sous-classe.
+	 */
+	public static boolean isSubclass(IType type, List<String> parentClasses) {
+		if (parentClasses == null || parentClasses.isEmpty()) {
+			return false;
+		}
+		try {
+			/* Vérifie que c'est une classe publique. */
+			if (!type.isClass() || !Flags.isPublic(type.getFlags())) {
+				return false;
+			}
+			/* Vérifie que la classe hérite d'une classe (autre que Object) */
+			String superclassName = type.getSuperclassName();
+			if (superclassName == null) {
+				return false;
+			}
+
+			/* Vérifie que la classe parente est parmi les candidates. */
+			return parentClasses.contains(superclassName);
+
+		} catch (JavaModelException e) {
+			ErrorUtils.handle(e);
+		}
+		return false;
+	}
+
+	/**
 	 * Obtient le type JDT pour un nom complet qualifié dans un projet donné.
 	 * 
 	 * @param fullyQualifiedName Nom complet qualifié.
@@ -218,12 +251,14 @@ public final class JdtUtils {
 		return (CompilationUnit) parser.createAST(null /* IProgressMonitor */);
 	}
 
-	public static String getStringLiteralValue(Object arg) {
-		return ((StringLiteral) arg).getLiteralValue();
-	}
-
-	public static String getSimpleNameIdentifier(Object arg) {
-		return ((SimpleName) arg).getIdentifier();
+	public static String getDomString(Object arg) {
+		if (arg instanceof SimpleName) {
+			return ((SimpleName) arg).getIdentifier();
+		}
+		if (arg instanceof StringLiteral) {
+			return ((StringLiteral) arg).getLiteralValue();
+		}
+		return null;
 	}
 
 	public static boolean isJavaProject(IProject project) {

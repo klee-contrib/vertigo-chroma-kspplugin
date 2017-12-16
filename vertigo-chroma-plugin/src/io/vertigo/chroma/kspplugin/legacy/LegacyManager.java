@@ -7,10 +7,14 @@ import io.vertigo.chroma.kspplugin.utils.LogUtils;
 import io.vertigo.chroma.kspplugin.utils.PropertyUtils;
 import io.vertigo.chroma.kspplugin.utils.ResourceUtils;
 import io.vertigo.chroma.kspplugin.utils.UiUtils;
+import io.vertigo.chroma.kspplugin.utils.VertigoStringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -30,6 +34,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 
 	private static LegacyManager instance;
 	private final ProjectVersionMap map = new ProjectVersionMap();
+	private final ProjectDtoParentsMap dtoParentsMap = new ProjectDtoParentsMap();
 	private final Collection<LegacyVersionListener> legacyVersionListeners = new ArrayList<>();
 
 	/**
@@ -138,6 +143,26 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 		}
 	}
 
+	public List<String> getDtoParentsClasseList(IProject project) {
+		return this.dtoParentsMap.getOrDefault(project, null);
+	}
+
+	public void setDtoParentsClassList(IProject project, String serialized) {
+		setDtoParentsClasseListCore(project, serialized);
+
+		PropertyUtils.setDtoParentClasses(project, serialized);
+	}
+
+	private void setDtoParentsClasseListCore(IProject project, String serialized) {
+		if (VertigoStringUtils.isEmpty(serialized)) {
+			this.dtoParentsMap.remove(project);
+		} else {
+			List<String> dtoParents = Arrays.asList(serialized.split(System.lineSeparator())).stream().map(x -> x.trim())
+					.filter(x -> !VertigoStringUtils.isEmpty(x)).collect(Collectors.toList());
+			this.dtoParentsMap.put(project, dtoParents);
+		}
+	}
+
 	private void initStore() {
 		/* Parcourt les projets ouverts. */
 		for (IProject project : ResourceUtils.getProjectMap().keySet()) {
@@ -164,6 +189,9 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 		if (this.map.containsKey(project)) {
 			return;
 		}
+
+		/* Charge la config des DTO parents. */
+		setDtoParentsClasseListCore(project, PropertyUtils.getDtoParentClasses(project));
 
 		/* Calcul de la version par défaut. */
 		LegacyVersion defaultVersion = getDefaultVersion(project);
@@ -258,6 +286,13 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 	 * Map projet vers version.
 	 */
 	private static class ProjectVersionMap extends HashMap<IProject, LegacyVersion> {
+		private static final long serialVersionUID = 1L;
+	}
+
+	/**
+	 * Map projet vers liste des classes de DTO parents.
+	 */
+	private static class ProjectDtoParentsMap extends HashMap<IProject, List<String>> {
 		private static final long serialVersionUID = 1L;
 	}
 }

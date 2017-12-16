@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
@@ -136,12 +137,21 @@ public final class DtoUtils {
 	}
 
 	private static void parseKasper3PersistedDtoFields(IType type, List<DtoField> fields) throws JavaModelException {
-		/* Extraire le type parent Abstract. */
-		ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
-		IType superclass = hierarchy.getSuperclass(type);
 
-		/* Parse l'AST du type Abstract. */
-		CompilationUnit ast = JdtUtils.parseAST(superclass.getCompilationUnit());
+		/* Chercher les fields sur le type directement. */
+		parseKasper3DtoFields(type.getCompilationUnit(), fields);
+
+		if (fields.isEmpty()) {
+			/* Chercher les fields sur le parent. */
+			ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
+			IType superclass = hierarchy.getSuperclass(type);
+			parseKasper3DtoFields(superclass.getCompilationUnit(), fields);
+		}
+	}
+
+	private static void parseKasper3DtoFields(ICompilationUnit compilationUnit, List<DtoField> fields) {
+		/* Parse l'AST du type. */
+		CompilationUnit ast = JdtUtils.parseAST(compilationUnit);
 
 		/* Visite l'AST. */
 		ast.accept(new ASTVisitor() {
@@ -155,9 +165,9 @@ public final class DtoUtils {
 			public boolean visit(MethodInvocation node) {
 				if ("createField".equals(node.getName().getIdentifier())) {
 					List<?> arguments = node.arguments();
-					String columnName = JdtUtils.getSimpleNameIdentifier(arguments.get(1));
-					String label = JdtUtils.getStringLiteralValue(arguments.get(2));
-					String domainName = JdtUtils.getSimpleNameIdentifier(arguments.get(8));
+					String columnName = JdtUtils.getDomString(arguments.get(1));
+					String label = JdtUtils.getDomString(arguments.get(2));
+					String domainName = JdtUtils.getDomString(arguments.get(8));
 					fields.add(new DtoField(columnName, label, domainName, true));
 				}
 				return false;

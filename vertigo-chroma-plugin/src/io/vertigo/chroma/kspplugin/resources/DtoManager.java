@@ -125,13 +125,14 @@ public final class DtoManager implements Manager {
 			if (compilationUnit == null) {
 				return null;
 			}
+			List<String> dtoParentClassesList = LegacyManager.getInstance().getDtoParentsClasseList(javaProject.getProject());
 			try {
 				LegacyStrategy strategy = LegacyManager.getInstance().getStrategy(file);
 				/* Parcourt les types du fichier Java. */
 				for (IType type : compilationUnit.getAllTypes()) {
 
 					/* Vérifie que c'est un Dto */
-					boolean isDtoType = strategy.isDtoType(type);
+					boolean isDtoType = strategy.isDtoType(type) || JdtUtils.isSubclass(type, dtoParentClassesList);
 
 					if (!isDtoType) {
 						continue;

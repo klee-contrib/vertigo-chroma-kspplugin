@@ -18,6 +18,7 @@ import org.osgi.service.prefs.BackingStoreException;
 public final class PropertyUtils {
 
 	private static final ProjectPropertyDescriptor LEGACY_VERSION = new ProjectPropertyDescriptor("LEGACY_VERSION");
+	private static final ProjectPropertyDescriptor DTO_PARENT_CLASSES = new ProjectPropertyDescriptor("DTO_PARENT_CLASSES");
 
 	private PropertyUtils() {
 		// RAS.
@@ -29,6 +30,18 @@ public final class PropertyUtils {
 
 	public static void setLegacyVersion(IProject project, String legacyVersionName) {
 		LEGACY_VERSION.setValue(project, legacyVersionName);
+	}
+
+	public static String getDtoParentClasses(IProject project) {
+		String serialized = DTO_PARENT_CLASSES.getValue(project);
+		if (VertigoStringUtils.isEmpty(serialized)) {
+			return null;
+		}
+		return serialized;
+	}
+
+	public static void setDtoParentClasses(IProject project, String dtoParents) {
+		DTO_PARENT_CLASSES.setValue(project, dtoParents);
 	}
 
 	/**
@@ -72,7 +85,12 @@ public final class PropertyUtils {
 						LogUtils.info("Set " + propertyName + " : node null !");
 						return Status.OK_STATUS;
 					}
-					node.put(propertyName, propertyValue);
+					if (VertigoStringUtils.isEmpty(propertyValue)) {
+						node.remove(propertyName);
+					} else {
+						node.put(propertyName, propertyValue);
+					}
+
 					try {
 						node.flush();
 					} catch (BackingStoreException e) {
