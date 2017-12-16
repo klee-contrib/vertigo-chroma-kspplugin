@@ -157,7 +157,7 @@ public final class LegacyManager implements Manager, IResourceChangeListener {
 		if (VertigoStringUtils.isEmpty(serialized)) {
 			this.dtoParentsMap.remove(project);
 		} else {
-			List<String> dtoParents = Arrays.asList(serialized.split(System.lineSeparator())).stream().map(x -> x.trim())
+			List<String> dtoParents = Arrays.asList(serialized.split(System.lineSeparator())).stream().map(String::trim)
 					.filter(x -> !VertigoStringUtils.isEmpty(x)).collect(Collectors.toList());
 			this.dtoParentsMap.put(project, dtoParents);
 		}
