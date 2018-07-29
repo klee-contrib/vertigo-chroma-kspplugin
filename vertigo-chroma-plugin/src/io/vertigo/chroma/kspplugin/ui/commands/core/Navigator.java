@@ -48,6 +48,21 @@ public final class Navigator {
 	}
 
 	/**
+	 * Trouve une déclaration KSP à partir du nom KSP et navigue dessus.
+	 * 
+	 * @param kspName Nom KSP de l'objet déclaré. Exemple : TK_GET_UILISATEUR_LIST, DTO_UTILISTATEUR, DO_COMMENTAIRE.
+	 */
+	public static void goToKspDeclarationFromKspName(String kspName) {
+		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclarationByConstantCaseName(kspName);
+		if (kspDeclaration == null) {
+			MessageUtils.showNoKspDeclarationFoundMessage(kspName);
+			return;
+		}
+
+		UiUtils.navigateTo(kspDeclaration);
+	}
+
+	/**
 	 * Trouve un fichier de DTO à partir de son nom Java et navigue dessus.
 	 * 
 	 * @param javaName Nom Java du DTO. Exemple : UtilisateurCritere.

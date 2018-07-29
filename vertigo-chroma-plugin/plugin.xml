@@ -274,4 +274,13 @@
          </enabledWhen>
       </page>
    </extension>
+   <extension
+         point="org.eclipse.ui.console.consolePatternMatchListeners">
+      <consolePatternMatchListener
+            class="io.vertigo.chroma.kspplugin.ui.console.patternMatchListeners.KspNamePatternMatchListener"
+            id="io.vertigo.chroma.kspplugin.ui.console.patternMatchListeners.kspNamePattern"
+            regex="(?:TK|SV)(?:_[A-Z0-9]+)+">
+         <enablement></enablement>
+      </consolePatternMatchListener>
+   </extension>
 </plugin>
