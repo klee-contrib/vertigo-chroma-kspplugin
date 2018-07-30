@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/KspPluginFeature_1.0.3.jar" id="KspPluginFeature" version="1.0.3">
+   <feature url="features/KspPluginFeature_1.0.4.jar" id="KspPluginFeature" version="1.0.4">
       <category name="io.vertigo.chroma"/>
    </feature>
    <category-def name="io.vertigo.chroma" label="Vertigo Chroma">

@@ -2,7 +2,7 @@
 <feature
       id="KspPluginFeature"
       label="KspPluginFeature"
-      version="1.0.3"
+      version="1.0.4"
       provider-name="Sebez">
 
    <description url="https://github.com/sebez/vertigo-chroma-kspplugin">
