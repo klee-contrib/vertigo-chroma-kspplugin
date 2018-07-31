@@ -1,5 +1,7 @@
 package io.vertigo.chroma.kspplugin.ui.console.patternMatchListeners;
 
+import io.vertigo.chroma.kspplugin.model.KspDeclaration;
+import io.vertigo.chroma.kspplugin.resources.KspManager;
 import io.vertigo.chroma.kspplugin.ui.console.hyperlinks.KspNameHyperlink;
 import io.vertigo.chroma.kspplugin.utils.ErrorUtils;
 
@@ -31,6 +33,12 @@ public class KspNamePatternMatchListener implements IPatternMatchListenerDelegat
 
 		/* Cas de chaîne null. */
 		if (kspNameCandidate == null) {
+			return;
+		}
+
+		/* Vérifie qu'un KSP correspondant existe. */
+		KspDeclaration kspDeclaration = KspManager.getInstance().findKspDeclarationByConstantCaseName(kspNameCandidate);
+		if (kspDeclaration == null) {
 			return;
 		}
 
