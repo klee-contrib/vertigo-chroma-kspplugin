@@ -17,6 +17,7 @@ public final class KspStringUtils {
 	private static final Pattern KASPER_3_DT_DEFINITION_DOMAIN = Pattern.compile("Dt((?:Object)|(?:Collection))\\(\\s*([^\\\\\\s)]+)\\s*\\)");
 	private static final Pattern DT_DEFINITION_DECLARATION = Pattern.compile("DT_([A-Z0-9_]+)");
 	private static final Pattern TASK_DECLARATION = Pattern.compile("(?:(?:TK)|(?:SV))_([A-Z0-9_]+)");
+	private static final Pattern VERTIGO_DOMINO_DECLARATION_HEADER = Pattern.compile("\\s*((?:create)|(?:alter))\\s+([A-Za-z]+)\\s+([A-Za-z0-9]+)\\s*[\\{]?\\s*");
 	private static final Pattern VERTIGO_DECLARATION_HEADER = Pattern.compile("\\s*((?:create)|(?:alter))\\s+([A-Za-z]+)\\s+([A-Z0-9_]+)\\s*[\\{]?\\s*");
 	private static final Pattern KASPER_6_DECLARATION_HEADER = Pattern.compile("\\s*((?:create)|(?:alter))\\s+([A-Za-z]+)\\s+([A-Z0-9_]+)\\s*[\\(]?\\s*");
 	private static final Pattern KASPER_5_DECLARATION_HEADER = Pattern.compile("\\s*([A-Z0-9_]+)\\s*=\\s*new\\s+([A-Za-z]+)\\s*(?:\\(.*)?");
@@ -64,6 +65,18 @@ public final class KspStringUtils {
 			String packageName = matcher.group(1);
 			String dtoName = matcher.group(2);
 			return new DtoDefinitionPath(packageName, dtoName);
+		}
+		return null;
+	}
+	
+	public static KspDeclarationMainParts getVertigoDominoKspDeclarationParts(String lineContent) {
+		Matcher matcher = VERTIGO_DOMINO_DECLARATION_HEADER.matcher(lineContent);
+		if (matcher.matches()) {
+			String verb = matcher.group(1);
+			String nature = matcher.group(2);
+			/* Convertit le PascalCase en CONST_CASE pour tomber dans le standard du plugin. */
+			String name = VertigoStringUtils.camelToConstCase(matcher.group(3));
+			return new KspDeclarationMainParts(verb, nature, name);
 		}
 		return null;
 	}

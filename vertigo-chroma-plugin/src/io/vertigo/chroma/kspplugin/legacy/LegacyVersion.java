@@ -8,6 +8,11 @@ import java.util.Arrays;
 public enum LegacyVersion {
 
 	/**
+	 * Vertigo Domino.
+	 */
+	VERTIGO_DOMINO(new VertigoDominoStrategy()),
+	
+	/**
 	 * Vertigo.
 	 */
 	VERTIGO(new VertigoStrategy()),
