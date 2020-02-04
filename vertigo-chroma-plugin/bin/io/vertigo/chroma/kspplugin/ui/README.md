@@ -1,0 +1,3 @@
+# Description
+
+Ce dossier contient tout ce qui concerne l'UI : éditeurs, dialogues, commandes, ...
