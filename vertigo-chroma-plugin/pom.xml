@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.ui.ide</artifactId>
-			<version>3.13.0</version>
+			<version>3.21.100</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.eclipse.platform</groupId>
